@@ -5450,8 +5450,9 @@ a[target="_blank"]::after {
   left: 0;
 }
 
-/* Part 8: the three figures, smaller now, in a row of grey cards with a
-   green line on the left, then the road. */
+/* Part 9: three figures in a row of grey cards with a green line on the
+   left. Since 17 November the page does not use them (part 5 has the
+   numbers), but the rules stay here in case the figures come back. */
 .gap-figures {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -5612,6 +5613,46 @@ a[target="_blank"]::after {
   border-top: 0.8rem solid transparent;
   border-bottom: 0.8rem solid transparent;
   border-left: 1.3rem solid var(--white);
+}
+
+/* Part 10, the Watch step: until a guided video is filmed, the film of the
+   first drive plays here, in a thin dark frame. */
+.guided-film {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 1rem;
+  border: 2px solid #3A3A3A;
+  background: var(--black);
+}
+
+/* Part 10, the Goodbye step: three ways to go on, each a dark bar with a
+   red arrow in front. The arrow comes from ::before, and the "/ ''" part
+   tells screen readers to skip it, so they read only the words. */
+.guided-next {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guided-next li {
+  position: relative;
+  margin: 0 0 0.55rem;
+  padding: 0.55rem 0.7rem 0.5rem 2rem;
+  background: #232323;
+  color: var(--white);
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.guided-next li::before {
+  content: "\2192";
+  content: "\2192" / "";
+  position: absolute;
+  top: 0.5rem;
+  left: 0.7rem;
+  color: var(--red);
 }
 
 /* Part 15, at its end: the local skyline at dawn, across the whole window, above the
@@ -5794,6 +5835,62 @@ a[target="_blank"]::after {
     padding-right: 0.6rem;
     padding-left: 0.6rem;
     font-size: 0.64rem;
+  }
+}
+
+/* Phones: the twelve tabs stay on one row that slides sideways, instead of
+   filling four rows above the opening. The row sticks to the top of the
+   window again, as on a laptop, and a fade on the right shows that there
+   are more tabs to slide to. The scroll bar itself is hidden; the row still
+   slides with a finger, and the Tab key brings each tab into view. */
+@media (max-width: 40rem) {
+  .nav {
+    position: sticky;
+    top: 0;
+  }
+
+  /* A tab still jumps to the top of its part, just below the sticky row. */
+  html {
+    scroll-padding-top: 3.2rem;
+  }
+
+  .nav .wrap {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-right: 2.75rem;
+  }
+
+  .nav .wrap::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav a {
+    flex: none;
+    padding: 0.8rem 0.85rem 0.6rem;
+  }
+
+  /* Inside a row that slides, a ring drawn outside a tab would be cut off,
+     so the focus ring sits just inside the tab: white at the edge, then
+     black. */
+  .nav a:focus-visible {
+    outline-offset: -6px;
+    box-shadow: inset 0 0 0 3px var(--white);
+  }
+
+  .nav::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 3rem;
+    background: linear-gradient(to right, rgba(200, 16, 46, 0), var(--red) 70%);
+    pointer-events: none;
+  }
+
+  .topbar-note {
+    font-size: 0.8rem;
   }
 }
 

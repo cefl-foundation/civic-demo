@@ -6,8 +6,8 @@ This page is built like the earlier prototype pages: plain HTML, CSS and JavaScr
 
 | File | Job | Lines |
 | --- | --- | --- |
-| `index.html` | The words and their order | about 1,250 |
-| `css/site.css` | The look | about 5,800 |
+| `index.html` | The words and their order | about 1,240 |
+| `css/site.css` | The look | about 5,900 |
 | `js/page.js` | The notes switch, starting the films, marking the current tab | about 190 |
 
 ## 2. `index.html`: one page made of parts
@@ -132,13 +132,13 @@ Two boxes on this page are two columns side by side on a laptop and one column o
   <h3 class="offers-title">Who offers what</h3>
   <div class="offers-cols">
     <p class="offer offer-cefl"> ... what CEFL offers ... </p>
-    <p class="offer offer-cs"> ... what the School of Computer Science and Technology offers ... </p>
+    <p class="offer offer-cs"> ... what the School of Computing, Engineering and Creative Industries offers ... </p>
   </div>
 </div>
 ```
 
 - `<h3>` makes “Who offers what” a real heading on its own line, so a screen reader can jump to it.
-- `offer-cefl` gives its card a teal line along the top and `offer-cs` a navy one: the same colours as “From CEFL” and “From the School of Computer Science and Technology” in part 14.
+- `offer-cefl` gives its card a teal line along the top and `offer-cs` a navy one: the same colours as “From CEFL” and “From the School of Computing, Engineering and Creative Industries” in part 14.
 
 The columns come from these rules in section 4 of `css/site.css`:
 
@@ -172,8 +172,8 @@ The other parts work exactly as on the earlier pages: headlines in two halves (`
 | 1. Colours and fonts | Every colour of every earlier page, in one `:root`, and the headline font |
 | 2. Basics | The black strip, the red menu, buttons, headlines, notes: shared by all parts |
 | 3. The parts, page by page | Four blocks, one per earlier page |
-| 4. What this page adds | The short opening line, the opening's bold line and its list of who it could reach, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the gap figures and the road, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the arch picture, cards and contacts in part 16, the skyline, the footer |
-| 5. Small screens | For the parts this page adds |
+| 4. What this page adds | The short opening line, the opening's bold line and its list of who it could reach, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the arch picture, cards and contacts in part 16, the skyline, the footer |
+| 5. Small screens | For the parts this page adds, and the menu on one sliding row on phones |
 
 In section 3 every rule starts with its page's box name:
 
@@ -241,6 +241,29 @@ The films in parts 1 and 2 play on laptops drawn with CSS. The film fills the sc
 
 On tablets and phones (section 5 of `css/site.css`, the two `@media` blocks that start with `.from-repack .reach`), the box moves under the words and gets smaller. On a phone the list's column is `minmax(0, 1fr)`: whatever room is left beside the arch, so a long label wraps onto two lines instead of pushing out of the page.
 
+### The menu on a phone
+
+On a phone the twelve tabs would fill four rows above the opening. The last block in section 5 keeps them on one row that slides sideways:
+
+```css
+@media (max-width: 40rem) {
+  .nav .wrap {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav::after {
+    background: linear-gradient(to right, rgba(200, 16, 46, 0), var(--red) 70%);
+  }
+}
+```
+
+- `@media (max-width: 40rem)` uses these rules only when the window is 40rem (640 pixels) wide or less.
+- `flex-wrap: nowrap` keeps the tabs on one line, and `overflow-x: auto` lets that line slide sideways when it is wider than the screen.
+- `scrollbar-width: none` (and `::-webkit-scrollbar { display: none; }` for Safari and Chrome) hides the scroll bar. The row still slides with a finger, and the Tab key brings each tab into view.
+- `.nav::after` is a strip on the right of the menu that fades from see-through to red, so the cut-off tab shows that there is more to slide to. `pointer-events: none` lets a tap go through it to the tab underneath.
+- In the same block, the menu sticks to the top of the window again (`position: sticky`), and `scroll-padding-top: 3.2rem` stops a tab's part from hiding under it. The focus ring is drawn just inside each tab (`outline-offset: -6px`), because a ring outside a tab would be cut off at the edges of the sliding row.
+
 ## 4. `js/page.js`
 
 The same file as on the earlier pages, with a new title in its first comment. It needs no changes when parts are added or removed: it finds every film and every tab on the page by itself. This page has no notes button in its footer, and the script simply skips that job: add `?notes` to the address to see the notes.
@@ -287,41 +310,48 @@ The band's dark navy comes from `--night` in section 1 of `css/site.css`, and it
 
 ### Change the pictures in the arches
 
-**Where:** `assets/arches/`. Each picture is a laptop under a round picture, 512 pixels wide and 592 high: `what-we-built.jpg` shows a task on the Hub, and `what-it-could-be.jpg` the cyber security task from part 6. A new picture must have the same size and name, or the arch crops it. `what-we-built.jpg` is used twice: in the opening and in the part under it. If you change a picture, change its description too: in `index.html`, the `alt="…"` of its `<img>`, under `THE OPENING` and under `AFTER THE OPENING`.
+**Where:** `assets/arches/`. Each picture is a laptop under a round picture, 512 pixels wide and 592 high:
+
+- `what-cefl-built.jpg`, in the opening, shows the Hub's home page ("Code it.").
+- `what-we-built.jpg`, in the part under it, shows a task on the Hub.
+- `what-it-could-be.jpg`, next to it, shows the cyber security task from part 6.
+
+A new picture must have the same size and name, or the arch crops it. If you change a picture, change its description too: in `index.html`, the `alt="…"` of its `<img>`, under `THE OPENING` or `AFTER THE OPENING`.
 
 ### Change the smart fridge
 
 - The picture: `assets/scenes/smart-fridge.svg`, a drawing written in SVG. Open it in a text editor: the words on the fridge's screen and the phone are the `<text>` lines.
 - The words and the code: `index.html`, under `3. HOW WE TEACH: WORDS FIRST, AND THE SMART FRIDGE`, inside `<div class="fridge-show">`.
 
-### Add the videos to part 10
+### The Watch and Goodbye steps in part 10
 
-**Where:** `index.html`, under `10. TRY IT: A GUIDED FIRST TASK`. Each empty place for a video is:
+**Where:** `index.html`, under `10. TRY IT: A GUIDED FIRST TASK`.
 
-```html
-<div class="video-slot"><span class="video-play" aria-hidden="true"></span><span>Video to add</span></div>
-```
+- **Watch** plays the film of the first drive, `<video class="guided-film" …>`, the same film as in part 3. The `.guided-film` rule in section 4 of `css/site.css` gives it its thin dark frame.
+- **Goodbye** is a list of three ways to go on, `<ul class="guided-next">`. Each way is one `<li>`, and its red arrow comes from the CSS. To make one a link, put its words inside `<a href="ADDRESS">…</a>`.
 
-When a video is on YouTube, replace that line with a link, for example:
+The empty video places (`<div class="video-slot">`) are gone from the page, but their style is still in section 4, in case you need one again.
+
+When a guided video is on YouTube, you can replace the whole `<video class="guided-film" …> … </video>` in the Watch step with a link, for example:
 
 ```html
 <p class="guided-link"><a class="button button-red" href="https://www.youtube.com/watch?v=VIDEO-ID" target="_blank" rel="noopener">Watch the video<span class="visually-hidden"> (opens YouTube in a new tab)</span></a></p>
 ```
 
-Replace `VIDEO-ID` with the video's own code from its address. Then delete the working note under the four steps.
+Replace `VIDEO-ID` with the video's own code from its address.
 
 ### Fill in a working note
 
-**Where:** `index.html`. Search for `data-note`. There are eleven blocks, holding fourteen notes. They are hidden unless the address ends with `?notes`. Do what the note says, then delete the whole block, from `<div data-note>` to its `</div>`.
+**Where:** `index.html`. Search for `data-note`. There are ten blocks, holding twelve notes. They are hidden unless the address ends with `?notes`. Do what the note says, then delete the whole block, from `<div data-note>` to its `</div>`.
 
 ### Add the Hub link in part 10
 
-The "Open the Hub" button in part 10 is switched off for now, with "Link to be added" under it. It is the page's only link to the Hub.
+The "Open the Hub" button in part 10 is switched off for now, with "Opens when testing ends" under it. It is the page's only link to the Hub.
 
-**Where:** `index.html`, under `10. TRY IT`. Search for `Link to be added`. Replace that whole line:
+**Where:** `index.html`, under `10. TRY IT`. Search for `Opens when testing ends`. Replace that whole line:
 
 ```html
-<p class="guided-link"><span class="button button-off">Open the Hub</span><span class="link-later">Link to be added</span></p>
+<p class="guided-link"><span class="button button-off">Open the Hub</span><span class="link-later">Opens when testing ends</span></p>
 ```
 
 with this one, putting the Hub's address in place of `ADDRESS`, between the quotation marks:
@@ -332,6 +362,7 @@ with this one, putting the Hub's address in place of `ADDRESS`, between the quot
 
 - `<a … href="…">` makes it a link again, and `button-red` gives it back its red colour.
 - `target="_blank"` opens the Hub in a new tab, and the hidden words "(opens in a new tab)" tell a screen reader so.
+- Then, in part 9, change the first stop's label from `In class now` back to `Open now`: search for `pill-open`. Also delete the working note under the four steps in part 10.
 
 ### Change a colour
 
