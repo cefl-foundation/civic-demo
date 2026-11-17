@@ -6,8 +6,8 @@ This page is built like the earlier prototype pages: plain HTML, CSS and JavaScr
 
 | File | Job | Lines |
 | --- | --- | --- |
-| `index.html` | The words and their order | about 1,150 |
-| `css/site.css` | The look | about 5,240 |
+| `index.html` | The words and their order | about 1,250 |
+| `css/site.css` | The look | about 5,800 |
 | `js/page.js` | The notes switch, starting the films, marking the current tab | about 190 |
 
 ## 2. `index.html`: one page made of parts
@@ -41,6 +41,38 @@ The new parts (5, 10 and 14, and the smart fridge in 3) sit in `from-community` 
 ### Ids must be used once
 
 Each part has an `id`, such as `id="stories"`, and a tab jumps to it with `href="#stories"`. The same `id` must not appear twice on a page. Two earlier pages both had a part with `id="questions"`; on this page only part 15 has it.
+
+### The opening, and the part under it
+
+The page starts with two parts that share one look, from the `from-repack` box: a big headline in two halves, and arches standing on a thick black line.
+
+**The opening, "Same teaching. New audiences."** Search for `THE OPENING` to find it. It says who CEFL is, what we built and who it could reach:
+
+```html
+<div class="hero-words">
+  <p class="reach-lede"> ... the bold line ... </p>
+  <p class="reach-small"> ... the small grey line ... </p>
+</div>
+<div class="reach">
+  <figure class="arch-box"> ... "What CEFL built" and the arch ... </figure>
+  <span class="arch-arrow" aria-hidden="true"></span>
+  <div class="reach-list">
+    <p class="arch-label" id="reach-title">Who it could reach</p>
+    <ul class="reach-tags" aria-labelledby="reach-title">
+      <li class="reach-navy">Computer Science students</li>
+      ...
+    </ul>
+  </div>
+</div>
+```
+
+- Its headline is the page's only `<h1>`. A page should have one `<h1>`, so a screen reader knows what the page is about.
+- Each label in the list is one `<li>`. Its class gives its colour: `reach-navy`, `reach-plum`, `reach-teal`, `reach-green`, `reach-red` or `reach-maroon`.
+- `aria-labelledby="reach-title"` tells a screen reader that the list is called "Who it could reach": the words with `id="reach-title"` just above it.
+- The arrow is only a picture, so `aria-hidden="true"` hides it from screen readers.
+- In the small line, `<span>no sign-up</span>` keeps those words together, so the line never breaks at the hyphen.
+
+**The part under it, "Why build it twice? Repackage it."** Search for `AFTER THE OPENING` to find it. Until 17 November it was the page's opening. Its headline is now an `<h2>`, because the page's `<h1>` belongs to the opening. In `css/site.css`, the rules that size the opening's headline cover both (`.from-repack .hero h1, .from-repack .hero h2`), so it looks the same as before.
 
 ### The two groups and the pictures in part 1
 
@@ -140,7 +172,7 @@ The other parts work exactly as on the earlier pages: headlines in two halves (`
 | 1. Colours and fonts | Every colour of every earlier page, in one `:root`, and the headline font |
 | 2. Basics | The black strip, the red menu, buttons, headlines, notes: shared by all parts |
 | 3. The parts, page by page | Four blocks, one per earlier page |
-| 4. What this page adds | The short opening line, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the gap figures and the road, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the arch picture, cards and contacts in part 16, the skyline, the footer |
+| 4. What this page adds | The short opening line, the opening's bold line and its list of who it could reach, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the gap figures and the road, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the arch picture, cards and contacts in part 16, the skyline, the footer |
 | 5. Small screens | For the parts this page adds |
 
 In section 3 every rule starts with its page's box name:
@@ -190,6 +222,25 @@ The page's rule for `code` keeps a line of code from breaking in two (`white-spa
 
 The films in parts 1 and 2 play on laptops drawn with CSS. The film fills the screen's width, and its height follows from the `width` and `height` written on its `<video>`. The film in part 2 was made from a picture of the Hub's Python page, moving slowly down to the last task and back up.
 
+### The opening's arch, arrow and list
+
+```css
+.from-repack .reach {
+  --arch-w: clamp(9rem, 17vw, 15.5rem);
+  display: grid;
+  grid-template-columns: var(--arch-w) 3.5rem 16rem;
+  column-gap: 0.5rem;
+  align-items: end;
+}
+```
+
+- `.reach` is the box on the right of the opening. `display: grid` puts the arch, the arrow and the list side by side, in three columns.
+- `--arch-w` is the arch's width. It is set again here so that this arch is a little narrower than the two in the part under it: at least `9rem`, at most `15.5rem`, and in between 17% of the window's width.
+- `grid-template-columns` gives the widths of the three columns: the arch, `3.5rem` for the arrow, and `16rem` for the list.
+- `align-items: end` lines all three up at the bottom of the box, so the arch stands on the thick black line, like the arches under it.
+
+On tablets and phones (section 5 of `css/site.css`, the two `@media` blocks that start with `.from-repack .reach`), the box moves under the words and gets smaller. On a phone the list's column is `minmax(0, 1fr)`: whatever room is left beside the arch, so a long label wraps onto two lines instead of pushing out of the page.
+
 ## 4. `js/page.js`
 
 The same file as on the earlier pages, with a new title in its first comment. It needs no changes when parts are added or removed: it finds every film and every tab on the page by itself. This page has no notes button in its footer, and the script simply skips that job: add `?notes` to the address to see the notes.
@@ -226,13 +277,17 @@ The band's dark navy comes from `--night` in section 1 of `css/site.css`, and it
 
 **Where:** `index.html`, under `13. CUSTOMISED PATHS: LOCAL ADULTS`, inside `<div class="offers">`. Change the words inside each `<p class="offer …">`. To add a third card, copy one whole `<p class="offer …">…</p>` line, paste it under the second one, and then, in `css/site.css`, in the rule `#paths .offers-cols`, change `repeat(2,` to `repeat(3,`.
 
+### Change who the opening could reach
+
+**Where:** `index.html`, under `THE OPENING`, inside `<ul class="reach-tags">`. Change the words of a label, or copy a whole `<li class="reach-…">…</li>` line and paste it under another to add one. Give it a colour by its class: `reach-navy`, `reach-plum`, `reach-teal`, `reach-green`, `reach-red` or `reach-maroon`. A long label simply wraps onto two lines.
+
 ### Change the tab icon
 
 **Where:** `assets/brand/favicon.png` (64 by 64 pixels) and `assets/brand/apple-touch-icon.png` (180 by 180, for phones), both made from the University's red mark. The two `<link>` lines that use them are in the `<head>` of `index.html`.
 
 ### Change the pictures in the arches
 
-**Where:** `assets/arches/`. Each picture is a laptop under a round picture, 512 pixels wide and 592 high: `what-we-built.jpg` shows a task on the Hub, and `what-it-could-be.jpg` the cyber security task from part 6. A new picture must have the same size and name, or the arch crops it. If you change a picture, change its description too: in `index.html`, under `THE OPENING`, the `alt="…"` of its `<img>`.
+**Where:** `assets/arches/`. Each picture is a laptop under a round picture, 512 pixels wide and 592 high: `what-we-built.jpg` shows a task on the Hub, and `what-it-could-be.jpg` the cyber security task from part 6. A new picture must have the same size and name, or the arch crops it. `what-we-built.jpg` is used twice: in the opening and in the part under it. If you change a picture, change its description too: in `index.html`, the `alt="…"` of its `<img>`, under `THE OPENING` and under `AFTER THE OPENING`.
 
 ### Change the smart fridge
 

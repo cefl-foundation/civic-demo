@@ -433,12 +433,16 @@ a[target="_blank"]::after {
   color: var(--red);
 }
 
-.from-repack .hero h1 {
+/* The opening's headline is the page's <h1>. The part under it, "Why
+   build it twice?", has the same look for its <h2>. */
+.from-repack .hero h1,
+.from-repack .hero h2 {
   color: var(--black);
   font-size: clamp(2.2rem, 11vw, 7.4rem);
 }
 
-.from-repack .hero h1 span + span {
+.from-repack .hero h1 span + span,
+.from-repack .hero h2 span + span {
   color: var(--red);
 }
 
@@ -3943,6 +3947,95 @@ a[target="_blank"]::after {
   }
 }
 
+/* The opening, "Same teaching. New audiences.". It borrows the headline,
+   the arch and the round arrow from the part under it. These rules add the
+   bold line, the small line, and the list of who it could reach. */
+
+/* The bold line. It is longer than the short line in the part under it,
+   so its letters are a little smaller. */
+.from-repack .reach-lede {
+  max-width: 32rem;
+  margin: 0;
+  font-size: clamp(1.2rem, 1.9vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.32;
+}
+
+/* The small grey line under it. The <span> round "no sign-up" keeps
+   those words together, so the line never breaks at the hyphen. */
+.from-repack .reach-small {
+  max-width: 32rem;
+  margin: 1rem 0 0;
+  color: var(--grey);
+  font-size: 1.05rem;
+}
+
+.from-repack .reach-small span {
+  white-space: nowrap;
+}
+
+/* The arch, the arrow and the list, side by side in three columns. This
+   arch is a little narrower than the two in the part under it. Lining
+   everything up at the end (the bottom) stands the arch on the thick
+   black line. */
+.from-repack .reach {
+  --arch-w: clamp(9rem, 17vw, 15.5rem);
+  display: grid;
+  grid-template-columns: var(--arch-w) 3.5rem 16rem;
+  column-gap: 0.5rem;
+  align-items: end;
+}
+
+/* The list sits a little above the black line, not on it. */
+.from-repack .reach-list {
+  padding-bottom: 1.5rem;
+}
+
+/* Each label is a coloured block with white words, one under the other.
+   justify-items: start makes each block only as wide as its words. */
+.from-repack .reach-tags {
+  display: grid;
+  justify-items: start;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.from-repack .reach-tags li {
+  padding: 0.45rem 0.8rem 0.4rem;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* The colours of the labels, all from section 1. White words on each of
+   them pass the contrast check for small text. */
+.from-repack .reach-navy {
+  background: var(--navy);
+}
+
+.from-repack .reach-plum {
+  background: var(--plum);
+}
+
+.from-repack .reach-teal {
+  background: var(--teal);
+}
+
+.from-repack .reach-green {
+  background: var(--green);
+}
+
+.from-repack .reach-red {
+  background: var(--red);
+}
+
+.from-repack .reach-maroon {
+  background: var(--maroon);
+}
+
 /* Part 15: the headline on the left, the speech bubbles on the right. CEFL is
    bigger than the rest of the headline, but only about twice as big. */
 .cefl-head {
@@ -5556,6 +5649,35 @@ a[target="_blank"]::after {
 }
 
 /* ---------- 5. Small screens ---------- */
+
+/* The opening's arch, arrow and list. On tablets and phones the rules for
+   .hero-inner in section 3 move them under the words. Here they keep their
+   three columns and get smaller. On a phone the list takes whatever room is
+   left beside the arch, and long labels wrap onto two lines. */
+@media (max-width: 56rem) {
+  .from-repack .reach {
+    --arch-w: clamp(8rem, 30vw, 13rem);
+    grid-template-columns: var(--arch-w) 3.5rem minmax(0, 15rem);
+    justify-self: center;
+  }
+}
+
+@media (max-width: 40rem) {
+  .from-repack .reach {
+    --arch-w: min(8rem, 28vw);
+    grid-template-columns: var(--arch-w) 2.6rem minmax(0, 1fr);
+    justify-self: stretch;
+  }
+
+  .from-repack .reach-list {
+    padding-bottom: 0.75rem;
+  }
+
+  .from-repack .reach-tags li {
+    padding: 0.35rem 0.55rem 0.3rem;
+    font-size: 0.85rem;
+  }
+}
 
 /* Narrower than a laptop: the menu may need two lines, which is too tall to
    keep at the top of the window. The four guided steps go two to a row. */
