@@ -546,7 +546,7 @@ else:
         </article>
 
         <article class="pair" aria-labelledby="pair-2">
-          <h3 class="pair-title" id="pair-2"><span class="pair-number" aria-hidden="true">02</span> For local small businesses</h3>
+          <h3 class="pair-title" id="pair-2"><span class="pair-number" aria-hidden="true">02</span> For local small businesses: a low-code start</h3>
           <figure class="pair-from">
             <p class="pair-tag">What we did</p>
             <video controls muted loop playsinline preload="none" poster="assets/films/warehouse-fix-the-bug.jpg" width="1600" height="1200" aria-label="Film with no sound: the warehouse robot task Fix the fence post on the Tech Practice Hub. The program runs and one square stays empty. One line is added after the loop, the program runs again, and the task is complete.">
@@ -559,25 +559,37 @@ else:
           <figure class="pair-to pair-task">
             <p class="pair-tag">What it could be</p>
             <div class="device-tablet">
-            <div class="mock mock-adult" role="group" aria-label="A prototype task for small businesses: Making Tax Digital, and a first prompt for AI">
+            <div class="mock mock-adult" role="group" aria-label="A prototype task for small businesses, with no code: Making Tax Digital in a spreadsheet, and a reminder drafted by AI">
               <div class="mock-head">
-                <p class="mock-eyebrow">Small business · Task 1</p>
+                <p class="mock-eyebrow">Digital business · Task 1</p>
                 <p class="mock-title">Making Tax Digital, and AI</p>
                 <span class="mock-icon" aria-hidden="true"><svg focusable="false"><use href="#l-receipt"/></svg></span>
               </div>
               <div class="mock-body">
-                <p class="mock-text">Add up a quarter for Making Tax Digital in one line, then ask an AI assistant to draft a polite reminder for a late invoice.</p>
-                <pre class="mock-code"><code>income = [4850, 5120, 4630]
-print("Quarter:", sum(income))
-note = "invoice 14 is a week late"
-ask_ai("Polite reminder: " + note)</code></pre>
-                <pre class="mock-terminal"><code>Quarter: 14600</code></pre>
+                <p class="mock-text">No code needed. One formula adds up the quarter for Making Tax Digital, and an automation asks an AI assistant to draft a polite reminder for a late invoice.</p>
+                <div class="mock-sheet" aria-hidden="true">
+                  <p class="mock-formula"><span class="mock-cell">B5</span><span class="mock-fx">fx</span><code>=SUM(B2:B4)</code></p>
+                  <table>
+                    <tr><th></th><th>A</th><th>B</th></tr>
+                    <tr class="mock-sheet-head"><th>1</th><td>Month</td><td>Income</td></tr>
+                    <tr><th>2</th><td>July</td><td>£4,850</td></tr>
+                    <tr><th>3</th><td>August</td><td>£5,120</td></tr>
+                    <tr><th>4</th><td>September</td><td>£4,630</td></tr>
+                    <tr class="mock-total"><th>5</th><td>Quarter</td><td>£14,600</td></tr>
+                  </table>
+                </div>
+                <p class="visually-hidden">A spreadsheet with the income for July, August and September: £4,850, £5,120 and £4,630. In cell B5, the formula =SUM(B2:B4) adds them up: £14,600 for the quarter.</p>
+                <ol class="mock-flow" aria-label="The automation, in three steps">
+                  <li>Invoice 7 days late</li>
+                  <li>AI drafts a reminder</li>
+                  <li>You check and send</li>
+                </ol>
                 <p class="mock-ai"><span class="mock-ai-name">AI</span> Hello, a friendly reminder that invoice 14 is now a week overdue. Many thanks!</p>
-                <p class="mock-words"><span class="mock-words-name">Word bank</span> <span>list</span> <span>sum</span> <span>prompt</span> <span>AI</span></p>
+                <p class="mock-words"><span class="mock-words-name">Word bank</span> <span>formula</span> <span>quarter</span> <span>automation</span> <span>prompt</span></p>
               </div>
             </div>
             </div>
-            <figcaption>For small businesses: one line for Making Tax Digital, which since April 2026 asks sole traders over £50,000 for quarterly updates, and a first prompt for an AI assistant. A prototype task, not on the Hub yet.</figcaption>
+            <figcaption>Not every path needs code. For small businesses, a spreadsheet formula adds up the quarter for Making Tax Digital, which since April 2026 asks sole traders over £50,000 for quarterly updates, and an AI assistant drafts a reminder that the owner checks before sending. The same approach could support business and digital business programmes. A prototype task, not on the Hub yet.</figcaption>
           </figure>
         </article>
 

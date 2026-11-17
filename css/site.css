@@ -4941,6 +4941,125 @@ a[target="_blank"]::after {
   letter-spacing: 0.08em;
 }
 
+/* The small business task, with no code: a spreadsheet (its formula bar,
+   then columns A and B with row numbers) and an automation in three steps.
+   The spreadsheet is a picture for sighted readers; the sentence under it,
+   hidden from view, says the same for a screen reader. */
+.mock-sheet {
+  margin: 0 0 0.7rem;
+}
+
+.mock-formula {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  margin: 0;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--line);
+  border-bottom: 0;
+  background: var(--paper);
+  font-size: 0.8rem;
+}
+
+.mock-cell {
+  padding-right: 0.55rem;
+  border-right: 1px solid var(--line);
+  color: var(--grey);
+  font-family: var(--font-code);
+}
+
+.mock-fx {
+  color: var(--grey);
+  font-family: Georgia, "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.mock-formula code {
+  color: var(--teal);
+  font-family: var(--font-code);
+  font-size: inherit;
+  font-weight: 700;
+}
+
+.mock-sheet table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.mock-sheet th,
+.mock-sheet td {
+  padding: 0.18rem 0.55rem;
+  border: 1px solid var(--line);
+  text-align: left;
+}
+
+/* Column letters and row numbers, grey as in a spreadsheet. */
+.mock-sheet th {
+  width: 1.8rem;
+  background: var(--paper);
+  color: var(--grey);
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.mock-sheet td:last-child {
+  font-family: var(--font-code);
+  text-align: right;
+}
+
+.mock-sheet .mock-sheet-head td {
+  font-weight: 700;
+}
+
+.mock-sheet .mock-sheet-head td:last-child {
+  font-family: var(--font-body);
+}
+
+/* The total: the cell the formula fills. */
+.mock-sheet .mock-total td {
+  border-top: 2px solid var(--teal);
+  background: #E3F0F0;
+  font-weight: 700;
+}
+
+.mock-sheet .mock-total td:last-child {
+  outline: 2px solid var(--teal);
+  outline-offset: -2px;
+}
+
+/* The automation: three steps in a row, with an arrow between them. */
+.mock-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  margin: 0 0 0.7rem;
+  padding: 0;
+  list-style: none;
+}
+
+.mock-flow li {
+  position: relative;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.mock-flow li:not(:last-child)::after {
+  content: "→";
+  content: "→" / "";
+  position: absolute;
+  top: 50%;
+  right: -1.2rem;
+  color: var(--teal);
+  transform: translateY(-50%);
+}
+
 /* Part 10: what could come next, after the five cases. */
 .cases-next {
   max-width: 52rem;
