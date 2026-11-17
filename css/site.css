@@ -5081,6 +5081,151 @@ a[target="_blank"]::after {
   text-transform: uppercase;
 }
 
+/* Part 5: why policing. A dark navy band (--night), the two numbers over
+   red bars, three cards (the gap, who, how), and the rule, its second line
+   in a red highlight. The headline is all white here, with a short red bar
+   under it. */
+.from-community .chapter-night {
+  background: var(--night);
+  color: var(--white);
+}
+
+.from-community .chapter-night h2,
+.from-community .chapter-night h2 span + span,
+.from-community .chapter-night .eyebrow {
+  color: var(--white);
+}
+
+.from-community .chapter-night h2 span + span::after {
+  content: "";
+  display: block;
+  width: 5.5rem;
+  height: 0.55rem;
+  margin-top: 0.9rem;
+  background: var(--red);
+}
+
+.why-figs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 4.5rem;
+  margin: 2.25rem 0 0.9rem;
+  padding: 0;
+  list-style: none;
+}
+
+.why-figs li {
+  max-width: 30rem;
+}
+
+.why-fig {
+  display: block;
+  padding-bottom: 0.55rem;
+  border-bottom: 0.55rem solid var(--red);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 700;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.why-fig-words {
+  display: block;
+  max-width: 25rem;
+  margin-top: 0.75rem;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.why-src {
+  max-width: 62rem;
+  margin: 0 0 2.75rem;
+  color: #B9B9CF;
+  font-size: 0.85rem;
+}
+
+.why-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.why-card {
+  padding: 1.35rem 1.4rem 0.8rem;
+  border-top: 0.45rem solid var(--teal);
+  background: #22223F;
+}
+
+.why-card:nth-child(2) {
+  border-top-color: #A35C8F;
+}
+
+.why-card:nth-child(3) {
+  border-top-color: var(--red);
+}
+
+.why-card h3 {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.why-card p {
+  margin: 0 0 0.7rem;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+
+.why-rule {
+  margin: 3rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.why-rule span {
+  display: block;
+}
+
+.why-rule span + span {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.1rem 0.25rem 0;
+  background: var(--red);
+}
+
+.why-after {
+  max-width: 46rem;
+  margin: 1.2rem 0 0;
+  color: #DCDCE8;
+  font-size: 1.12rem;
+  line-height: 1.5;
+}
+
+/* On a tablet the cards stack; on a phone the numbers get smaller, so
+   "More than half" still fits on one line. */
+@media (max-width: 56rem) {
+  .why-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 40rem) {
+  .why-figs {
+    gap: 1.75rem;
+  }
+
+  .why-fig {
+    font-size: clamp(2.5rem, 13vw, 3.4rem);
+  }
+}
+
 /* Part 10: what could come next, after the five cases. */
 .cases-next {
   max-width: 52rem;
