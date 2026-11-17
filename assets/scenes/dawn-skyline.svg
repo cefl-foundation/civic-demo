@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 230" width="1280" height="230">
+  <!-- Dawn along the M1, from left to right: a tall slim tower like the one
+       in Northampton, the low offices, trees and roundabout of Milton Keynes,
+       a suspension bridge over a river like Bedford's, and houses near
+       Luton with a plane climbing away. -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B1B3A"/>
+      <stop offset="0.4" stop-color="#3D2F66"/>
+      <stop offset="0.72" stop-color="#B3647E"/>
+      <stop offset="1" stop-color="#F6A55E"/>
+    </linearGradient>
+    <linearGradient id="river" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9708A"/>
+      <stop offset="1" stop-color="#51407A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="230" fill="url(#sky)"/>
+  <circle cx="742" cy="232" r="64" fill="#FFD27D" opacity="0.85"/>
+  <g fill="#F4E6C1" opacity="0.8">
+    <circle cx="90" cy="30" r="1.4"/><circle cx="320" cy="22" r="1.2"/><circle cx="560" cy="40" r="1.4"/>
+    <circle cx="1010" cy="26" r="1.2"/><circle cx="1210" cy="44" r="1.4"/>
+  </g>
+
+  <!-- the ground, either side of the river -->
+  <g fill="#14142B">
+    <rect x="0" y="222" width="664" height="8"/>
+    <rect x="986" y="222" width="294" height="8"/>
+  </g>
+
+  <g fill="#14142B">
+    <!-- the tall tower, with its band near the top -->
+    <path d="M118 230 L126 34 H142 L150 230 Z"/>
+    <rect x="122" y="22" width="24" height="16"/>
+    <rect x="128" y="10" width="12" height="12"/>
+    <!-- terraced roofs round it -->
+    <path d="M0 230 V196 L18 184 L36 196 H60 L78 184 L96 196 H112 V230 Z"/>
+    <path d="M156 230 V198 L172 186 L188 198 H206 L222 186 L238 198 H256 V230 Z"/>
+
+    <!-- low offices, trees and a grid road -->
+    <rect x="286" y="176" width="110" height="54"/>
+    <rect x="404" y="160" width="80" height="70"/>
+    <rect x="492" y="184" width="96" height="46"/>
+    <circle cx="276" cy="200" r="16"/><circle cx="300" cy="206" r="14"/>
+    <circle cx="600" cy="202" r="18"/><circle cx="628" cy="208" r="14"/>
+    <rect x="270" y="218" width="380" height="12"/>
+  </g>
+  <g fill="#FFD27D" opacity="0.75">
+    <rect x="298" y="188" width="10" height="6"/><rect x="318" y="188" width="10" height="6"/><rect x="358" y="200" width="10" height="6"/>
+    <rect x="416" y="174" width="10" height="6"/><rect x="436" y="188" width="10" height="6"/><rect x="456" y="174" width="10" height="6"/>
+    <rect x="506" y="196" width="10" height="6"/><rect x="546" y="196" width="10" height="6"/>
+  </g>
+
+  <!-- the river and its suspension bridge -->
+  <rect x="660" y="214" width="330" height="16" fill="url(#river)"/>
+  <g fill="#14142B">
+    <path d="M660 230 V206 H676 L688 214 H660 Z"/>
+    <path d="M990 230 V206 H974 L962 214 H990 Z"/>
+    <circle cx="664" cy="196" r="14"/><circle cx="990" cy="194" r="16"/>
+    <rect x="700" y="150" width="8" height="64"/>
+    <rect x="942" y="150" width="8" height="64"/>
+    <rect x="676" y="200" width="298" height="5"/>
+  </g>
+  <g fill="none" stroke="#14142B" stroke-width="3">
+    <path d="M704 152 Q825 222 946 152"/>
+    <path d="M704 152 Q690 180 676 200 M946 152 Q960 180 974 200"/>
+  </g>
+  <g stroke="#14142B" stroke-width="1.6">
+    <path d="M740 172 V200 M776 186 V200 M812 194 V200 M838 194 V200 M874 186 V200 M910 172 V200"/>
+  </g>
+
+  <!-- houses near the airport, and a plane climbing away -->
+  <g fill="#14142B">
+    <path d="M1010 230 V198 L1028 184 L1046 198 H1066 L1084 184 L1102 198 H1124 V188 H1150 V198 L1168 184 L1186 198 H1208 L1226 184 L1244 198 H1280 V230 Z"/>
+    <rect x="1132" y="164" width="10" height="24"/>
+  </g>
+  <path d="M900 120 C980 104 1040 84 1102 62" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
+  <g transform="translate(1110 58) rotate(-18)" fill="#14142B">
+    <path d="M-14 0 H22 C27 0 29 2 29 4 C29 6 27 7 22 7 H-14 Z"/>
+    <path d="M0 3 L-10 18 H-4 L10 3 Z"/>
+    <path d="M-12 1 L-18 -9 H-13 L-6 1 Z"/>
+  </g>
+  <circle cx="1104" cy="66" r="2.2" fill="#C8102E"/>
+</svg>

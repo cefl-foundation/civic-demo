@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Repackage what we already have: a demo for civic and community partnerships</title>
+  <meta name="description" content="A demo page for University of Bedfordshire colleagues: how CEFL teaches adults who start a long way from computing, the Tech Practice Hub built on that teaching, and how the same films and tasks could be repackaged for local audiences.">
+  <link rel="icon" href="assets/brand/favicon.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/page.js"></script>
+</head>
+<body>
+
+  <a class="skip" href="#main">Skip to the content</a>
+
+  <!-- The icons, drawn once and used across the page: filled ones in the
+       access list in part 4, line ones on the cards and the tasks. -->
+  <svg class="icon-store" aria-hidden="true" focusable="false" width="0" height="0">
+    <symbol id="i-noform" viewBox="0 0 48 48">
+      <rect x="11" y="6" width="26" height="34" rx="3"/>
+      <g class="icon-hole"><rect x="16" y="13" width="16" height="3" rx="1"/><rect x="16" y="20" width="16" height="3" rx="1"/><rect x="16" y="27" width="10" height="3" rx="1"/></g>
+      <path d="M6 42L42 6" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-save" viewBox="0 0 48 48">
+      <path d="M13 6h22a2 2 0 0 1 2 2v34l-13-9-13 9V8a2 2 0 0 1 2-2z"/>
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 48 48">
+      <path d="M4 10c7-3 14-3 19 1v29c-5-4-12-4-19-1z"/>
+      <path d="M44 10c-7-3-14-3-19 1v29c5-4 12-4 19-1z"/>
+    </symbol>
+    <symbol id="i-bulb" viewBox="0 0 48 48">
+      <path d="M24 4a14 14 0 0 0-8 25.5V34h16v-4.5A14 14 0 0 0 24 4z"/>
+      <rect x="17" y="37" width="14" height="4" rx="1.5"/>
+      <rect x="19" y="43" width="10" height="3" rx="1.5"/>
+    </symbol>
+    <symbol id="i-slow" viewBox="0 0 48 48">
+      <rect x="4" y="22" width="40" height="4" rx="2"/>
+      <circle cx="14" cy="24" r="8"/>
+      <g class="icon-hole"><circle cx="14" cy="24" r="3"/></g>
+    </symbol>
+    <symbol id="i-keys" viewBox="0 0 48 48">
+      <rect x="3" y="11" width="42" height="26" rx="4"/>
+      <g class="icon-hole">
+        <rect x="8" y="16" width="5" height="5" rx="1"/><rect x="16" y="16" width="5" height="5" rx="1"/><rect x="24" y="16" width="5" height="5" rx="1"/><rect x="32" y="16" width="8" height="5" rx="1"/>
+        <rect x="8" y="24" width="8" height="5" rx="1"/><rect x="19" y="24" width="5" height="5" rx="1"/><rect x="27" y="24" width="13" height="5" rx="1"/>
+      </g>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 48 48">
+      <rect x="5" y="5" width="38" height="38" rx="5"/>
+      <path class="icon-hole-line" d="M13 25l7 7 15-16" fill="none" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-contrast" viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="19" fill="none" stroke="currentColor" stroke-width="4"/>
+      <path d="M24 5a19 19 0 0 1 0 38z"/>
+    </symbol>
+    <!-- Line icons for the cards, the people and the prototype tasks. -->
+    <symbol id="l-award" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="M8.6 13.4 7 21l5-2.6 5 2.6-1.6-7.6"/></g></symbol>
+    <symbol id="l-research" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.3 15.3 21 21M8 13v-2M10.5 13V8.5M13 13v-3"/></g></symbol>
+    <symbol id="l-columns" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 4l9 5.5M3.5 20.5h17M6 11v7M10 11v7M14 11v7M18 11v7"/></g></symbol>
+    <symbol id="l-laptop" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="11" rx="1.5"/><path d="M2.5 19.5h19M10.2 8.3 8.4 10l1.8 1.7M13.8 8.3l1.8 1.7-1.8 1.7"/></g></symbol>
+    <symbol id="l-bus" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="3" width="15" height="14.5" rx="2.5"/><path d="M4.5 10.5h15M12 3v7.5M7.5 17.5v2.5M16.5 17.5v2.5"/><circle cx="8.2" cy="14" r=".6"/><circle cx="15.8" cy="14" r=".6"/></g></symbol>
+    <symbol id="l-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 9.5h17M8 3v4M16 3v4M8.7 15l2.2 2.2 4.4-4.4"/></g></symbol>
+    <symbol id="l-boxes" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="12.5" width="8" height="8" rx="1"/><rect x="13" y="12.5" width="8" height="8" rx="1"/><rect x="8" y="3.5" width="8" height="8" rx="1"/><path d="M7 12.5v2.5M17 12.5v2.5M12 3.5V6"/></g></symbol>
+    <symbol id="l-code" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 8.5h18M10 12.3l-2.3 2.3 2.3 2.3M14 12.3l2.3 2.3-2.3 2.3"/></g></symbol>
+    <symbol id="l-care" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2.8" width="14" height="18.4" rx="2"/><path d="M12 15.6s-3.6-2.2-3.6-4.6a1.9 1.9 0 0 1 3.6-.9 1.9 1.9 0 0 1 3.6.9c0 2.4-3.6 4.6-3.6 4.6zM10.5 18.4h3"/></g></symbol>
+    <symbol id="l-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5.2c0 4.4-3 8.1-7 9.3-4-1.2-7-4.9-7-9.3V6z"/><rect x="9.3" y="11" width="5.4" height="4.4" rx=".8"/><path d="M10.4 11V9.7a1.6 1.6 0 0 1 3.2 0V11"/></g></symbol>
+    <symbol id="l-receipt" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-2-1.3-2 1.3-2-1.3-2 1.3-2-1.3-2 1.3z"/><path d="M9 8h6M9 11.5h6M9 15h3.5"/></g></symbol>
+    <symbol id="l-flag" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 21V3.5M5.5 4h12l-2.6 4.2 2.6 4.3h-12"/></g></symbol>
+    <symbol id="l-people" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="16.8" cy="9.6" r="2.5"/><path d="M3 19.5c0-3.5 2.7-6 6-6s6 2.5 6 6M14.6 14.3c.7-.3 1.4-.5 2.2-.5 2.5 0 4.4 2 4.4 5"/></g></symbol>
+  </svg>
+
+<!-- ============================== THE BLACK STRIP ============================== -->
+  <header class="topbar" id="top">
+    <div class="wrap topbar-inner">
+      <div class="logo">
+        <img src="assets/brand/uob-logo.png" width="720" height="362" alt="University of Bedfordshire">
+        <span class="unit">Tech Practice Hub</span>
+      </div>
+      <p class="topbar-note"><strong>For University colleagues.</strong> Not an official University page.</p>
+    </div>
+  </header>
+
+  
+  <!-- ============================== THE RED MENU ============================== -->
+  <nav class="nav" aria-label="Parts of this page">
+    <div class="wrap">
+      <a href="#top">Overview</a>
+      <a href="#stories">People</a>
+      <a href="#hub">Hub</a>
+      <a href="#teach">Teaching</a>
+      <a href="#repackage">Repackaged</a>
+      <a href="#policing">Policing</a>
+      <a href="#try">Try it</a>
+      <a href="#cases">Cases</a>
+      <a href="#paths">Paths</a>
+      <a href="#questions">Questions</a>
+      <a href="#strength">Who we are</a>
+    </div>
+  </nav>
+
+  <main id="main" tabindex="-1">
+
+    <!-- ============================== THE OPENING ============================== -->
+    <div class="from-repack">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="wrap">
+        <p class="eyebrow">Civic and community partnerships</p>
+        <h1 id="page-title"><span>Repackage</span> <span>what we already have.</span></h1>
+
+        <div class="hero-inner">
+          <div class="hero-words">
+            <p class="lede hero-short">How CEFL teaches people who start a long way from a subject, ready to share with other teams across the University.</p>
+            <p class="actions">
+              <a class="button button-black" href="#repackage">See it repackaged</a>
+              <a class="jump" href="#stories">Meet the people</a>
+            </p>
+            <div data-note>
+              <p class="note"><span class="note-tag">To check</span> Every fact on this page was checked on 16 and 17 November 2026. Check the claims about additional needs with the disability team before the page is shared beyond the café.</p>
+            </div>
+          </div>
+
+          <div class="arches">
+            <figure class="arch-box">
+              <figcaption class="arch-label">What we built</figcaption>
+              <div class="arch arch-built">
+                <img src="assets/arches/what-we-built.jpg" width="512" height="592" alt="A laptop showing a task on the Tech Practice Hub: the Mars rover on a grid, and the words “Task complete”, under a code sign.">
+              </div>
+            </figure>
+            <span class="arch-arrow" aria-hidden="true"></span>
+            <figure class="arch-box">
+              <figcaption class="arch-label">What it could be</figcaption>
+              <div class="arch arch-could">
+                <img src="assets/arches/what-it-could-be.jpg" width="512" height="592" alt="A laptop showing a prototype cyber security task, under a shield with a padlock: Spot the strange log-in, with two log-ins from an unknown place marked.">
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 1. THE PEOPLE WE COULD REACH ============================== -->
+    <div class="from-community">
+    <section class="chapter chapter-white" id="stories" aria-labelledby="stories-title" tabindex="-1">
+      <div class="wrap">
+        <div class="people-head">
+          <div class="people-words">
+        <p class="eyebrow">1 · The people we could reach</p>
+        <h2 id="stories-title"><span>Five people</span> <span>we could reach.</span></h2>
+        <ul class="group-key" aria-label="Two groups">
+          <li class="group-mature">Mature learners</li>
+          <li class="group-needs">Additional needs</li>
+          <li class="group-eal">English as an additional language</li>
+        </ul>
+
+        <p class="chapter-lede">Each story shows the computer science already in their lives, a first step through CEFL, and a course path that could follow. Our CEFL Tech Practice Hub can be customised, so the first step changes with the group we work with.</p>
+          </div>
+          <figure class="watch">
+            <div class="watch-stage">
+              <div class="watch-glow" aria-hidden="true"></div>
+              <div class="device-laptop watch-laptop">
+                <div class="device-laptop-screen">
+                  <video controls muted loop playsinline preload="none" poster="assets/films/hub-top-to-bottom.jpg" width="1600" height="1000" aria-label="Film with no sound: the home page of the Tech Practice Hub, scrolled from top to bottom, on a laptop someone is looking at.">
+                    <source src="assets/films/hub-top-to-bottom.mp4" type="video/mp4">
+                    <a href="assets/films/hub-top-to-bottom.mp4">Open the film (MP4, 1.3 MB)</a>
+                  </video>
+                </div>
+                <div class="device-laptop-base" aria-hidden="true"></div>
+              </div>
+              <svg class="watch-person" viewBox="0 0 160 150" aria-hidden="true" focusable="false">
+                <path d="M8 150c4-44 34-64 72-64s68 20 72 64z" fill="#5E2750"/>
+                <path d="M56 92c6 10 14 14 24 14s18-4 24-14" fill="none" stroke="#0E6F73" stroke-width="7" stroke-linecap="round"/>
+                <ellipse cx="80" cy="54" rx="31" ry="35" fill="#2B1B28"/>
+                <circle cx="80" cy="16" r="12" fill="#2B1B28"/>
+              </svg>
+              <svg class="watch-plant" viewBox="0 0 60 90" aria-hidden="true" focusable="false">
+                <path d="M30 58C30 40 20 30 8 26c2 14 10 26 22 32z" fill="#1E4D3A"/>
+                <path d="M30 58c0-20 8-34 22-40-2 18-10 32-22 40z" fill="#0E6F73"/>
+                <path d="M30 58c-2-16 0-30 6-44 4 16 2 30-6 44z" fill="#1E4D3A"/>
+                <path d="M14 58h32l-4 30H18z" fill="#1E2761"/>
+              </svg>
+              <div class="watch-desk" aria-hidden="true"></div>
+            </div>
+            <figcaption>The Tech Practice Hub runs in any browser, at home or on campus.</figcaption>
+          </figure>
+        </div>
+
+        <ul class="postcards">
+          <li class="postcard postcard-mature">
+            <span class="stamp">Luton</span>
+            <span class="person-icon icon-navy" aria-hidden="true"><svg focusable="false"><use href="#l-bus"/></svg></span>
+            <p class="postcard-tags"><span class="tag tag-mature">Mature learner</span></p>
+            <h3>Bus driver, 41</h3>
+            <p class="story">Left school at sixteen. Keeps the family’s laptops running and set up the street’s group chat. Has never called himself a tech person.</p>
+            <dl>
+              <dt>Already doing</dt><dd>Debugging: change one thing, test it, change the next.</dd>
+              <dt>First step through CEFL</dt><dd>“First drive” on the Hub: drive the Mars rover to its first stop, one command at a time.</dd>
+              <dt>Path</dt><dd>Access to HE at a college, then a computing degree.</dd>
+            </dl>
+          </li>
+          <li class="postcard postcard-both">
+            <span class="stamp">Milton Keynes</span>
+            <span class="person-icon icon-plum" aria-hidden="true"><svg focusable="false"><use href="#l-calendar"/></svg></span>
+            <p class="postcard-tags"><span class="tag tag-mature">Mature learner</span> <span class="tag tag-needs">Additional needs</span></p>
+            <h3>Parent returning to work, 34</h3>
+            <p class="story">Left a job in retail after her second child. Dyslexic, and told at school she was not academic. Reads slowly, and sees patterns quickly.</p>
+            <dl>
+              <dt>Already doing</dt><dd>Algorithms: a week of school runs, shifts and meals is steps, conditions and repeats.</dd>
+              <dt>First step through CEFL</dt><dd>The week in Python: school runs and shifts in a list, printed day by day, with the word bank open.</dd>
+              <dt>Path</dt><dd>Information Technology or Computer Science, with a Foundation Year.</dd>
+              <dt>What helps</dt><dd>Support agreed with the disability team, and Disabled Students’ Allowance if she qualifies.</dd>
+            </dl>
+          </li>
+          <li class="postcard postcard-mature">
+            <span class="stamp">Bedford</span>
+            <span class="person-icon icon-green" aria-hidden="true"><svg focusable="false"><use href="#l-boxes"/></svg></span>
+            <p class="postcard-tags"><span class="tag tag-mature">Mature learner</span></p>
+            <h3>Warehouse supervisor, 52</h3>
+            <p class="story">Runs a team of twenty and a spreadsheet the size of a wall. Wants to understand the stock system, not just feed it.</p>
+            <dl>
+              <dt>Already doing</dt><dd>Data: a spreadsheet with lookups is already a small database.</dd>
+              <dt>First step through CEFL</dt><dd>The warehouse on the Hub: a robot’s loop leaves one square empty, and he finds the bug.</dd>
+              <dt>Path</dt><dd>A short course first (possible: evenings, weekends or online), then Software Engineering or Computer Science.</dd>
+            </dl>
+          </li>
+          <li class="postcard postcard-needs">
+            <span class="stamp">Dunstable</span>
+            <span class="person-icon icon-teal" aria-hidden="true"><svg focusable="false"><use href="#l-code"/></svg></span>
+            <p class="postcard-tags"><span class="tag tag-needs">Additional needs</span></p>
+            <h3>Autistic, 23</h3>
+            <p class="story">Left college in the first year. Taught himself to build websites from videos. Found noisy rooms and unclear group work exhausting.</p>
+            <dl>
+              <dt>Already doing</dt><dd>Web development: HTML and CSS, learnt alone.</dd>
+              <dt>First step through CEFL</dt><dd>“Make it readable” on the Hub: fix a page nobody can read, with a checklist that turns green.</dd>
+              <dt>Path</dt><dd>Computer Science or Software Engineering, with a Foundation Year if needed.</dd>
+              <dt>What helps</dt><dd>Clear written instructions, a quieter room, and adjustments agreed in advance.</dd>
+            </dl>
+          </li>
+          <li class="postcard postcard-mature">
+            <span class="stamp">Leighton Buzzard</span>
+            <span class="person-icon icon-red" aria-hidden="true"><svg focusable="false"><use href="#l-care"/></svg></span>
+            <p class="postcard-tags"><span class="tag tag-mature">Mature learner</span> <span class="tag tag-eal">EAL</span></p>
+            <h3>Care worker, 29</h3>
+            <p class="story">Moved to the area eight years ago, and works nights in a care home. English is her second language. Wants a career in tech, and worries her English is not good enough.</p>
+            <dl>
+              <dt>Already doing</dt><dd>Systems: the rota app, the care records, a tablet on every floor.</dd>
+              <dt>First step through CEFL</dt><dd>The night rota in Python: who is on each floor, printed from a list, with the word bank open.</dd>
+              <dt>Path</dt><dd>Computer Science with a Foundation Year.</dd>
+              <dt>What helps</dt><dd>The language of computing taught alongside the code, as our EU and International Foundation Year (IFY) courses already do.</dd>
+            </dl>
+          </li>
+          <li class="postcard postcard-key">
+            <h3>Who the five are</h3>
+            <p class="key-group"><span class="tag tag-mature">Mature learners</span></p>
+            <p>The bus driver, the parent returning to work, the warehouse supervisor and the care worker.</p>
+            <ul class="key-list">
+              <li>“I’m too old to start.”</li>
+              <li>A fear of failing in front of others</li>
+              <li>Little time between work, shifts and family</li>
+            </ul>
+            <p class="key-group"><span class="tag tag-needs">Additional needs</span></p>
+            <p>The parent returning to work, who is dyslexic, and the 23-year-old in Dunstable, who is autistic.</p>
+            <ul class="key-list">
+              <li>“I’m not good enough.”</li>
+              <li>Told at school they were not academic</li>
+              <li>Long instructions, noisy rooms, and asking for help</li>
+            </ul>
+            <p class="key-group"><span class="tag tag-eal">English as an additional language (EAL or EFL)</span></p>
+            <p>The care worker, whose first language is not English.</p>
+            <ul class="key-list">
+              <li>“My English is not good enough.”</li>
+              <li>Needs extra language input</li>
+              <li>Needs extra vocabulary practice</li>
+            </ul>
+          </li>
+        </ul>
+        <p class="both-bar">What these groups need first: <strong>an introduction that fits them.</strong> This could be a private first try, a guided task with our video tutorials, the language before the code, or a session with CEFL teachers who work with learners like them every day.</p>
+        <div data-note>
+          <p class="note"><span class="note-tag">To check</span> A local adult would join the home Foundation Year, not the international foundation group. Ask its team whether they teach the language of computing in the same way before promising it.</p>
+          <p class="note"><span class="note-tag">New</span> Two first steps are new tasks, not on the Hub yet: the week in Python and the night rota. The other three are on the Hub now.</p>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 2. ON THE HUB: VERY EASY TASKS FIRST ============================== -->
+    <div class="from-police">
+    <section class="chapter chapter-tint" id="hub" aria-labelledby="hub-title" tabindex="-1">
+      <div class="wrap">
+        <div class="hub-head">
+          <div class="hub-words">
+            <p class="eyebrow">2 · On the Hub</p>
+            <h2 id="hub-title"><span>Very easy tasks</span> <span>come first.</span></h2>
+            <p class="chapter-lede">The CEFL Tech Practice Hub starts where a complete beginner starts: one small task at a time, in the language of the lectures. Each brief is written to be read slowly, and the words in bold are the terms to learn.</p>
+            <ul class="hub-facts">
+              <li>Nine Python tasks for weeks 2 to 4, then web practice and an AI task</li>
+              <li>No account and nothing to install: it runs in any browser</li>
+              <li>A word bank and hints on every task</li>
+            </ul>
+          </div>
+          <figure class="hub-still">
+            <div class="device-laptop">
+              <div class="device-laptop-screen">
+                <video controls muted loop playsinline preload="none" poster="assets/films/hub-python-scroll.jpg" width="1280" height="800" aria-label="Film with no sound: the Python practice page of the Tech Practice Hub, scrolling slowly from the top to the bottom and back: the Mars rover task First drive, then eight first programs from Hello, world to Pass or fail?, each with a To do box.">
+                  <source src="assets/films/hub-python-scroll.mp4" type="video/mp4">
+                  <a href="assets/films/hub-python-scroll.mp4">Open the film (MP4, 0.6 MB)</a>
+                </video>
+              </div>
+              <div class="device-laptop-base" aria-hidden="true"></div>
+            </div>
+            <figcaption>The Python practice section of our Hub: a safe place to try, from the first task to the last.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Film position D: film on the left, title and words on the right -->
+        <div class="show show-d">
+          <div class="show-title">
+            <p class="label">Week 2 · The Mars rover</p>
+            <h3>Three lefts make a right</h3>
+          </div>
+          <figure class="film">
+            <video controls muted loop playsinline preload="none" poster="assets/films/mars-turn-right.jpg" width="1600" height="1200" aria-label="Film with no sound: the Mars rover task Turn right on the Tech Practice Hub. A function called turn_right is written from three turns to the left, then Run and check shows Task complete.">
+              <source src="assets/films/mars-turn-right.mp4" type="video/mp4">
+              <a href="assets/films/mars-turn-right.mp4">Open the film (MP4, 1.0 MB)</a>
+            </video>
+          </figure>
+          <div class="show-words">
+            <p>The rover only knows how to turn left. Students write a new function, <code>turn_right()</code>, out of three turns to the left, and the rover delivers its rock.</p>
+            <p>It is the first big idea of programming, and it suits anyone who has been told they are behind: build what you need from what you already have.</p>
+          </div>
+        </div>
+
+        <!-- Film position B: film in the middle, title above it, words below it -->
+        <div class="show show-b">
+          <div class="show-title">
+            <p class="label">Week 2 · Loops and if</p>
+            <h3>Find the bottle</h3>
+          </div>
+          <figure class="film">
+            <video controls muted loop playsinline preload="none" poster="assets/films/ocean-find-the-bottle.jpg" width="1600" height="1200" aria-label="Film with no sound: the ocean drone task “Find the bottle” on the Tech Practice Hub.">
+              <source src="assets/films/ocean-find-the-bottle.mp4" type="video/mp4">
+              <a href="assets/films/ocean-find-the-bottle.mp4">Open the film (MP4, 1 MB)</a>
+            </video>
+          </figure>
+          <div class="show-words">
+            <p>Behind this task there is a small Python interpreter I built for teaching tasks. This allows me to decide what students see when something goes wrong. Instead of Python’s own error messages, which are hard to read on day one, students first get feedback written for them: positive, and pointing to the next step rather than at the mistake. Python’s real messages come in gradually, as the students are ready for them.</p>
+          </div>
+        </div>
+
+        <!-- Film position A: title on the left, film in the middle, words on the right -->
+        <div class="show show-a">
+          <div class="show-title">
+            <p class="label">Weeks 6 to 8 · Web development</p>
+            <h3>Working in an international team</h3>
+          </div>
+          <figure class="film">
+            <video controls muted loop playsinline preload="none" poster="assets/films/web-task-drone.jpg" width="1600" height="1200" aria-label="Film with no sound: the web task Links, images and lists on the Tech Practice Hub, from the task card to a green checklist.">
+              <source src="assets/films/web-task-drone.mp4" type="video/mp4">
+              <a href="assets/films/web-task-drone.mp4">Open the film (MP4, 1.8 MB)</a>
+            </video>
+          </figure>
+          <div class="show-words">
+            <p>Students get a link to a small page, customised for them, that introduces how an international team of engineers works. They learn the language of that teamwork, and real skills with it: talking to the team through remote tools such as Slack, using a project board, and sharing files through GitHub.</p>
+            <p>The page is a robotics club’s, and it links to the University’s own Shorts from Computer Science: <a href="https://www.youtube.com/shorts/GFr7eIgJTuI" target="_blank" rel="noopener">Go2, the robot dog<span class="visually-hidden"> (a YouTube Short, opens in a new tab)</span></a> and <a href="https://www.youtube.com/shorts/hPcvy42bEQQ" target="_blank" rel="noopener">Nao, the humanoid robot<span class="visually-hidden"> (a YouTube Short, opens in a new tab)</span></a>. Students see where the club’s ideas lead.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 3. HOW WE TEACH: WORDS FIRST, AND THE SMART FRIDGE ============================== -->
+    <div class="from-community">
+    <section class="chapter chapter-white" id="teach" aria-labelledby="teach-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">3 · How we teach</p>
+        <h2 id="teach-title"><span>Words first.</span> <span>Code the same week.</span></h2>
+        <p class="chapter-lede">Our foundation tech students start from zero: no computing concepts, and no code. This is how a week works for them now.</p>
+
+        <ol class="week">
+          <li>
+            <span class="week-when">Session 1 · Classroom</span>
+            <span class="week-what">The words of the week, such as <em>input</em>, <em>variable</em> and <em>function</em>, taught on paper. No computers.</span>
+          </li>
+          <li>
+            <span class="week-when">Session 2 · Computer room</span>
+            <span class="week-what">The same words used in real code on the Tech Practice Hub: robots first, then Python, then the web. We are now adding AI, in very simple tasks.</span>
+          </li>
+          <li>
+            <span class="week-when">Session 3 · Classroom</span>
+            <span class="week-what">Students explain what they did, and write a short reflection on Padlet after each session.</span>
+          </li>
+          <li class="week-goal">
+            <span class="week-when">Week 7 · A Year 1 lecture</span>
+            <span class="week-what">The group joins a Year 1 Computer Science lecture on object-oriented programming. Thank you to the home foundation team in Computer Science for arranging it, and to the lecturers who welcomed us. It was a great experience.</span>
+          </li>
+        </ol>
+        <div data-note>
+          <p class="note"><span class="note-tag">To add</span> How many students this semester, and how many had never written code.</p>
+        </div>
+
+        <!-- Film in a laptop: the first robot task, wordy on purpose -->
+        <div class="laptop-show">
+          <figure class="laptop">
+            <div class="laptop-screen">
+              <video controls muted loop playsinline preload="none" poster="assets/films/mars-first-drive.jpg" width="1600" height="1200" aria-label="Film with no sound: the Mars rover task First drive on the Tech Practice Hub. Three move commands and one pick_rock command are typed, and Run and check shows Task complete.">
+                <source src="assets/films/mars-first-drive.mp4" type="video/mp4">
+                <a href="assets/films/mars-first-drive.mp4">Open the film (MP4, 1.0 MB)</a>
+              </video>
+            </div>
+            <div class="laptop-base" aria-hidden="true"></div>
+          </figure>
+          <div class="laptop-words">
+            <p class="label">Week 2 · The first robot task</p>
+            <h3>Wordy on purpose</h3>
+            <p>For students who have English as a second language, the brief is long on purpose: before they write any code, they read five terms in the language of the lecture, again and again. I customise every element of the Hub, so I can shape its instructions, its tasks and the feedback it gives.</p>
+            <p>Then the rover does exactly what is written, in that order, and never guesses what you meant: <code>move()</code>, <code>turn_left()</code>, <code>pick_rock()</code> and <code>put_rock()</code>. The grey lines are locked, so a beginner cannot break the part that starts the program.</p>
+          </div>
+        </div>
+
+        <!-- Film in a terminal card: the first Python program -->
+        <div class="terminal-show">
+          <div class="terminal-words">
+            <p class="label">Week 3 · The first program</p>
+            <h3>One line, and the words appear</h3>
+            <p>We start with computational thinking: robot tasks with Python-style commands such as <code>move()</code> and <code>turn_left()</code>. By week 3, or sooner, students move on to real Python, and it makes sense to them, because they have practised its shape already.</p>
+            <p>The first program has one line. <strong>Run</strong> shows its words, and <strong>Run the tests</strong> checks them letter by letter.</p>
+          </div>
+          <figure class="terminal">
+            <p class="terminal-bar" aria-hidden="true"><span></span><span></span><span></span> helloworld.py</p>
+            <video controls muted loop playsinline preload="none" poster="assets/films/python-hello-world.jpg" width="1600" height="1200" aria-label="Film with no sound: the Python task Hello, world on the Tech Practice Hub. One line of Python is typed, Run shows hello, world! in the terminal, and Run the tests marks the task complete.">
+              <source src="assets/films/python-hello-world.mp4" type="video/mp4">
+              <a href="assets/films/python-hello-world.mp4">Open the film (MP4, 1.0 MB)</a>
+            </video>
+          </figure>
+        </div>
+
+        <!-- A picture and a few lines of code: the smart fridge -->
+        <div class="fridge-show">
+          <figure class="fridge-art">
+            <img src="assets/scenes/smart-fridge.svg" width="560" height="500" loading="lazy" alt="A drawing of a smart fridge. Its screen says: milk, 1 left, added to list. A phone beside it shows the message: milk is on the shopping list.">
+          </figure>
+          <div class="fridge-words">
+            <p class="label">The same idea at home</p>
+            <h3>The smart fridge</h3>
+            <p>A smart fridge is an ultra-modern device, and its code is close to our students’ first programs: keep a number, compare it, and decide what to print. In week 3 that program is “Pass or fail?”.</p>
+            <pre class="fridge-code"><code>milk_left = 1
+
+if milk_left &lt; 2:
+    print("Milk is on the list.")
+else:
+    print("Enough milk.")</code></pre>
+            <p>Everyone knows the moment the milk or the eggs run out. A familiar context makes new code easy to understand, and the same principle works with a local one: our towns, our buses, our shops.</p>
+            <div data-note>
+              <p class="note"><span class="note-tag">New</span> This part is new. Check the wording, and say if you would rather have a film of a task here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 4. ACCESS ============================== -->
+    <div class="from-community">
+    <section class="chapter chapter-dark" id="access" aria-labelledby="access-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">4 · Access</p>
+        <h2 id="access-title"><span>Built for the learner</span> <span>who finds it hardest.</span></h2>
+
+        <div class="access">
+          <figure class="film film-plum">
+            <video controls muted loop playsinline preload="none" poster="assets/films/web-make-it-readable.jpg" width="1600" height="1200" aria-label="Film with no sound: the web task Make it readable on the Tech Practice Hub. A dark page whose text cannot be read is fixed by changing six values in its CSS. The checklist turns green and the page becomes readable.">
+              <source src="assets/films/web-make-it-readable.mp4" type="video/mp4">
+              <a href="assets/films/web-make-it-readable.mp4">Open the film (MP4, 1.5 MB)</a>
+            </video>
+            <figcaption><strong>Students learn access too.</strong> In week 6 they fix a page nobody can read, and a sign-up form that a screen reader cannot use.</figcaption>
+          </figure>
+
+          <ul class="features">
+            <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-noform"/></svg></span><strong>No sign-up, no account.</strong> Nothing to fill in, and nobody watching.</li>
+            <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-save"/></svg></span><strong>Progress kept on the laptop.</strong> Stop at any point, and carry on later.</li>
+            <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-book"/></svg></span><strong>A word bank on every task.</strong> Each new term explained where it is used.</li>
+            <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-bulb"/></svg></span><strong>Hints one at a time.</strong> Help without giving the answer away.</li>
+            <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-slow"/></svg></span><strong>A robot you can slow down.</strong> Watch each step happen.</li>
+            <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-keys"/></svg></span><strong>Works from the keyboard.</strong> Code boxes and buttons, with Tab, Escape and Enter.</li>
+            <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-check"/></svg></span><strong>Checklists that turn green.</strong> Progress you can see as you type.</li>
+            <li><span class="icon" aria-hidden="true"><svg viewBox="0 0 48 48"><use href="#i-contrast"/></svg></span><strong>Contrast checked.</strong> The text on eleven pages measured against WCAG AA.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 5. FROM THIS TO THIS ============================== -->
+    <div class="from-repack">
+    <section class="chapter chapter-white" id="repackage" aria-labelledby="repackage-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">5 · From this to this</p>
+        <h2 id="repackage-title"><span>From this</span> <span>to this.</span></h2>
+        <p class="chapter-lede">On the left, you can see what I built for our own CEFL tech pathway students. The Hub is wordy on purpose, because this year’s group are EU students with English as a second language: it repeats the technical words again and again, so they meet them more often than usual. On the right, what the same kind of task could look like for a new, local audience whose first language is English. New groups would follow their own plans, so their tasks would be a little different: the teaching stays, and the words, the examples and the people change.</p>
+
+        <article class="pair" aria-labelledby="pair-1">
+          <h3 class="pair-title" id="pair-1"><span class="pair-number" aria-hidden="true">01</span> For people in policing</h3>
+          <figure class="pair-from">
+            <p class="pair-tag">What we did</p>
+            <video controls muted loop playsinline preload="none" poster="assets/films/ocean-only-where-needed.jpg" width="1600" height="1200" aria-label="Film with no sound: the ocean drone task Only where needed on the Tech Practice Hub. A function with an if-statement is typed, then a while loop, and the drone swims along the lane picking up only the bottles that are there. Task complete.">
+              <source src="assets/films/ocean-only-where-needed.mp4" type="video/mp4">
+              <a href="assets/films/ocean-only-where-needed.mp4">Open the film (MP4, 1.2 MB)</a>
+            </video>
+            <figcaption>Week 2 on the Hub: an if-statement inside a loop. The drone picks up a bottle only where there is one.</figcaption>
+          </figure>
+          <span class="pair-arrow" aria-hidden="true"></span>
+          <figure class="pair-to pair-task">
+            <p class="pair-tag">What it could be</p>
+            <div class="device-tablet">
+            <div class="mock mock-cyber" role="group" aria-label="A prototype task for people in policing: Spot the strange log-in">
+              <div class="mock-head">
+                <p class="mock-eyebrow">Cyber first steps · Task 1</p>
+                <p class="mock-title">Spot the strange log-in</p>
+                <span class="mock-icon" aria-hidden="true"><svg focusable="false"><use href="#l-shield"/></svg></span>
+              </div>
+              <div class="mock-body">
+                <p class="mock-text">Six log-ins to one email account overnight. Write a loop that raises an alert for any log-in from a place the account has never used.</p>
+                <table class="mock-log">
+                  <caption class="visually-hidden">The six log-ins</caption>
+                  <thead><tr><th scope="col">Time</th><th scope="col">Place</th><th scope="col">Device</th></tr></thead>
+                  <tbody>
+                    <tr><td>22:41</td><td>Luton</td><td>Laptop</td></tr>
+                    <tr><td>23:05</td><td>Luton</td><td>Phone</td></tr>
+                    <tr><td>01:12</td><td>Dunstable</td><td>Phone</td></tr>
+                    <tr class="mock-flag"><td>03:12</td><td>Unknown place</td><td>New device</td></tr>
+                    <tr class="mock-flag"><td>03:14</td><td>Unknown place</td><td>New device</td></tr>
+                    <tr><td>06:30</td><td>Luton</td><td>Laptop</td></tr>
+                  </tbody>
+                </table>
+                <pre class="mock-code"><code>for login in logins:
+    if login.place not in usual_places:
+        raise_alert(login)</code></pre>
+                <p class="mock-result"><span class="mock-pill">Run and check</span> <span class="mock-ok">2 alerts: 03:12 and 03:14</span></p>
+              </div>
+            </div>
+            </div>
+            <figcaption>For cyber security: a loop that checks every log-in, and raises an alert for the ones that do not fit. A prototype task, not on the Hub yet.</figcaption>
+          </figure>
+        </article>
+
+        <article class="pair" aria-labelledby="pair-2">
+          <h3 class="pair-title" id="pair-2"><span class="pair-number" aria-hidden="true">02</span> For local small businesses</h3>
+          <figure class="pair-from">
+            <p class="pair-tag">What we did</p>
+            <video controls muted loop playsinline preload="none" poster="assets/films/warehouse-fix-the-bug.jpg" width="1600" height="1200" aria-label="Film with no sound: the warehouse robot task Fix the fence post on the Tech Practice Hub. The program runs and one square stays empty. One line is added after the loop, the program runs again, and the task is complete.">
+              <source src="assets/films/warehouse-fix-the-bug.mp4" type="video/mp4">
+              <a href="assets/films/warehouse-fix-the-bug.mp4">Open the film (MP4, 1.2 MB)</a>
+            </video>
+            <figcaption>Week 2 on the Hub: a warehouse robot’s loop leaves one square empty, and students find the bug.</figcaption>
+          </figure>
+          <span class="pair-arrow" aria-hidden="true"></span>
+          <figure class="pair-to pair-task">
+            <p class="pair-tag">What it could be</p>
+            <div class="device-tablet">
+            <div class="mock mock-adult" role="group" aria-label="A prototype task for small businesses: Making Tax Digital, and a first prompt for AI">
+              <div class="mock-head">
+                <p class="mock-eyebrow">Small business · Task 1</p>
+                <p class="mock-title">Making Tax Digital, and AI</p>
+                <span class="mock-icon" aria-hidden="true"><svg focusable="false"><use href="#l-receipt"/></svg></span>
+              </div>
+              <div class="mock-body">
+                <p class="mock-text">Add up a quarter for Making Tax Digital in one line, then ask an AI assistant to draft a polite reminder for a late invoice.</p>
+                <pre class="mock-code"><code>income = [4850, 5120, 4630]
+print("Quarter:", sum(income))
+note = "invoice 14 is a week late"
+ask_ai("Polite reminder: " + note)</code></pre>
+                <pre class="mock-terminal"><code>Quarter: 14600</code></pre>
+                <p class="mock-ai"><span class="mock-ai-name">AI</span> Hello, a friendly reminder that invoice 14 is now a week overdue. Many thanks!</p>
+                <p class="mock-words"><span class="mock-words-name">Word bank</span> <span>list</span> <span>sum</span> <span>prompt</span> <span>AI</span></p>
+              </div>
+            </div>
+            </div>
+            <figcaption>For small businesses: one line for Making Tax Digital, which since April 2026 asks sole traders over £50,000 for quarterly updates, and a first prompt for an AI assistant. A prototype task, not on the Hub yet.</figcaption>
+          </figure>
+        </article>
+
+        <article class="pair" aria-labelledby="pair-3">
+          <h3 class="pair-title" id="pair-3"><span class="pair-number" aria-hidden="true">03</span> For Computer Science: an accessible start</h3>
+          <figure class="pair-from">
+            <p class="pair-tag">What we did</p>
+            <video controls muted loop playsinline preload="none" poster="assets/films/hub-top-to-bottom.jpg" width="1600" height="1000" aria-label="Film with no sound: the home page of the Tech Practice Hub, scrolled from top to bottom.">
+              <source src="assets/films/hub-top-to-bottom.mp4" type="video/mp4">
+              <a href="assets/films/hub-top-to-bottom.mp4">Open the film (MP4, 1.3 MB)</a>
+            </video>
+            <figcaption>The Tech Practice Hub from top to bottom: robots, Python, the web and AI.</figcaption>
+          </figure>
+          <span class="pair-arrow" aria-hidden="true"></span>
+          <figure class="pair-to pair-task">
+            <p class="pair-tag">What it could be</p>
+            <div class="device-tablet">
+            <div class="mock mock-access" role="group" aria-label="A task on the Tech Practice Hub, with five features for accessibility numbered">
+              <div class="mock-head">
+                <p class="mock-eyebrow">Tech Practice Hub · Week 2</p>
+                <p class="mock-title">Turn right</p>
+              </div>
+              <div class="mock-body mock-two">
+                <div>
+                  <p class="mock-label">Word bank <span class="callout" aria-hidden="true">1</span></p>
+                  <ul class="mock-wordlist">
+                    <li>function</li>
+                    <li>define</li>
+                    <li>indentation</li>
+                  </ul>
+                  <p class="mock-button">Show hint 1 <span class="callout" aria-hidden="true">4</span></p>
+                </div>
+                <div>
+                  <div class="mock-grid" aria-hidden="true"><span class="mock-rover"></span></div>
+                  <p class="mock-small"><strong>The picture in words</strong> <span class="callout" aria-hidden="true">2</span> Rover BED-1 is in column 1, row 1, facing east.</p>
+                  <p class="mock-small mock-speed">Speed: slow <span class="mock-slider" aria-hidden="true"></span> fast <span class="callout" aria-hidden="true">3</span></p>
+                  <p class="mock-small">Tab · Escape · Enter <span class="callout" aria-hidden="true">5</span></p>
+                </div>
+              </div>
+            </div>
+            </div>
+            <ol class="mock-legend">
+              <li>A word bank: every term explained before it is used</li>
+              <li>The picture in words: the grid, described for a screen reader</li>
+              <li>A speed control, to watch each step slowly</li>
+              <li>Hints that open one at a time</li>
+              <li>Everything works from the keyboard</li>
+            </ol>
+            <figcaption>For Computer Science: we already work with the home foundation team in the School of Computer Science and Technology. We are finishing testing the Hub with our own students, and plan to share it with Computer Science in the next few weeks, to see whether it could help their students with additional needs.</figcaption>
+          </figure>
+        </article>
+
+        <div class="next-ones">
+          <p class="next-title">The next ones could be</p>
+          <div class="next-cols">
+            <div class="next-col">
+              <p class="next-col-title">Here, in our towns</p>
+              <ul>
+                <li><strong>Contacts we have as a University:</strong> in business, community services and more, a first step to offer their people.</li>
+                <li><strong>Local employers:</strong> a first step for staff who need digital skills.</li>
+                <li><strong>Schools, colleges, community centres and adult learning groups:</strong> a CEFL teacher could guide the learners remotely, working with their own teacher through video guides and instructions, or they could visit us and try sample tasks.</li>
+              </ul>
+              <p class="next-local">In Luton, Bedford, Milton Keynes and Northampton.</p>
+            </div>
+            <div class="next-col">
+              <p class="next-col-title">Abroad and online</p>
+              <ul>
+                <li><strong>Applicants and offer-holders:</strong> a trial task to try before they arrive.</li>
+                <li><strong>Partner colleges abroad:</strong> the same site, in any browser.</li>
+                <li><strong>Distance learners:</strong> guided self-study with the Hub and video guides, from anywhere.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 6. ALREADY BUILT ============================== -->
+    <div class="from-repack">
+    <section class="chapter chapter-dark" id="built" aria-labelledby="built-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">6 · Already built</p>
+        <h2 id="built-title"><span>Built once.</span> <span>Repackaged five times.</span></h2>
+
+        <ul class="counts">
+          <li><span class="count">1</span> CEFL Tech Practice Hub, used in class by our foundation tech students</li>
+          <li><span class="count">Any</span> computer science group at the University can use it: the tasks can be customised for different groups and different access needs</li>
+          <li><span class="count">3–4</span> students per team, guided through a simple GitHub project board and one file they share and work on together</li>
+          <li><span class="count">+</span> recorded, guided tutorials could be added, as links to YouTube</li>
+          <li><span class="count">£0</span> for hosting on GitHub Pages, protected by GitHub (Microsoft). GDPR-friendly: no personal data is kept, and progress stays in the visitor’s browser</li>
+        </ul>
+
+        <ul class="gallery">
+          <li><img src="assets/shots/police-cyber-page.jpg" width="1600" height="1000" loading="lazy" alt="Prototype for people in policing: “The beat has moved online.”"><span>People in policing: an example group only</span></li>
+          <li><img src="assets/shots/police-colleagues-page.jpg" width="1600" height="1000" loading="lazy" alt="Prototype for colleagues: “Every case has a digital side.”"><span>For colleagues: contextualised in cyber security</span></li>
+          <li><img src="assets/shots/community-page.jpg" width="1600" height="1000" loading="lazy" alt="Prototype for colleagues: “The people who never apply.”"><span>For colleagues: local adults and SEN students</span></li>
+          <li><img src="assets/shots/computer-science-demo.jpg" width="1600" height="1000" loading="lazy" alt="Demo for Computer Science colleagues: “Learn it in class. Build it in the lab.”"><span>For Computer Science colleagues</span></li>
+        </ul>
+        <p class="built-words">For an external audience, there could always be room at the end of every page for one simple link: the University’s expression-of-interest form, so Marketing can follow up.</p>
+        <div data-note>
+          <p class="note"><span class="note-tag">To check</span> The five pages: two versions of the Computer Science demo, two police pages and the page about local adults. The gallery shows four of them.</p>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 7. ONE PLACE, ONE AUDIENCE: CUSTOMISED FOR LOCAL POLICING ============================== -->
+    <div class="from-police2">
+    <section class="hero" id="policing" aria-labelledby="policing-title" tabindex="-1">
+      <div class="wrap hero-inner">
+        <div class="hero-words">
+          <p class="eyebrow">7 · One place, one audience</p>
+          <h2 id="policing-title"><span>Example path:</span> <span>customised for local policing.</span></h2>
+          <p class="lede"><strong>Every case has a digital side.</strong> Over 90% of crime now has a digital element. The people who could learn to read it already live and work around us: officers, PCSOs, special constables and police staff in Bedfordshire, Milton Keynes and Northamptonshire.</p>
+          <p>The next four parts show how the CEFL tech path can be customised for one place and one audience: the guides and tasks our foundation students use, repackaged as a first step for people in policing, with cases from our own towns.</p>
+          <p class="actions">
+            <a class="button button-red" href="#need">See the first step</a>
+            <a class="jump" href="#cases">See the local cases</a>
+          </p>
+          <div data-note>
+            <p class="note"><span class="note-tag">To check</span> No police force is named here, and none has been asked.</p>
+          </div>
+        </div>
+        <figure class="hero-film">
+          <video controls muted loop playsinline preload="none" poster="assets/films/warehouse-four-corners.jpg" width="1600" height="1200" aria-label="Film with no sound: the warehouse robot task Four corners on the Tech Practice Hub. A for loop is typed, and the robot puts a parcel in each corner of a square. Task complete.">
+            <source src="assets/films/warehouse-four-corners.mp4" type="video/mp4">
+            <a href="assets/films/warehouse-four-corners.mp4">Open the film (MP4, 1.2 MB)</a>
+          </video>
+          <figcaption>Week 2 · The warehouse robot “near Luton”: a loop puts a parcel in each corner.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <div class="checks" aria-hidden="true"></div>
+    </div>
+
+    <!-- ============================== 8. THE GAP, AND THE FIRST STEP ============================== -->
+    <div class="from-police2">
+    <section class="chapter chapter-white" id="need" aria-labelledby="need-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">8 · The gap, and the first step</p>
+        <h2 id="need-title"><span>A big gap.</span> <span>A short first step.</span></h2>
+
+        <ul class="gap-figures">
+          <li>
+            <span class="gap-figure">Over 90%</span>
+            <span class="gap-words">of crime has a digital element.</span>
+            <span class="gap-source">National Police Chiefs’ Council, 2020</span>
+          </li>
+          <li>
+            <span class="gap-figure">5.3 million</span>
+            <span class="gap-words">of the 9.7 million crimes in the year to June 2026 were fraud or computer misuse.</span>
+            <span class="gap-source">ONS, October 2026</span>
+          </li>
+          <li>
+            <span class="gap-figure">Under 1%</span>
+            <span class="gap-words">of police resource went on fraud in 2023, when fraud was over 40% of crime.</span>
+            <span class="gap-source">Home Office, May 2023</span>
+          </li>
+        </ul>
+        <p class="gap-lede">The people who could close part of this gap already live and work in our area: some want a new role in digital forensics, intelligence or cyber crime, others want to understand the digital side of the job they do. The first step is short, and the road after it already exists, apart from one proposed stop.</p>
+
+        <h3 class="gap-road-title">From one level to a degree</h3>
+        <ol class="road">
+          <li>
+            <span class="road-name">Tonight: a level on the Hub</span>
+            <span class="pill pill-open">Open now</span>
+            <span class="road-who road-cefl">From CEFL</span>
+            <span class="road-words">Ten minutes, free, no sign-up: what our current foundation students do now.</span>
+          </li>
+          <li>
+            <span class="road-name">A short first-code course</span>
+            <span class="pill pill-idea">Possible</span>
+            <span class="road-who road-cefl">From CEFL</span>
+            <span class="road-words">An idea for discussion: a summer school, early-morning, evening or weekend sessions, on campus or online, guided or semi-guided, with the local cases as examples. It does not exist yet.</span>
+          </li>
+          <li>
+            <span class="road-name">Computer Science BSc (Hons) or Cybersecurity BSc</span>
+            <span class="pill pill-course">On offer</span>
+            <span class="road-who road-cs">Offered by Computer Science</span>
+            <span class="road-words">Three years, or four with a Foundation Year. Computer Science is accredited by BCS, the Chartered Institute for IT; its modules include databases and networks, artificial intelligence and information security.</span>
+          </li>
+          <li>
+            <span class="road-name">Computer Science MSc, Artificial Intelligence MSc or Cyber Security MSc</span>
+            <span class="pill pill-course">On offer</span>
+            <span class="road-who road-cs">Offered by Computer Science</span>
+            <span class="road-words">One year, for people who already have an honours degree.</span>
+          </li>
+        </ol>
+        <div data-note>
+          <p class="note"><span class="note-tag">To check</span> The 1% figure is from 2023 and may have changed. 5.3 million is 4.5 million fraud incidents plus 817,000 computer misuse incidents.</p>
+          <p class="note"><span class="note-tag">To check</span> The course pages checked list full-time study and do not mention part time. The course team’s answer decides whether a short course is worth taking further.</p>
+          <p class="note"><span class="note-tag">To add</span> A contact in the course team, and a link to each course page.</p>
+        </div>
+
+        <aside class="first-steps" aria-labelledby="first-steps-title">
+          <p class="first-steps-title" id="first-steps-title">CEFL’s part: the first two steps</p>
+          <p>CEFL specialises in the start of the road: the first try on the Hub, and the short introduction tasks after it. We have run courses in many forms for many years, online and in person, from foundation years to pre-sessional courses. The degrees that follow belong to the School of Computer Science and Technology.</p>
+        </aside>
+
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 9. TRY IT: A GUIDED FIRST TASK ============================== -->
+    <div class="from-community">
+    <section class="chapter chapter-dark" id="try" aria-labelledby="try-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">9 · Try it</p>
+        <h2 id="try-title"><span>One possibility:</span> <span>a guided trial.</span></h2>
+        <p class="chapter-lede">The first stop on the road could be guided self-study. A short video shows the task, the visitor tries it on the Hub, then sees the solution, and a goodbye video says where to go next.</p>
+
+        <ol class="guided">
+          <li class="guided-step">
+            <h3>Watch</h3>
+            <p>A one-minute video on YouTube: the Mars rover, its brief, and the four commands it understands.</p>
+            <div class="video-slot"><span class="video-play" aria-hidden="true"></span><span>Video to add</span></div>
+          </li>
+          <li class="guided-step">
+            <h3>Try</h3>
+            <p>The first task, “First drive”, on the Hub. Ten minutes, no sign-up, and nobody watching.</p>
+            <p class="guided-link"><a class="button button-red" href="https://cefl-foundation.github.io/tech/" target="_blank" rel="noopener">Open the Hub<span class="visually-hidden"> (opens in a new tab)</span></a></p>
+          </li>
+          <li class="guided-step">
+            <h3>Check</h3>
+            <p>The solution, line by line, once the visitor has had a go:</p>
+            <pre class="guided-code"><code>def main():
+    move()
+    move()
+    move()
+    pick_rock()</code></pre>
+            <p class="guided-done">Task complete</p>
+          </li>
+          <li class="guided-step">
+            <h3>Goodbye</h3>
+            <p>A short goodbye video: well done, and what comes next, from the next task to a short course or a course page.</p>
+            <div class="video-slot"><span class="video-play" aria-hidden="true"></span><span>Video to add</span></div>
+          </li>
+        </ol>
+        <div data-note>
+          <p class="note"><span class="note-tag">To add</span> The link to the one-minute video, and the goodbye video, once they are filmed.</p>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 10. A CUSTOMISED PATH: CYBER SECURITY ============================== -->
+    <div class="from-police2">
+    <section class="chapter chapter-white" id="cases" aria-labelledby="cases-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">10 · A customised path: cyber security</p>
+        <h2 id="cases-title"><span>One day, five towns.</span> <span>Every case has a screen.</span></h2>
+        <p class="chapter-lede">This is how we could customise a path for one audience, such as students heading for cyber security. Each made-up case, built from a common kind of crime, shows where computer science meets the job, and points to a module the Computer Science degree already teaches.</p>
+
+        <div class="cases">
+          <figure class="map">
+            <img src="assets/scenes/local-map.svg" width="640" height="580" loading="lazy" alt="A line map of the area, not to scale. Northampton at the top left, Milton Keynes below it among parks, Bedford to the right, Dunstable and Luton at the bottom. The M1 runs from Luton up past Milton Keynes to Northampton, with the A421, A6, A5 and A428 between the towns. Red numbers 1 to 5 mark the five cases: 1 Luton, 2 Northampton, 3 Milton Keynes, 4 Dunstable, 5 Bedford.">
+          </figure>
+
+          <ol class="timeline">
+            <li>
+              <p class="when"><span class="case-no">1</span> 05:40 · Luton</p>
+              <h3>Parking that never existed</h3>
+              <p>A family arrives for an early flight. The airport parking they paid for online does not exist. The booking site looked professional, with reviews and a padlock in the address bar.</p>
+              <p class="cs"><strong>The computer science:</strong> how a web address finds a server, what the padlock does and does not prove, and how to find out when a site was set up.</p>
+              <p class="taught">Taught in: Hub, week 7 · BSc module Web Technologies and Platforms</p>
+            </li>
+            <li>
+              <p class="when"><span class="case-no">2</span> 09:15 · Northampton</p>
+              <h3>One car, two places</h3>
+              <p>A number-plate camera on the M1 flags a car near Northampton. The owner’s own doorbell camera shows the same car outside his house all morning.</p>
+              <p class="cs"><strong>The computer science:</strong> how a camera turns a picture into text, why the same plate can appear on two cars, and how to check one record against another.</p>
+              <p class="taught">Taught in: BSc modules Concepts and Technologies of Artificial Intelligence · Databases and Computer Networks</p>
+            </li>
+            <li>
+              <p class="when"><span class="case-no">3</span> 14:10 · Milton Keynes</p>
+              <h3>Locked out of every file</h3>
+              <p>A small firm off one of the grid roads opens its laptops after lunch. Every file is locked, and every screen asks for payment.</p>
+              <p class="cs"><strong>The computer science:</strong> networks, backups and logs. How the program got in, where it spread, and what the logs can prove.</p>
+              <p class="taught">Taught in: BSc modules Information Security · Databases and Computer Networks</p>
+            </li>
+            <li>
+              <p class="when"><span class="case-no">4</span> 16:30 · Dunstable</p>
+              <h3>“It’s your bank calling”</h3>
+              <p>A retired teacher gets a call. The number on her screen is her bank’s real number, and the caller knows her last two purchases.</p>
+              <p class="cs"><strong>The computer science:</strong> how a caller’s number can be faked, and how leaked data makes a scam sound real.</p>
+              <p class="taught">Taught in: BSc modules Information Security · Databases and Computer Networks</p>
+            </li>
+            <li>
+              <p class="when"><span class="case-no">5</span> 22:15 · Bedford</p>
+              <h3>The bike that never came</h3>
+              <p>Someone pays for a second-hand bike on a selling app. The seller disappears: three accounts, three names, one phone number.</p>
+              <p class="cs"><strong>The computer science:</strong> databases. A query that finds the one detail different records share.</p>
+              <p class="taught">Taught in: BSc module Systems Development and Modern Database Practices</p>
+            </li>
+          </ol>
+        </div>
+        <p class="cases-next"><strong>What could come next:</strong> each case could become a full activity page, one for Luton, one for Northampton and so on, with direct links to the courses you can study at the University of Bedfordshire and to an expression-of-interest form.</p>
+        <div data-note>
+          <p class="note"><span class="note-tag">To check</span> The cases are illustrations, not real incidents. If the page is ever shown to people in policing, ask one or two of them whether the cases ring true.</p>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 11. FITS A ROTA ============================== -->
+    <div class="from-police2">
+    <section class="chapter chapter-dark" id="rota" aria-labelledby="rota-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">11 · Fits a rota</p>
+        <h2 id="rota-title"><span>Ten minutes</span> <span>fits any rota.</span></h2>
+        <p class="chapter-lede">Shift work is the main practical barrier for this group. The Hub was built for short, interrupted practice.</p>
+
+        <div class="rota-grid">
+          <table class="rota">
+            <caption>An example week, not a real rota</caption>
+            <thead>
+              <tr><th scope="col">Day</th><th scope="col">Shift</th><th scope="col">Ten minutes</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Mon</th><td>Early</td><td><span class="slot">after 4pm</span></td></tr>
+              <tr><th scope="row">Tue</th><td>Early</td><td><span class="slot">after 4pm</span></td></tr>
+              <tr><th scope="row">Wed</th><td>Late</td><td><span class="slot">before noon</span></td></tr>
+              <tr><th scope="row">Thu</th><td>Late</td><td><span class="slot">before noon</span></td></tr>
+              <tr><th scope="row">Fri</th><td>Night</td><td><span class="slot">before 8pm</span></td></tr>
+              <tr><th scope="row">Sat</th><td>Night</td><td><span class="slot slot-off">sleep first</span></td></tr>
+              <tr><th scope="row">Sun</th><td>Rest day</td><td><span class="slot">any time</span></td></tr>
+            </tbody>
+          </table>
+
+          <div class="rota-words">
+            <ul class="ticks">
+              <li><strong>No sign-up.</strong> Nothing to log into at the start of a shift.</li>
+              <li><strong>Progress kept on the laptop.</strong> Stop when the radio goes, and carry on next time.</li>
+              <li><strong>Hints one at a time, and a word bank.</strong> No tutor needed for the first steps.</li>
+            </ul>
+            <p class="need-box"><strong>What a course would need:</strong> each session run twice, or online, so that people on nights do not miss it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 12. CUSTOMISED PATHS: LOCAL ADULTS ============================== -->
+    <div class="from-community">
+    <section class="chapter chapter-white" id="paths" aria-labelledby="paths-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">12 · Customised paths · Local adults</p>
+        <h2 id="paths-title"><span>Many starting points.</span> <span>One network.</span></h2>
+        <p class="chapter-lede">Each audience gets a path that starts where they are. For local adults, every line starts with the same free first step, and where it goes next depends on what the person already has.</p>
+
+        <div class="lines">
+          <div class="line line-teal">
+            <p class="line-name">No Level 3 yet</p>
+            <ol>
+              <li>Ten minutes on the Hub</li>
+              <li>Access to HE at a college</li>
+              <li>A computing degree</li>
+            </ol>
+          </div>
+          <div class="line line-plum">
+            <p class="line-name">Some Level 3</p>
+            <ol>
+              <li>Ten minutes on the Hub</li>
+              <li>A Foundation Year, the first of four years</li>
+              <li>Computer Science, Software Engineering, Information Technology, Computer Networking or Cybersecurity BSc</li>
+            </ol>
+          </div>
+          <div class="line line-navy">
+            <p class="line-name">Level 3 qualifications</p>
+            <ol>
+              <li>Ten minutes on the Hub</li>
+              <li>Year 1 of a BSc: three years, or four with a placement year</li>
+            </ol>
+          </div>
+          <div class="line line-red">
+            <p class="line-name">A degree already</p>
+            <ol>
+              <li>Ten minutes on the Hub</li>
+              <li>Computer Science MSc or Artificial Intelligence MSc, one year</li>
+            </ol>
+          </div>
+          <div class="line line-idea">
+            <p class="line-name">Possible</p>
+            <ol>
+              <li>A short first-code course, feeding any of the lines above: a summer school, early-morning, evening or weekend sessions, online at weekends, guided or semi-guided</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="facts">
+          <div class="offers">
+            <h3 class="offers-title">Who offers what</h3>
+            <div class="offers-cols">
+              <p class="offer offer-cefl">The first step is CEFL’s: the CEFL Tech Practice Hub. CEFL could also run the short courses, on its own or with other University teams: summer schools, early-morning, evening or weekend sessions, online or guided.</p>
+              <p class="offer offer-cs">The degrees and master’s courses are offered by the School of Computer Science and Technology. We also work with its home foundation team, sharing ideas and resources.</p>
+            </div>
+          </div>
+        </div>
+        <div data-note>
+          <p class="note"><span class="note-tag">To check</span> The course pages checked list full-time study only. Listings give 32 to 48 UCAS points for the degrees with a Foundation Year: check the course pages for 2027 entry before quoting.</p>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 13. CEFL AND COMPUTER SCIENCE ============================== -->
+    <div class="from-community">
+    <section class="chapter chapter-tint" id="together" aria-labelledby="together-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">13 · CEFL and Computer Science</p>
+        <h2 id="together-title"><span>Already working</span> <span>together.</span></h2>
+        <p class="chapter-lede">The Centre for English as a Foreign Language (CEFL) and the School of Computer Science and Technology already share what each does best. Each side gets something from it.</p>
+
+        <div class="swap">
+          <article class="swap-card swap-cefl">
+            <p class="swap-tag">Our offer to Computer Science</p>
+            <h3 class="swap-name">From CEFL</h3>
+            <p>At a meeting in the summer, we offered to share the Tech Practice Hub with Computer Science once it has been tested with our own students. That testing is nearly finished, with two or three weeks to go. The Hub would be for their students who need an extra-slow start, or have accessibility needs.</p>
+          </article>
+          <p class="swap-arrows" aria-hidden="true"><span class="swap-arrow"></span><span class="swap-arrow swap-arrow-back"></span></p>
+          <article class="swap-card swap-cs">
+            <p class="swap-tag">What our students gain</p>
+            <h3 class="swap-name">From the School of Computer Science and Technology</h3>
+            <p>In week 7 our foundation tech students go to a Year 1 Computer Science lecture, an introduction to object-oriented programming. They see where the pathway leads before they get there. Their lecturers also come to teach our students from time to time, and our groups go on tours. It is a great partnership inside the University.</p>
+          </article>
+        </div>
+        <p class="swap-more"><strong>And more:</strong> the same partnership could carry a taster for local adults, short courses at different times of the day and week, a first step for people in policing, and a start for small and medium-sized businesses whose needs are at a beginner level, before they upskill through Luton AI or Computer Science courses.</p>
+        <div data-note>
+          <p class="note"><span class="note-tag">To add</span> Anything else you share with Computer Science now, and how many of their students use the Hub.</p>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 14. QUESTIONS COLLEAGUES ASK ============================== -->
+    <div class="from-police2">
+    <section class="chapter chapter-white" id="questions" aria-labelledby="questions-title" tabindex="-1">
+      <div class="wrap">
+        <p class="eyebrow">14 · Questions colleagues ask</p>
+        <h2 id="questions-title"><span>Questions colleagues</span> <span>may ask.</span></h2>
+
+        <div class="faq">
+          <details>
+            <summary>Is this a new course?</summary>
+            <p>No. The first step already exists: the CEFL Tech Practice Hub, built and used by CEFL. Sharing it with the home foundation team in Computer Science, for their students with special educational needs, has already been agreed with them: they are waiting for us to finish testing it with our own students first. The short courses are possibilities for discussion.</p>
+          </details>
+          <details>
+            <summary>Have we talked to any police force?</summary>
+            <p>No. The page names no force and claims no partnership. Policing is here as one example of the many local groups we could reach. Any contact would go through the right University team first.</p>
+          </details>
+          <details>
+            <summary>What would a pilot cost?</summary>
+            <p>Hosting the Hub is free. I have a two-year verification, valid until November 2028, which helps with GDPR: the website does not store any personal data anyway, and this adds an extra level of protection, for example keeping students’ nicknames hidden. A pilot would need staff time, a computer room for a few sessions, someone to look after the people who come, and enough staff to cover normal teaching while a colleague runs it, for example a bootcamp.</p>
+          </details>
+          <details>
+            <summary>Why computer science?</summary>
+            <p>I’m responsible for the EU and IFY Foundation path, so it was a natural choice for me to show this as an example. Computer science also gives the fundamentals for many related degrees, from cyber security and software engineering to data and AI. The cases need all of these: data, networks, the web and an understanding of AI.</p>
+          </details>
+          <details>
+            <summary>What has been tested?</summary>
+            <p>The Hub, with one EU Foundation group this semester. The policing part of this page, and its cases, have not been shown to anyone in policing.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ============================== 15. WHO WE ARE: CEFL, AND WHO TO TALK TO ============================== -->
+    <div class="from-repack">
+    <section class="chapter chapter-tint" id="strength" aria-labelledby="strength-title" tabindex="-1">
+      <div class="wrap">
+        <div class="cefl-head">
+          <div class="cefl-words">
+            <p class="eyebrow">15 · Who we are</p>
+            <h2 id="strength-title" class="cefl-title"><span>CEFL.</span> <span>The strength is already here</span></h2>
+            <p class="chapter-lede">Teaching people a subject in a language they are still learning is what CEFL does every day. The Tech Practice Hub shows what that teaching looks like when it is built into a course.</p>
+          </div>
+          <div class="cefl-arch" aria-hidden="true">
+            <svg class="cefl-globe" viewBox="0 0 120 120" focusable="false">
+              <g fill="none" stroke="#FFFFFF" stroke-width="3">
+                <circle cx="52" cy="52" r="38"/>
+                <ellipse cx="52" cy="52" rx="16" ry="38"/>
+                <path d="M14 52h76M20 32h64M20 72h64"/>
+              </g>
+              <rect x="56" y="64" width="62" height="34" rx="10" fill="#0E6F73"/>
+              <path d="M72 97l-4 14 15-14z" fill="#0E6F73"/>
+              <text class="cefl-globe-word" x="87" y="86" text-anchor="middle">Hello</text>
+            </svg>
+          </div>
+        </div>
+
+        <ul class="tiles strength-cards">
+          <li class="tile card-teal">
+            <span class="card-icon" aria-hidden="true"><svg focusable="false"><use href="#l-award"/></svg></span>
+            <span class="tile-kicker">Accredited</span>
+            <p>CEFL, the Centre for English as a Foreign Language, is accredited by the British Council for its English language teaching.</p>
+          </li>
+          <li class="tile card-plum">
+            <span class="card-icon" aria-hidden="true"><svg focusable="false"><use href="#l-research"/></svg></span>
+            <span class="tile-kicker">Research behind it</span>
+            <p>CRELLA, the University’s Centre for Research in English Language Learning and Assessment, is the largest specialist university research centre in language assessment in the UK.</p>
+          </li>
+          <li class="tile card-navy">
+            <span class="card-icon" aria-hidden="true"><svg focusable="false"><use href="#l-columns"/></svg></span>
+            <span class="tile-kicker">Across the University</span>
+            <p>Our team teaches the international foundation year, enhanced English in Year 1, and some units on the home foundation year.</p>
+          </li>
+          <li class="tile card-red">
+            <span class="card-icon" aria-hidden="true"><svg focusable="false"><use href="#l-laptop"/></svg></span>
+            <span class="tile-kicker">A working example</span>
+            <p>The Tech Practice Hub: a free practice site that runs in any browser, built for foundation tech students who learn computing in their second language.</p>
+          </li>
+        </ul>
+
+        <p class="pull">What we do for international students is what many local adults need too: meeting a subject’s language for the first time, and believing they can learn it.</p>
+
+        <div class="contacts">
+          <div class="contacts-head">
+            <div>
+              <h3 class="contacts-title">Who to talk to</h3>
+              <p class="contacts-lede">For questions about the Hub, partnerships or courses, please get in touch with any of us.</p>
+            </div>
+            <svg class="contacts-cafe" viewBox="0 0 200 150" aria-hidden="true" focusable="false">
+              <rect x="8" y="4" width="98" height="48" rx="16" fill="#5E2750"/>
+              <path d="M44 51l-6 16 20-16z" fill="#5E2750"/>
+              <circle cx="38" cy="28" r="5" fill="#FFFFFF"/><circle cx="57" cy="28" r="5" fill="#FFFFFF"/><circle cx="76" cy="28" r="5" fill="#FFFFFF"/>
+              <rect x="114" y="22" width="80" height="42" rx="15" fill="#0E6F73"/>
+              <path d="M144 63l-2 14 14-14z" fill="#0E6F73"/>
+              <path d="M141 43l7 7 13-13" fill="none" stroke="#FFFFFF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M86 84c-4-6 4-9 0-15M102 84c-4-6 4-9 0-15" fill="none" stroke="#C9BFC9" stroke-width="3" stroke-linecap="round"/>
+              <path d="M62 90h66v28a18 18 0 0 1-18 18H80a18 18 0 0 1-18-18z" fill="#C8102E"/>
+              <path d="M128 98h6a10 10 0 0 1 0 20h-6" fill="none" stroke="#C8102E" stroke-width="6"/>
+              <rect x="44" y="138" width="112" height="8" rx="4" fill="#5E2750"/>
+            </svg>
+          </div>
+          <ul class="contact-cards">
+            <li class="contact-card card-plum">
+              <span class="card-icon" aria-hidden="true"><svg focusable="false"><use href="#l-flag"/></svg></span>
+              <p class="contact-role">Leadership and decisions</p>
+              <h4>Katy Robertson-Hohmann</h4>
+              <p>Director of Studies, Centre for English as a Foreign Language (CEFL).</p>
+              <p class="contact-line"><a href="mailto:katy.robertson-hohmann@beds.ac.uk">katy.robertson-hohmann@beds.ac.uk</a><br><a href="tel:+441582743515">01582 743515</a></p>
+            </li>
+            <li class="contact-card card-teal">
+              <span class="card-icon" aria-hidden="true"><svg focusable="false"><use href="#l-people"/></svg></span>
+              <p class="contact-role">Collaboration on courses</p>
+              <h4>John Lapwood</h4>
+              <p>Senior Lecturer in English Language, and Course Leader for the EU and international foundation courses.</p>
+              <p class="contact-line"><a href="mailto:john.lapwood@beds.ac.uk">john.lapwood@beds.ac.uk</a><br><a href="tel:+441582743459">01582 743459</a></p>
+            </li>
+            <li class="contact-card card-red">
+              <span class="card-icon" aria-hidden="true"><svg focusable="false"><use href="#l-laptop"/></svg></span>
+              <p class="contact-role">The technical side</p>
+              <h4>Monika Pietruch</h4>
+              <p>Academic skills tutor and unit coordinator for the EU and IFY Foundation Tech Pathways. Built the Tech Practice Hub and other tools for our students. Happy to talk through how they work, and the code.</p>
+              <p class="contact-line"><a href="mailto:monika.pietruch@beds.ac.uk">monika.pietruch@beds.ac.uk</a></p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <img class="end-skyline" src="assets/scenes/dawn-skyline.svg" width="1280" height="230" loading="lazy" alt="Dawn over the local skyline: a tall slim tower, low offices and trees, a suspension bridge over a river, and houses with a plane climbing away.">
+    </section>
+    </div>
+
+  </main>
+
+  <!-- ============================== THE FOOTER ============================== -->
+  <footer class="foot">
+    <div class="wrap">
+      <p><strong>A demo for discussion.</strong> Not an official University of Bedfordshire page, and not connected with or endorsed by any police force. The five people in part 1 and the cases in part 10 are made up. The tasks in part 5 and the pages in part 6 are prototypes too.</p>
+      <p>Sources, checked in November 2026: <a href="https://britishcouncil.org/sites/default/files/university_of_bedfordshire_compliance_2023_published.pdf" target="_blank" rel="noopener">British Council, accreditation report for the University of Bedfordshire (2023)<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://www.beds.ac.uk/research/areas/english-language-and-communication2" target="_blank" rel="noopener">University of Bedfordshire, English Language and Communication research (CRELLA)<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://www.icaew.com/technical/tax/making-tax-digital/mtd-guidance/mtd-and-income-tax" target="_blank" rel="noopener">ICAEW, Making Tax Digital for Income Tax<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://www.npcc.police.uk/SysSiteAssets/media/downloads/publications/publications-log/2020/national-digital-forensic-science-strategy.pdf" target="_blank" rel="noopener">NPCC, Digital Forensic Science Strategy (2020)<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/bulletins/crimeinenglandandwales/yearendingjune2026" target="_blank" rel="noopener">ONS, Crime in England and Wales: year ending June 2026<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://www.gov.uk/government/publications/fraud-strategy/fraud-strategy-stopping-scams-and-protecting-the-public" target="_blank" rel="noopener">Home Office, Fraud Strategy (2023)<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://beds.ac.uk/courses/computer-science" target="_blank" rel="noopener">Computer Science BSc course page<span class="visually-hidden"> (opens in a new tab)</span></a>.</p>
+      <div class="foot-credits">
+        <p>Tech Practice Hub © Monika Pietruch, 2026. University of Bedfordshire, CEFL.</p>
+        <p>The robot tasks on the Hub are inspired by Karel the Robot, created by Richard Pattis at Stanford University to teach the first steps of programming.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

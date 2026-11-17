@@ -1,0 +1,5399 @@
+/*
+  Repackage what we already have: a demo for civic and community partnerships
+  -----------------------------------------------------------------------
+  One page (index.html) and this one stylesheet.
+
+  The page is made of parts chosen from five earlier prototype pages. Each
+  part sits inside a <div> that names the page it came from, and its rules
+  here start with the same name, so the parts keep their own look without
+  clashing:
+
+    .from-repack     the page for Marketing, Recruitment and International
+    .from-community  the page about local adults
+    .from-police     the first page for people in policing
+    .from-police2    the page for colleagues about policing
+
+  Order of this file:
+    1. colours and fonts        shared by every part
+    2. basics                   the strip, the menu, buttons, headlines, notes
+    3. the parts, page by page  each block starts with its page's name
+    4. what this page adds      the short opening line, the big CEFL title,
+                                the two groups and their tags, the Hub
+                                chapter, the smart fridge, the three
+                                prototype tasks, the gap figures and the
+                                road, the guided task, the skyline, the footer
+    5. small screens            for the parts this page adds
+*/
+
+/* ---------- 1. Colours and fonts ---------- */
+
+:root {
+  /* This page has one look. This line tells the browser not to recolour it
+     when the device is in dark mode. */
+  color-scheme: light;
+
+  /* University of Bedfordshire colours, with the names the Hub gives them */
+  --red: #C8102E;
+  --maroon: #800029;
+  --black: #000000;
+  --white: #FFFFFF;
+  --ink: #1B1B1B;           /* text */
+  --grey: #5C5C5C;          /* small text */
+  --line: #D6D6D6;          /* thin lines */
+  --paper: #F4F4F4;         /* quiet bands and cards */
+  --coal: #161616;          /* cards on the black bands */
+  --yellow: #FFB81C;        /* only the working notes */
+  --yellow-pale: #FFF4DD;
+
+  /* Quiet colours, only ever used as shapes and lines */
+  --teal: #0E6F73;          /* from the Community Engagement Strategy */
+  --plum: #5E2750;          /* from the Community Engagement Strategy */
+  --navy: #1E2761;
+  --green: #1E4D3A;
+  --night: #14142B;
+
+  --font-display: "Bebas Neue Pro", "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body: "Univers", "Univers LT Std", "Univers LT Pro", "Univers Next", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-code: ui-monospace, "SF Mono", "Cascadia Mono", Consolas, "Liberation Mono", Menlo, monospace;
+
+  --column: 74rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  --band-space: clamp(2.75rem, 6vw, 5rem);
+
+  /* The width of each of the two arches in the opening */
+  --arch-w: clamp(9.5rem, 19vw, 17rem);
+}
+
+/* The headline typeface. "400 700" says this one file may be used for bold
+   as well, so the browser does not fake a bold. */
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("../fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- 2. Basics ---------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 3.3rem; /* the height of the red menu, so it does not cover the place a tab jumps to */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.wrap {
+  max-width: var(--column);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.15em;
+}
+
+img,
+video {
+  max-width: 100%;
+}
+
+code {
+  font-family: var(--font-code);
+  font-size: 0.95em;
+  white-space: nowrap; /* a line of code is never broken in two */
+}
+
+figure {
+  margin: 0;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+/* The focus ring shows which link or button the keyboard is on. It is black
+   outside and white inside, so it shows on white, on grey and on red. */
+:focus-visible {
+  outline: 3px solid var(--black);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--white);
+}
+
+/* On the black bands the ring is the other way round, white outside and
+   black inside: there, a black line would not show. */
+.chapter-dark :focus-visible,
+.foot :focus-visible {
+  outline-color: var(--white);
+  box-shadow: 0 0 0 3px var(--black);
+}
+
+/* The parts of the page a tab jumps to can take focus, but they do not need
+   a ring round a whole band. */
+[tabindex="-1"]:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Anything marked hidden stays hidden, even if another rule gives it a display. */
+[hidden] {
+  display: none !important;
+}
+
+/* Words for screen readers only, such as "(opens in a new tab)". */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* The store of icons at the top of index.html takes up no room. */
+.icon-store {
+  position: absolute;
+}
+
+/* The skip link: off the top of the page until the Tab key reaches it. */
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -5rem;
+  z-index: 30;
+  padding: 0.6rem 1rem;
+  background: var(--white);
+  color: var(--black);
+  font-weight: 700;
+}
+
+.skip:focus {
+  top: 1rem;
+}
+
+/* Headlines are Bebas Neue in capitals. Each half of a headline is a <span>,
+   and each span is its own line, so a headline is never more than two lines. */
+h1,
+h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-wrap: balance; /* if a line has to break, break it into even halves */
+}
+
+h1 span,
+h2 span {
+  display: block;
+}
+
+h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+/* The small line in capitals above a headline. */
+.eyebrow,
+.label {
+  margin: 0 0 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.label {
+  color: var(--red);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.65rem 1.2rem;
+  border: 2px solid var(--black);
+  background: var(--white);
+  color: var(--black);
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button:hover {
+  border-color: var(--black);
+  background: var(--black);
+  color: var(--white);
+}
+
+/* The white button, for the red and the black bands. When the pointer is
+   over it, it keeps its white edge, so it never disappears into a black band. */
+.button-light,
+.button-light:hover {
+  border-color: var(--white);
+}
+
+/* The red button, for the white bands. */
+.button-red {
+  border-color: var(--red);
+  background: var(--red);
+  color: var(--white);
+}
+
+.button-big {
+  padding: 0.9rem 1.6rem;
+  font-size: clamp(1.1rem, 2.4vw, 1.3rem);
+}
+
+/* A small arrow after every link that opens in a new tab. The words
+   "(opens in a new tab)" are in the page for screen readers. */
+a[target="_blank"]::after {
+  content: "\2197";
+  content: "\2197" / "";
+  display: inline-block;
+  margin-left: 0.3em;
+  text-decoration: none;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin: 1.5rem 0 0;
+}
+
+.jump {
+  font-weight: 700;
+}
+
+/* The "holes" in an icon, such as the lines on the form, are painted in the
+   colour of the square behind the icon (--badge-bg), so they look cut out. */
+.icon-hole {
+  fill: var(--badge-bg, var(--red));
+}
+
+/* ---------- 3. The black strip, the red menu, the notes ---------- */
+
+.topbar {
+  background: var(--black);
+  color: var(--white);
+}
+
+.topbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0 1.5rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+/* The logo file has the logo's clear space built in: the empty margin on
+   every side. It is the file the Hub uses, at about the Hub's size. */
+.logo img {
+  width: auto;
+  height: 6.5rem;
+  margin-left: -1.5rem; /* the file's own margin, so the logo lines up with the words below */
+}
+
+.unit {
+  padding: 0.55rem 0 0.4rem 1.6rem;
+  border-left: 2px solid var(--grey);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.topbar-note {
+  margin: 0;
+  padding-block: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* The menu: tabs, as on the Hub. "position: sticky" keeps it at the top of
+   the window while the page scrolls underneath. */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--red);
+  color: var(--white);
+}
+
+/* The row of tabs starts one tab-padding to the left of the column, so the
+   word in the first tab lines up with the logo above and the headline below. */
+.nav .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: calc(var(--gutter) - 1.25rem);
+}
+
+/* Every tab has a 4px line along the bottom. It is see-through, except on
+   the tab for the part of the page you are in. */
+.nav a {
+  padding: 0.95rem 1.25rem 0.7rem;
+  border-bottom: 4px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 700; /* white text on red is bold */
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav a:hover {
+  background: var(--maroon);
+}
+
+/* The part you are in: a darker red, and a white line as well, because
+   colour alone must never carry information. js/page.js sets aria-current. */
+.nav a[aria-current] {
+  background: var(--maroon);
+  border-bottom-color: var(--white);
+}
+
+/* The working notes. Hidden unless <html> has the class show-notes, which
+   js/page.js adds (the button in the footer, or ?notes in the address). */
+[data-note] {
+  display: none;
+}
+
+.show-notes [data-note] {
+  display: block;
+}
+
+.note {
+  max-width: 44rem;
+  margin: 0.75rem 0;
+  padding: 0.6rem 0.8rem;
+  border: 2px dashed var(--black);
+  background: var(--yellow-pale);
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: left;
+}
+
+.note-tag {
+  margin-right: 0.4rem;
+  padding: 0.1rem 0.45rem;
+  background: var(--yellow);
+  font-weight: 700;
+}
+
+
+/* ---------- 3. The parts, page by page ---------- */
+
+/* ======================================================================
+   From the page for Marketing, Recruitment and International
+   ====================================================================== */
+/* ---------- 4. The opening and the two arches ---------- */
+
+/* Cover 10, changed: the headline runs across the whole column, and under
+   it the words sit on the left and two arches on the right. The arches
+   stand on a thick black line, the bottom edge of the opening. */
+.from-repack .hero {
+  padding-top: clamp(2rem, 5vw, 3.5rem);
+  border-bottom: 0.65rem solid var(--black);
+  background: var(--white);
+}
+
+.from-repack .hero .eyebrow {
+  color: var(--red);
+}
+
+.from-repack .hero h1 {
+  color: var(--black);
+  font-size: clamp(2.2rem, 11vw, 7.4rem);
+}
+
+.from-repack .hero h1 span + span {
+  color: var(--red);
+}
+
+.from-repack .hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2rem clamp(2rem, 5vw, 4.5rem);
+  align-items: end;
+  margin-top: clamp(1.25rem, 3vw, 2.25rem);
+}
+
+.from-repack .hero-words {
+  max-width: 38rem;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.from-repack .lede {
+  font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+  line-height: 1.45;
+}
+
+/* The University's own words, with a maroon bar beside them. */
+.from-repack .hero-quote {
+  margin: 1.5rem 0 0;
+  padding: 0.15rem 0 0.15rem 1rem;
+  border-left: 0.4rem solid var(--maroon);
+}
+
+.from-repack .hero-quote blockquote {
+  margin: 0;
+}
+
+.from-repack .hero-quote blockquote p {
+  margin: 0 0 0.3rem;
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+}
+
+.from-repack .hero-quote figcaption {
+  color: var(--grey);
+  font-size: 0.95rem;
+}
+
+/* The black button, as on cover 10. When the pointer is over it, it turns
+   white with a black edge. */
+.from-repack .button-black {
+  border-color: var(--black);
+  background: var(--black);
+  color: var(--white);
+}
+
+.from-repack .button-black:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+/* The two arches and the arrow between them, in three columns. */
+.from-repack .arches {
+  display: grid;
+  grid-template-columns: var(--arch-w) 3.5rem var(--arch-w);
+  align-items: end;
+}
+
+.from-repack .arch-box {
+  display: grid;
+  justify-items: center;
+}
+
+.from-repack .arch-label {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.2vw, 2rem);
+  letter-spacing: 0.03em;
+  line-height: 1;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* An arch is a box with a round top. A radius far bigger than the box is
+   cut down by the browser to half the box's width, which makes the top a
+   perfect half circle. The picture inside fills the arch. */
+.from-repack .arch {
+  width: var(--arch-w);
+  aspect-ratio: 512 / 592;   /* the shape of the pictures */
+  overflow: hidden;
+  border: 0.35rem solid var(--black);
+  border-bottom: 0;
+  border-radius: 999px 999px 0 0;
+  background: var(--white);
+}
+
+.from-repack .arch img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left top;
+}
+
+.from-repack .arch-could {
+  border-color: var(--red);
+  background: var(--red);
+}
+
+/* The arrows: a round button shape with an arrow drawn inside it in two
+   pieces, the line (::before) and the point (::after). They are only
+   pictures, so index.html hides them from screen readers. */
+.from-repack .arch-arrow,
+.from-repack .pair-arrow {
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 50%;
+  background: var(--black);
+}
+
+.from-repack .arch-arrow {
+  margin-top: 2.6rem; /* lower than the middle, below the labels */
+}
+
+.from-repack .arch-arrow::before,
+.from-repack .pair-arrow::before {
+  content: "";
+  position: absolute;
+  top: calc(50% - 0.14rem);
+  left: 27%;
+  width: 42%;
+  height: 0.28rem;
+  border-radius: 0.14rem;
+  background: var(--white);
+}
+
+/* The point: the top and right edges of a small square, turned 45 degrees. */
+.from-repack .arch-arrow::after,
+.from-repack .pair-arrow::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 0.45rem);
+  left: calc(69% - 0.75rem);
+  width: 0.9rem;
+  height: 0.9rem;
+  border-top: 0.28rem solid var(--white);
+  border-right: 0.28rem solid var(--white);
+  border-radius: 0.1rem;
+  transform: rotate(45deg);
+}
+
+/* ---------- 5. The bands ---------- */
+
+.from-repack .chapter {
+  position: relative;
+  padding-block: var(--band-space);
+}
+
+.from-repack .chapter h2 {
+  margin-bottom: 1.1rem;
+  color: var(--black);
+  font-size: clamp(2.35rem, 6vw, 4.75rem);
+}
+
+/* The second line of each headline is red. */
+.from-repack .chapter h2 span + span {
+  color: var(--red);
+}
+
+.from-repack .chapter .eyebrow {
+  color: var(--red);
+}
+
+.from-repack .chapter-lede {
+  max-width: 44rem;
+  margin: 0 0 1.75rem;
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.from-repack .chapter-white {
+  background: var(--white);
+}
+
+.from-repack .chapter-tint {
+  background: var(--paper);
+}
+
+.from-repack .chapter-dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.from-repack .chapter-dark h2,
+.from-repack .chapter-dark .eyebrow {
+  color: var(--white);
+}
+
+/* ---------- 6. Inside the bands ---------- */
+
+/* Part 1: four tiles in a row, like four posters. Each has a thick line
+   along its top. */
+.from-repack .tiles {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.from-repack .tile {
+  padding: 1.25rem 1.25rem 1.4rem;
+  border-top: 0.5rem solid var(--maroon);
+  background: var(--paper);
+}
+
+.from-repack .tile p {
+  margin: 0;
+}
+
+.from-repack .tile-kicker {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.2vw, 1.95rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.from-repack .tile-black {
+  border-top-color: var(--red);
+  background: var(--black);
+  color: var(--white);
+}
+
+.from-repack .tile-red {
+  border-top-color: var(--black);
+  background: var(--red);
+  color: var(--white);
+}
+
+/* One sentence to remember, big, with a red bar beside it. */
+.from-repack .pull {
+  max-width: 50rem;
+  margin: 2.5rem 0 0;
+  padding-left: 1.25rem;
+  border-left: 0.5rem solid var(--red);
+  font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Part 2: the table of techniques. The first cell of each row names the
+   technique, in the headline typeface, with a maroon bar on its left. */
+.from-repack .techniques {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+}
+
+.from-repack .techniques thead th {
+  padding: 0.85rem 1rem;
+  background: var(--black);
+  color: var(--white);
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.from-repack .techniques tbody th,
+.from-repack .techniques td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.from-repack .techniques tbody th {
+  width: 27%;
+  border-left: 0.4rem solid var(--maroon);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+/* Part 3: from this to this. Each pair is a row of three: the film of what
+   we did, an arrow, and the page it could be. */
+.from-repack .pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 4.5rem minmax(0, 1fr);
+  align-items: start;
+  margin: 0 0 clamp(2.5rem, 5vw, 3.75rem);
+}
+
+.from-repack .pair-title {
+  grid-column: 1 / -1; /* the title runs across all three columns */
+  margin: 0 0 1rem;
+  padding-top: 1.1rem;
+  border-top: 2px solid var(--black);
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.from-repack .pair-number {
+  margin-right: 0.5rem;
+  color: var(--red);
+}
+
+/* The little tab above each picture: black for what we did, red for what
+   it could be. */
+.from-repack .pair-tag {
+  display: inline-block;
+  margin: 0;
+  padding: 0.35rem 0.75rem 0.25rem;
+  background: var(--black);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.from-repack .pair-to .pair-tag {
+  background: var(--red);
+}
+
+.from-repack .pair video,
+.from-repack .pair img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 3px solid var(--black);
+  background: var(--paper);
+}
+
+.from-repack .pair-to img {
+  border-color: var(--red);
+}
+
+.from-repack .pair figcaption {
+  margin-top: 0.6rem;
+  color: var(--grey);
+  font-size: 0.98rem;
+}
+
+.from-repack .pair-arrow {
+  margin-top: 1.5rem;
+  background: var(--red);
+}
+
+/* The list of next audiences, in a dashed maroon frame: not built yet. */
+.from-repack .next-ones {
+  padding: 1.5rem 1.75rem 1.6rem;
+  border: 3px dashed var(--maroon);
+}
+
+.from-repack .next-title {
+  margin: 0 0 0.9rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.6vw, 2.1rem);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.from-repack .next-ones ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 2.5rem;
+  margin: 0 0 1.1rem;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each item's bullet is a tiny maroon arch. */
+.from-repack .next-ones li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.from-repack .next-ones li::before {
+  content: "";
+  position: absolute;
+  top: 0.3em;
+  left: 0;
+  width: 0.75rem;
+  height: 0.95rem;
+  border-radius: 999px 999px 0 0;
+  background: var(--maroon);
+}
+
+.from-repack .next-local {
+  margin: 0;
+  font-weight: 700;
+}
+
+/* Part 4, on black: four big counts, each over a red line. */
+.from-repack .counts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.75rem 2rem;
+  margin: 1rem 0 2.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.from-repack .counts li {
+  padding-top: 0.9rem;
+  border-top: 0.35rem solid var(--red);
+}
+
+.from-repack .count {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 6vw, 5rem);
+  line-height: 0.95;
+}
+
+/* The four prototype pages, small, side by side. */
+.from-repack .gallery {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.from-repack .gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 2px solid var(--white);
+}
+
+.from-repack .gallery span {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.from-repack .built-words {
+  max-width: 44rem;
+  font-size: 1.15rem;
+}
+
+/* Part 5: three questions on cards, each with a big red question mark at
+   its top. */
+.from-repack .questions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0 0 3rem;
+}
+
+.from-repack .question-card {
+  position: relative;
+  padding: 4.7rem 1.4rem 1.5rem; /* room at the top for the question mark */
+  border-top: 0.5rem solid var(--black);
+  background: var(--paper);
+}
+
+/* The question mark is decoration: "/ ''" tells screen readers to skip it. */
+.from-repack .question-card::before {
+  content: "?";
+  content: "?" / "";
+  position: absolute;
+  top: 1rem;
+  left: 1.4rem;
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 4.25rem;
+  line-height: 1;
+}
+
+.from-repack .question-card p {
+  margin: 0;
+}
+
+/* Three figures, each over a short maroon line as wide as the figure. */
+.from-repack .evidence {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem 2rem;
+  margin: 0 0 0.9rem;
+  padding: 0;
+  list-style: none;
+  font-size: 1.05rem;
+}
+
+.from-repack .evidence-figure {
+  display: block;
+  width: fit-content;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 0.3rem solid var(--maroon);
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.6vw, 3.8rem);
+  line-height: 1;
+  white-space: nowrap; /* "Almost 1 in 4" stays on one line */
+}
+
+.from-repack .evidence-source {
+  margin: 0 0 3rem;
+  color: var(--grey);
+  font-size: 0.92rem;
+}
+
+/* Three lines to test: big, in the headline typeface, one per row, with
+   where each line comes from on the right. */
+.from-repack .lines-title {
+  margin: 0 0 0.8rem;
+  color: var(--red);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.from-repack .quotes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--black);
+}
+
+.from-repack .quotes li {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  gap: 0.5rem 2.5rem;
+  align-items: center;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.from-repack .quotes blockquote {
+  margin: 0;
+}
+
+.from-repack .quotes blockquote p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.4vw, 2.7rem);
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* A red opening quotation mark before each line, skipped by screen readers. */
+.from-repack .quotes blockquote p::before {
+  content: "\201C";
+  content: "\201C" / "";
+  margin-right: 0.06em;
+  color: var(--red);
+}
+
+.from-repack .quote-source {
+  color: var(--grey);
+  font-size: 0.95rem;
+}
+
+/* Part 6: the headline on the left, the words on the right. */
+.from-repack .international {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1.5rem clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.from-repack .international h2 {
+  font-size: clamp(2.2rem, 4.4vw, 3.6rem);
+}
+
+/* The town hall's words sit under the headline, on the left. */
+.from-repack .international-head .town-hall {
+  margin-top: 2rem;
+}
+
+.from-repack .international-words p {
+  font-size: 1.1rem;
+}
+
+.from-repack .town-hall {
+  margin: 1.5rem 0;
+  padding: 1.1rem 1.25rem;
+  border-left: 0.5rem solid var(--maroon);
+  background: var(--white);
+}
+
+.from-repack .town-hall blockquote {
+  margin: 0;
+}
+
+.from-repack .town-hall p {
+  margin: 0 0 0.4rem;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.from-repack .town-hall figcaption {
+  color: var(--grey);
+  font-size: 0.95rem;
+}
+
+.from-repack .international-words .caveat {
+  padding: 0.9rem 1rem;
+  border: 2px solid var(--black);
+  background: var(--white);
+  font-size: 1rem;
+}
+
+/* ---------- 7. The ask, the footer ---------- */
+
+.from-repack .closing {
+  padding-top: var(--band-space);
+  background: var(--white);
+}
+
+.from-repack .closing .eyebrow {
+  color: var(--red);
+}
+
+.from-repack .closing h2 {
+  margin-bottom: 1.5rem;
+  color: var(--black);
+  font-size: clamp(2.6rem, 9vw, 7.5rem);
+}
+
+.from-repack .closing h2 span + span {
+  color: var(--red);
+}
+
+.from-repack .closing-lede {
+  max-width: 44rem;
+  font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+}
+
+/* Three steps, each under a red circle with its number. The numbers come
+   from a CSS counter, so they stay right if a step is added. */
+.from-repack .asks {
+  counter-reset: ask;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem 2rem;
+  margin: 2rem 0 2.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.from-repack .asks li {
+  counter-increment: ask;
+  position: relative;
+  padding-top: 4.1rem;
+}
+
+.from-repack .asks li::before {
+  content: counter(ask);
+  content: counter(ask) / "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  padding-top: 0.2rem;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.from-repack .asks strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+}
+
+.from-repack .link-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.5rem;
+  margin: 0 0 1.1rem;
+}
+
+/* The address written out, for anyone who wants to copy it by hand. */
+.from-repack .link-address {
+  font-family: var(--font-code);
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* An arcade along the top of the footer: a black band with a row of white
+   arched openings, as if the footer were a building. Each opening is two
+   shapes painted as backgrounds, a circle for its round top and a rectangle
+   under it. One opening and its pillar are 4rem wide, and "repeat-x"
+   repeats them across the window. The last layer is the black band. */
+.from-repack .colonnade {
+  height: 3.8rem;
+  margin-top: var(--band-space);
+  background:
+    radial-gradient(circle 1.4rem at 2rem 1.9rem, var(--white) 98%, transparent 100%) 0 0 / 4rem 3.8rem repeat-x,
+    linear-gradient(90deg, transparent 0.6rem, var(--white) 0.6rem 3.4rem, transparent 3.4rem) 0 1.9rem / 4rem 1.9rem repeat-x,
+    var(--black);
+}
+
+
+
+
+
+
+
+
+
+/* ---------- 8. Small screens, and reduced motion ---------- */
+
+/* Narrower than a laptop: the menu may need two lines, which is too tall to
+   keep at the top of the window. Rows of four become two rows of two. */
+@media (max-width: 68rem) {
+  
+
+  
+
+  .from-repack .tiles,
+.from-repack .counts,
+.from-repack .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .from-repack .pair {
+    grid-template-columns: minmax(0, 1fr) 3.75rem minmax(0, 1fr);
+  }
+}
+
+/* Tablets and phones: everything that sat side by side is stacked. The
+   arches move under the words, and the arrows in "from this to this"
+   point down instead of across. */
+@media (max-width: 56rem) {
+  .from-repack .hero-inner,
+.from-repack .questions,
+.from-repack .international,
+.from-repack .quotes li,
+.from-repack .asks,
+.from-repack .pair {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .from-repack .hero-inner {
+    row-gap: 0;
+  }
+
+  .from-repack .hero-words {
+    max-width: none;
+  }
+
+  .from-repack .arches {
+    justify-self: center;
+    --arch-w: clamp(8.5rem, 34vw, 14rem);
+  }
+
+  .from-repack .pair-arrow {
+    margin: 1.25rem 0;
+    transform: rotate(90deg);
+  }
+
+  .from-repack .quotes li {
+    gap: 0.4rem;
+  }
+}
+
+/* Phones: one tile to a row, the table becomes a card for each technique,
+   and the arches and their arrow get smaller. */
+@media (max-width: 40rem) {
+  .from-repack .tiles,
+.from-repack .evidence,
+.from-repack .next-ones ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .from-repack .arches {
+    grid-template-columns: var(--arch-w) 2.6rem var(--arch-w);
+    --arch-w: min(11rem, calc((100vw - 2 * var(--gutter) - 2.6rem) / 2));
+  }
+
+  .from-repack .arch-label {
+    font-size: 1.15rem;
+  }
+
+  .from-repack .arch-arrow {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-top: 2rem;
+  }
+
+  .from-repack .arch-arrow::before {
+    height: 0.22rem;
+    top: calc(50% - 0.11rem);
+  }
+
+  .from-repack .arch-arrow::after {
+    top: calc(50% - 0.33rem);
+    left: calc(69% - 0.58rem);
+    width: 0.66rem;
+    height: 0.66rem;
+    border-width: 0.22rem;
+  }
+
+  .from-repack .arch {
+    border-width: 0.25rem;
+  }
+
+  .from-repack .next-ones {
+    padding: 1.25rem 1.1rem;
+  }
+
+  .from-repack .pair-title {
+    font-size: clamp(1.45rem, 7vw, 1.7rem);
+  }
+
+  /* The table: the row of column names is hidden on screen (screen readers
+     still find it), and each row becomes a card. Each answer gets its
+     column name above it, from the data-label written in index.html. */
+  .from-repack .techniques thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .from-repack .techniques thead th {
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .from-repack .techniques,
+.from-repack .techniques tbody,
+.from-repack .techniques tr,
+.from-repack .techniques th,
+.from-repack .techniques td {
+    display: block;
+    width: auto;
+  }
+
+  .from-repack .techniques {
+    background: transparent;
+  }
+
+  .from-repack .techniques tr {
+    margin-bottom: 1rem;
+    border-left: 0.4rem solid var(--maroon);
+    background: var(--white);
+  }
+
+  .from-repack .techniques tbody th {
+    width: auto;
+    padding-bottom: 0.2rem;
+    border-bottom: 0;
+    border-left: 0;
+  }
+
+  .from-repack .techniques td {
+    padding-top: 0.5rem;
+    border-bottom: 0;
+  }
+
+  .from-repack .techniques td::before {
+    content: attr(data-label);
+    content: attr(data-label) / "";
+    display: block;
+    color: var(--grey);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+}
+
+/* The narrowest phones: the longest headlines are a little smaller, so that
+   each half still fits on one line. */
+@media (max-width: 21rem) {
+  .from-repack .chapter h2 {
+    font-size: 2.15rem;
+  }
+}
+
+/* People who ask their device for less motion: no smooth gliding to a part
+   of the page. The films stay still too (js/page.js). */
+
+
+/* ======================================================================
+   From the page about local adults
+   ====================================================================== */
+/* ---------- 4. The opening and the panorama ---------- */
+
+/* Cover 7: white, the headline on the left and the words on the right, then
+   one wide picture across the whole window. */
+.from-community .hero {
+  padding-top: clamp(2rem, 5vw, 4rem);
+  background: var(--white);
+}
+
+.from-community .hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1.5rem clamp(2rem, 5vw, 4.5rem);
+  align-items: end;
+  padding-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.from-community .hero .eyebrow {
+  color: var(--red);
+}
+
+.from-community .hero h1 {
+  color: var(--black);
+  font-size: clamp(3.2rem, 7.6vw, 6.6rem);
+}
+
+.from-community .hero h1 span + span {
+  color: var(--red);
+}
+
+.from-community .lede {
+  font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+  line-height: 1.45;
+}
+
+/* The panorama is one wide picture. "object-fit: cover" lets it fill the
+   strip at any window width by cutting off its two ends, never squashing it. */
+.from-community .panorama {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: clamp(9rem, 22vw, 17rem);
+  object-fit: cover;
+  object-position: center bottom;
+  background: #141633;
+}
+
+/* ---------- 5. The bands ---------- */
+
+.from-community .chapter {
+  position: relative;
+  padding-block: var(--band-space);
+}
+
+.from-community .chapter h2 {
+  margin-bottom: 1.1rem;
+  color: var(--black);
+  font-size: clamp(2.35rem, 6vw, 4.75rem);
+}
+
+/* The second line of each headline is red. */
+.from-community .chapter h2 span + span {
+  color: var(--red);
+}
+
+.from-community .chapter .eyebrow {
+  color: var(--red);
+}
+
+.from-community .chapter-lede {
+  max-width: 44rem;
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.from-community .chapter-white {
+  background: var(--white);
+}
+
+.from-community .chapter-tint {
+  background: var(--paper);
+}
+
+.from-community .chapter-dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.from-community .chapter-dark h2,
+.from-community .chapter-dark .eyebrow {
+  color: var(--white);
+}
+
+/* ---------- 6. Inside the bands ---------- */
+
+/* Part 1: two big figures, side by side, each over a short teal bar. */
+.from-community .figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 3.5rem;
+  margin: 1.75rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.from-community .figures li {
+  max-width: 24rem;
+}
+
+.from-community .figure {
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.55rem solid var(--teal);
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 7vw, 5.4rem);
+  font-weight: 700;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.from-community .figure-words {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.from-community .figures .figures-source {
+  flex-basis: 100%;
+  max-width: none;
+  color: var(--grey);
+  font-size: 0.95rem;
+}
+
+/* Part 1: the two groups, side by side, with what they share underneath. */
+.from-community .two-groups {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.from-community .group {
+  padding: 1.4rem 1.5rem 0.6rem;
+  background: var(--paper);
+  border-top: 0.55rem solid var(--teal);
+}
+
+.from-community .group-needs {
+  border-top-color: var(--plum);
+}
+
+.from-community .group h3 {
+  margin-bottom: 0.7rem;
+  font-size: 1.35rem;
+}
+
+.from-community .group ul {
+  margin: 0 0 0.8rem;
+  padding-left: 1.2rem;
+}
+
+.from-community .group li {
+  margin-bottom: 0.55rem;
+}
+
+.from-community .both {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 1.1rem 1.5rem;
+  background: var(--black);
+  color: var(--white);
+  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+}
+
+/* Part 2: the postcards. Three to a row on a laptop. Each starts with a
+   stamp with its town, like a postmark. */
+.from-community .postcards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.from-community .postcard {
+  position: relative;
+  padding: 1.4rem 1.4rem 1.1rem;
+  background: var(--white);
+  border: 1px solid var(--line);
+  box-shadow: 0.4rem 0.4rem 0 var(--line);
+}
+
+/* The stamp: a dashed circle, like a postmark, with the town's name. */
+.from-community .stamp {
+  display: inline-grid;
+  place-items: center;
+  min-width: 6.4rem;
+  min-height: 2.2rem;
+  margin-bottom: 0.9rem;
+  padding: 0.3rem 0.8rem;
+  border: 2px dashed var(--red);
+  border-radius: 999px;
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: rotate(-3deg);
+}
+
+.from-community .postcard h3 {
+  font-size: 1.3rem;
+}
+
+.from-community .story {
+  padding-bottom: 0.9rem;
+  border-bottom: 2px dashed var(--line);
+}
+
+/* The rows under each story: a small label, then the words. */
+.from-community .postcard dl {
+  margin: 0;
+}
+
+.from-community .postcard dt {
+  margin-top: 0.55rem;
+  color: var(--teal);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.from-community .postcard dd {
+  margin: 0.1rem 0 0;
+  line-height: 1.4;
+}
+
+.from-community .postcard-note {
+  background: var(--plum);
+  border-color: var(--plum);
+  box-shadow: none;
+  color: var(--white);
+}
+
+/* Part 3: the week, as four steps joined by a line. */
+.from-community .week {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: session;
+}
+
+.from-community .week li {
+  position: relative;
+  padding-top: 3.4rem;
+  counter-increment: session;
+}
+
+/* The numbered circle, and the line that joins it to the next one. */
+.from-community .week li::before {
+  content: counter(session);
+  content: counter(session) / "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.from-community .week li::after {
+  content: "";
+  position: absolute;
+  top: 1.2rem;
+  left: 2.6rem;
+  right: -1rem;
+  height: 0.2rem;
+  background: var(--line);
+}
+
+.from-community .week li:last-child::after {
+  display: none;
+}
+
+.from-community .week .week-goal::before {
+  content: "7";
+  content: "7" / "";
+  background: var(--red);
+}
+
+.from-community .week-when {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 700;
+}
+
+.from-community .week-what {
+  display: block;
+  line-height: 1.45;
+}
+
+/* A film in a laptop: a black screen frame, and a base drawn with CSS. */
+.from-community .laptop-show {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.from-community .laptop-screen {
+  padding: clamp(0.6rem, 1.4vw, 1rem);
+  border-radius: 0.9rem 0.9rem 0 0;
+  background: #1A1A1A;
+}
+
+.from-community .laptop-screen video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  background: var(--black);
+}
+
+/* The base is wider than the screen, with rounded ends and a notch. */
+.from-community .laptop-base {
+  position: relative;
+  height: clamp(0.8rem, 1.6vw, 1.15rem);
+  margin-inline: -4%;
+  border-radius: 0 0 1rem 1rem;
+  background: #2E2E2E;
+}
+
+.from-community .laptop-base::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 18%;
+  height: 40%;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: #1A1A1A;
+  transform: translateX(-50%);
+}
+
+.from-community .laptop-words h3,
+.from-community .terminal-words h3 {
+  margin-bottom: 0.8rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.from-community .show-meta {
+  color: var(--grey);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* A film in a terminal window: a black bar with three dots and a file
+   name, like the code box on the Hub. The words are on the left this time. */
+.from-community .terminal-show {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.from-community .terminal {
+  border: 3px solid var(--black);
+  background: var(--black);
+  box-shadow: 1rem 1rem 0 var(--teal);
+  margin: 0 1rem 1rem 0;
+}
+
+.from-community .terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0.45rem 0.75rem;
+  color: var(--white);
+  font-family: var(--font-code);
+  font-size: 0.9rem;
+}
+
+.from-community .terminal-bar span {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: #5C5C5C;
+}
+
+.from-community .terminal-bar span:last-of-type {
+  margin-right: 0.5rem;
+}
+
+.from-community .terminal video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+}
+
+/* Part 4: the film on the left with a plum block behind it, the list of
+   access features on the right. */
+.from-community .access {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: start;
+  margin-top: 1.5rem;
+}
+
+.from-community .film video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border: 2px solid var(--white);
+  background: var(--black);
+}
+
+.from-community .film-plum {
+  padding: 0 1.1rem 0 0;
+}
+
+.from-community .film-plum video {
+  box-shadow: 1.1rem 1.1rem 0 var(--plum);
+}
+
+.from-community .film figcaption {
+  margin-top: 2rem;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.from-community .features {
+  display: grid;
+  gap: 0.95rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.from-community .features li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  column-gap: 0.85rem;
+  align-items: start;
+  line-height: 1.4;
+}
+
+.from-community .features strong {
+  display: block;
+}
+
+/* The small teal squares with an icon. The icon's "holes" take the
+   square's own colour. */
+.from-community .icon {
+  --badge-bg: var(--teal);
+  grid-row: span 2;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--badge-bg);
+  color: var(--white);
+}
+
+.from-community .icon svg {
+  width: 64%;
+  height: 64%;
+  fill: currentColor;
+}
+
+.from-community .icon-hole-line {
+  stroke: var(--badge-bg, var(--teal));
+}
+
+.from-community .honest {
+  max-width: 44rem;
+  margin: 2rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid #444;
+  font-size: 1rem;
+}
+
+/* Part 5: the course map. Each line is a coloured bar with its stops on it,
+   like a bus or train map. */
+.from-community .lines {
+  display: grid;
+  gap: 1.1rem;
+  margin: 1.75rem 0 2rem;
+}
+
+.from-community .line {
+  --line-colour: var(--teal);
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.from-community .line-plum { --line-colour: var(--plum); }
+.from-community .line-navy { --line-colour: var(--navy); }
+.from-community .line-red { --line-colour: var(--red); }
+.from-community .line-idea { --line-colour: var(--grey); }
+
+.from-community .line-name {
+  margin: 0;
+  padding: 0.45rem 0.7rem;
+  background: var(--line-colour);
+  color: var(--white);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* The stops sit on a thick bar. Each stop is a white circle with a thick
+   ring of the line's colour, and its name under it. */
+.from-community .line ol {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.from-community .line ol::before {
+  content: "";
+  position: absolute;
+  top: 0.55rem;
+  left: 0.6rem;
+  right: 0.6rem;
+  height: 0.45rem;
+  background: var(--line-colour);
+}
+
+.from-community .line li {
+  position: relative;
+  flex: 1 1 0;
+  padding-top: 1.85rem;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.from-community .line li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1.55rem;
+  height: 1.55rem;
+  border: 0.4rem solid var(--line-colour);
+  border-radius: 50%;
+  background: var(--white);
+}
+
+/* The proposed line is dashed, because it does not exist yet. */
+.from-community .line-idea .line-name {
+  background: transparent;
+  border: 2px dashed var(--grey);
+  color: var(--ink);
+}
+
+.from-community .line-idea ol::before {
+  background: repeating-linear-gradient(90deg, var(--grey) 0 0.8rem, transparent 0.8rem 1.4rem);
+}
+
+.from-community .facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.from-community .facts p {
+  margin: 0;
+  padding: 1rem 1.2rem;
+  background: var(--paper);
+  border-left: 0.4rem solid var(--black);
+}
+
+/* Part 6: three columns, like a board: now, next, later. */
+.from-community .board {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0 1.75rem;
+}
+
+.from-community .board-col {
+  background: var(--white);
+  border: 2px solid var(--black);
+}
+
+.from-community .board-col h3 {
+  margin: 0;
+  padding: 0.7rem 1.1rem;
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.from-community .board-next h3 {
+  background: var(--red);
+}
+
+.from-community .board-later {
+  border-style: dashed;
+}
+
+.from-community .board-later h3 {
+  background: var(--white);
+  color: var(--black);
+  border-bottom: 2px dashed var(--black);
+}
+
+.from-community .board-col ul {
+  margin: 0;
+  padding: 1rem 1.1rem 0.6rem 2.3rem;
+}
+
+.from-community .board-col li {
+  margin-bottom: 0.6rem;
+}
+
+.from-community .strategy {
+  max-width: 50rem;
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* ---------- 7. The next step, the footer ---------- */
+
+.from-community .closing {
+  padding-top: var(--band-space);
+  background: var(--white);
+}
+
+.from-community .closing .eyebrow {
+  color: var(--red);
+}
+
+.from-community .closing h2 {
+  margin-bottom: 1.5rem;
+  color: var(--black);
+  font-size: clamp(3.25rem, 9vw, 7.5rem);
+}
+
+.from-community .closing h2 span + span {
+  color: var(--red);
+}
+
+.from-community .closing-lede {
+  max-width: 44rem;
+  font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+}
+
+.from-community .question {
+  display: inline-block;
+  margin: 0.5rem 0 1.75rem;
+  padding: 0.6rem 1rem;
+  border-left: 0.5rem solid var(--plum);
+  background: var(--paper);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  font-weight: 700;
+}
+
+.from-community .link-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.5rem;
+  margin: 0 0 1.1rem;
+}
+
+/* The address written out, for anyone who wants to copy it by hand. */
+.from-community .link-address {
+  font-family: var(--font-code);
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* A strip at the very bottom of the band: the five course-map colours as
+   one line with five stops, the map's lines meeting. */
+.from-community .route-strip {
+  display: flex;
+  margin-top: var(--band-space);
+  height: 0.7rem;
+}
+
+.from-community .route-strip span {
+  flex: 1;
+}
+
+.from-community .route-strip span:nth-child(1) { background: var(--teal); }
+.from-community .route-strip span:nth-child(2) { background: var(--plum); }
+.from-community .route-strip span:nth-child(3) { background: var(--navy); }
+.from-community .route-strip span:nth-child(4) { background: var(--red); }
+.from-community .route-strip span:nth-child(5) { background: var(--black); }
+
+
+
+
+
+
+
+
+
+/* ---------- 8. Small screens, and reduced motion ---------- */
+
+/* Narrower than a laptop: the menu may need two lines, which is too tall to
+   keep at the top of the window. The postcards go two to a row, the week
+   two steps to a row. */
+@media (max-width: 68rem) {
+  
+
+  
+
+  .from-community .postcards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .from-community .week {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 1.75rem;
+  }
+
+  .from-community .week li:nth-child(2)::after {
+    display: none;
+  }
+
+  .from-community .line {
+    grid-template-columns: 9rem minmax(0, 1fr);
+  }
+}
+
+/* Tablets and phones: everything that sat side by side is stacked. */
+@media (max-width: 56rem) {
+  .from-community .hero-inner,
+.from-community .two-groups,
+.from-community .laptop-show,
+.from-community .terminal-show,
+.from-community .access,
+.from-community .facts,
+.from-community .board {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* In the terminal show the words come first in the page, so on a phone
+     they stay above the film. */
+
+  .from-community .line {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.6rem;
+  }
+
+  .from-community .line-name {
+    justify-self: start;
+  }
+}
+
+/* Phones: one postcard and one step to a row, and the course map's stops
+   go down the page instead of across it. */
+@media (max-width: 40rem) {
+  .from-community .postcards,
+.from-community .week {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .from-community .week li::after {
+    display: none;
+  }
+
+  .from-community .line ol {
+    flex-direction: column;
+    gap: 0.9rem;
+    padding-left: 0.2rem;
+  }
+
+  .from-community .line ol::before {
+    top: 0.6rem;
+    bottom: 0.6rem;
+    left: 0.55rem;
+    right: auto;
+    width: 0.45rem;
+    height: auto;
+  }
+
+  .from-community .line-idea ol::before {
+    background: repeating-linear-gradient(180deg, var(--grey) 0 0.8rem, transparent 0.8rem 1.4rem);
+  }
+
+  .from-community .line li {
+    padding: 0.1rem 0 0 2.4rem;
+  }
+
+  .from-community .terminal {
+    box-shadow: 0.6rem 0.6rem 0 var(--teal);
+    margin: 0 0.6rem 0.6rem 0;
+  }
+
+  .from-community .film-plum {
+    padding-right: 0.6rem;
+  }
+
+  .from-community .film-plum video {
+    box-shadow: 0.6rem 0.6rem 0 var(--plum);
+  }
+}
+
+/* People who ask their device for less motion: no smooth gliding to a part
+   of the page. The films stay still too (js/page.js). */
+
+
+/* ======================================================================
+   From the first page for people in policing
+   ====================================================================== */
+/* ---------- 4. The opening, and the chequered band ---------- */
+
+/* Two halves: the words on red, and the picture. The black between them is
+   the band's own background, showing through the 0.5rem gap. The picture
+   takes 43% of the width, but never more than 40rem: on a wide screen a
+   wider picture would be cut at the top and the bottom.
+   "container-type" lets the rules inside measure the band's own width
+   (100cqw), which is how the words line up with the column above. */
+.from-police .hero {
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) min(43%, 40rem);
+  gap: 0.5rem;
+  background: var(--black);
+}
+
+.from-police .hero-panel {
+  display: flex;
+  align-items: center;
+  min-height: clamp(28rem, 42vw, 36rem);
+  padding-block: clamp(2.25rem, 5vw, 4rem);
+  padding-right: clamp(1.5rem, 4vw, 3.5rem);
+  /* Line up with the column: the gutter, plus half of whatever the window
+     has beyond the column's width. The first line is for older browsers. */
+  padding-left: max(var(--gutter), calc((100vw - var(--column)) / 2 + var(--gutter)));
+  padding-left: max(var(--gutter), calc((100cqw - var(--column)) / 2 + var(--gutter)));
+  background: var(--red);
+  color: var(--white);
+}
+
+.from-police .hero-words {
+  max-width: 38rem;
+}
+
+.from-police .hero h1 {
+  margin-bottom: 1.4rem;
+  font-size: clamp(3.1rem, 7vw, 6rem);
+}
+
+.from-police .hero-story {
+  margin: 0;
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  line-height: 1.45;
+}
+
+/* The picture fills its half, whatever the height of the words. "absolute"
+   stops the picture's own height from changing the height of the band, and
+   "object-fit: cover" fills the space by trimming the edges, never by
+   squashing the drawing. */
+.from-police .hero-picture {
+  position: relative;
+  min-height: 18rem;
+  background: var(--night);
+}
+
+.from-police .hero-picture img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 60%;
+}
+
+/* The chequered band, as on a police cap: three rows of black and white
+   squares. One tile of the pattern is 1rem square and holds four squares;
+   the band is three squares high. */
+.from-police .checks {
+  height: 1.5rem;
+  background-color: var(--white);
+  background-image: repeating-conic-gradient(var(--black) 0 25%, var(--white) 0 50%);
+  background-size: 1rem 1rem;
+}
+
+/* ---------- 5. The bands ---------- */
+
+.from-police .chapter {
+  position: relative;
+  padding-block: var(--band-space);
+}
+
+.from-police .chapter h2 {
+  margin-bottom: 1.1rem;
+  color: var(--black);
+  font-size: clamp(2.7rem, 6vw, 4.75rem);
+}
+
+/* The second line of each headline is red. */
+.from-police .chapter h2 span + span {
+  color: var(--red);
+}
+
+.from-police .chapter .eyebrow {
+  color: var(--red);
+}
+
+/* The top of a band: only words, or (with the extra class
+   chapter-head-art) words on the left and a picture on the right. */
+.from-police .chapter-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.from-police .chapter-head-art {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.from-police .chapter-lede {
+  max-width: 42rem;
+  margin: 0 0 0.9rem;
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.from-police .chapter-small {
+  margin: 0;
+  color: var(--grey);
+  font-size: 1rem;
+}
+
+.from-police .chapter-white {
+  background: var(--white);
+}
+
+.from-police .chapter-tint {
+  background: var(--paper);
+}
+
+/* The black bands. */
+.from-police .chapter-dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.from-police .chapter-dark h2,
+.from-police .chapter-dark .eyebrow {
+  color: var(--white);
+}
+
+/* ---------- 6. Inside the bands ---------- */
+
+/* -- 1. The gap: words on the left, two figures on the right, and the
+      picture of the streets turning into a network along the bottom -- */
+
+.from-police .chapter-gap {
+  padding-bottom: 0;
+}
+
+/* The headline sits in the left column here, so it is set a little smaller
+   to keep each half on one line. */
+.from-police .chapter-gap h2 {
+  font-size: clamp(2.5rem, 4.9vw, 4rem);
+}
+
+.from-police .gap-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 1.5rem clamp(2rem, 5vw, 4.5rem);
+}
+
+.from-police .gap-inner [data-note] {
+  grid-column: 1 / -1;
+}
+
+.from-police .stats {
+  display: grid;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.from-police .stats li {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.1rem 1.4rem 1.2rem;
+  border-left: 0.5rem solid var(--red);
+  background: var(--coal);
+}
+
+.from-police .stat {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 3.75rem);
+  font-weight: 700;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.from-police .stat-words {
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.from-police .stat-source {
+  font-size: 0.85rem;
+}
+
+/* A drawing as wide as the window, at the bottom of a band. */
+.from-police .strip {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: clamp(9rem, 22vw, 18.75rem);
+  margin-top: var(--band-space);
+  object-fit: cover;
+}
+
+/* -- 2. What you bring: the evidence picture, and six cards -- */
+
+/* A square picture with a navy block behind it. The block is a shadow with
+   no blur: a copy of the shape, moved across and down. */
+.from-police .square-art {
+  width: min(19rem, 70vw);
+  margin: 0 1.1rem 1.1rem 0; /* room for the navy block */
+  box-shadow: 1.1rem 1.1rem 0 var(--navy);
+  background: var(--night);
+}
+
+.from-police .square-art img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.from-police .skills {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.from-police .skills li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-content: start;
+  gap: 0.35rem 1rem;
+  padding: 1.1rem 1.25rem 1.3rem;
+  border-top: 0.4rem solid var(--navy);
+  background: var(--paper);
+}
+
+.from-police .skills .badge {
+  grid-row: span 2;
+}
+
+.from-police .skill-you {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.from-police .skill-cyber {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* -- 3. The films. Each one is a "show": a title, the film, and its words. --
+   There are four ways of placing the three. A show takes one of them by
+   having a second class: show-a, show-b, show-c or show-d. */
+
+.from-police .show {
+  display: grid;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+/* A show that is the first thing in its band (part 4) needs no space above. */
+.from-police .wrap > .show:first-child {
+  margin-top: 0;
+}
+
+.from-police .show + .show {
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+  padding-top: clamp(2.5rem, 5vw, 4rem);
+  border-top: 1px solid var(--line);
+}
+
+.from-police .show-title {
+  padding-top: 0.75rem;
+  border-top: 0.5rem solid var(--navy);
+}
+
+.from-police .show-title h3 {
+  margin: 0 0 0.75rem;
+  color: var(--black);
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.from-police .show-words p:last-child {
+  margin-bottom: 0;
+}
+
+.from-police .show-meta {
+  color: var(--grey);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.from-police .chapter-dark .show-meta {
+  color: var(--white);
+}
+
+.from-police .show .button {
+  min-height: 2.5rem;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+.from-police .film video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border: 2px solid var(--black);
+  background: var(--black);
+}
+
+.from-police .film-wide video {
+  aspect-ratio: 16 / 10;
+}
+
+/* On the black band the film has a white edge and a navy block behind it. */
+.from-police .chapter-dark .film video {
+  border-color: var(--white);
+  box-shadow: 1rem 1rem 0 var(--navy);
+}
+
+.from-police .chapter-dark .film {
+  padding: 0 1rem 1rem 0; /* room for the block */
+}
+
+/* Position A: title on the left, film in the middle, words on the right. */
+.from-police .show-a {
+  grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.6fr) minmax(0, 0.85fr);
+  align-items: center;
+}
+
+/* Position B: the film in the middle of the page, its title above it and
+   its words underneath, all centred. */
+.from-police .show-b {
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  gap: 1.1rem;
+  max-width: 54rem;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.from-police .show-b .show-title {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.from-police .show-b .show-title :last-child {
+  margin-bottom: 0;
+}
+
+.from-police .show-b .film {
+  width: 100%;
+}
+
+.from-police .show-b .show-words {
+  max-width: 40rem;
+}
+
+/* A few lines of code, set out as the students type them. "pre-wrap" keeps
+   the spaces at the start of a line, and still lets a line break on a very
+   narrow screen. */
+.from-police .lines {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0 0 1rem;
+  padding: 0.75rem 1.1rem;
+  border-left: 0.5rem solid var(--red);
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font-code);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.from-police .lines code {
+  font-size: 1em;
+  white-space: pre-wrap;
+}
+
+/* Position C: title and words on the left, a large film on the right.
+   The title has no line above it. */
+.from-police .show-c {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
+  grid-template-areas:
+    "title film"
+    "words film";
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  gap: 0.25rem clamp(1.5rem, 4vw, 3.5rem);
+}
+
+.from-police .show-c .show-title {
+  padding-top: 0;
+  border-top: 0;
+}
+
+/* The title column of position C is narrow, so its headline is set smaller. */
+.from-police .show-c .show-title h2 {
+  font-size: clamp(2.4rem, 4.4vw, 3.75rem);
+}
+
+/* Position D: the mirror of C, with a navy block behind the film. */
+.from-police .show-d {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.8fr);
+  grid-template-areas:
+    "film title"
+    "film words";
+  grid-template-rows: auto 1fr;
+  align-items: start;
+  gap: 1rem clamp(2.5rem, 6vw, 5rem);
+}
+
+.from-police .show-c .show-title,
+.from-police .show-d .show-title {
+  grid-area: title;
+}
+
+.from-police .show-c .show-words,
+.from-police .show-d .show-words {
+  grid-area: words;
+}
+
+.from-police .show-c .film,
+.from-police .show-d .film {
+  grid-area: film;
+}
+
+.from-police .show-d .film video {
+  box-shadow: 1.25rem 1.25rem 0 var(--navy);
+}
+
+.from-police .show-d .film {
+  padding: 0 1.25rem 1.25rem 0; /* room for the block */
+}
+
+/* In positions A and D the title column is narrow, so a big headline is set smaller. */
+.from-police .show-a .show-title h2,
+.from-police .show-d .show-title h2 {
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+}
+
+.from-police .show-b .actions {
+  justify-content: center;
+}
+
+/* -- 4. Built for shifts: the list with a tick in front of each line -- */
+
+.from-police .ticks {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.from-police .ticks li {
+  margin-bottom: 0.6rem;
+  padding-left: 2rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12.5l5 5L20 6.5' fill='none' stroke='white' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") 0 0.2em / 1.25rem no-repeat;
+}
+
+/* -- 5. The route: a picture in an arch, then the steps -- */
+
+/* A picture in an arch, one of the University's brand shapes. The numbers
+   make the top a true half circle for a picture 420 wide and 500 high. */
+.from-police .arch {
+  width: min(20rem, 66vw);
+  aspect-ratio: 420 / 500;
+  overflow: hidden;
+  border-radius: 50% 50% 0 0 / 42% 42% 0 0;
+  background: var(--night);
+}
+
+.from-police .arch img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The arch has a navy copy of itself behind it, a little down and across.
+   A shadow follows the rounded corners. */
+.from-police .arch-scene {
+  width: min(16rem, 60vw);
+  margin: 0 1.1rem 1.1rem 0;
+  overflow: visible;
+  box-shadow: 1.1rem 1.1rem 0 var(--navy);
+}
+
+.from-police .arch-scene img {
+  border-radius: inherit;
+}
+
+/* The steps, numbered by the browser (counter). */
+.from-police .route {
+  display: grid;
+  gap: 0.75rem;
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.from-police .route li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 15rem) 8rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.4rem 1.25rem;
+  padding: 0.9rem 1.15rem;
+  border: 2px solid var(--black);
+  background: var(--white);
+  counter-increment: step;
+}
+
+/* The second "content" line gives the number an empty spoken name, so a
+   screen reader does not read the number twice (it already says "1 of 4").
+   Browsers that do not know that line use the first one. */
+.from-police .route li::before {
+  content: counter(step);
+  content: counter(step) / "";
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.from-police .route-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.from-police .route-name small {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.from-police .route-words {
+  font-size: 1rem;
+}
+
+/* The three labels differ in their words and their borders, not only in colour. */
+.from-police .pill {
+  justify-self: start;
+  padding: 0.2rem 0.7rem;
+  border: 2px solid var(--black);
+  font-size: 0.95rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.from-police .pill-open {
+  border-color: var(--red);
+  background: var(--red);
+  color: var(--white);
+}
+
+.from-police .pill-course {
+  background: var(--black);
+  color: var(--white);
+}
+
+.from-police .pill-idea {
+  border-style: dashed;
+}
+
+/* -- 6. Questions: four cards, two to a row -- */
+
+.from-police .questions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.from-police .q {
+  padding: 1.1rem 1.35rem 1.25rem;
+  border-left: 0.5rem solid var(--red);
+  background: var(--white);
+}
+
+.from-police .q h3 {
+  margin-bottom: 0.5rem;
+  color: var(--black);
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.from-police .q p {
+  margin: 0;
+}
+
+/* ---------- 7. The start, the footer ---------- */
+
+/* White, with the slogan in black and red, and the local skyline at dawn at the
+   bottom, standing on the chequered band and the black footer. */
+.from-police .closing {
+  padding-top: var(--band-space);
+  background: var(--white);
+}
+
+.from-police .closing h2 {
+  margin-bottom: 1.75rem;
+  color: var(--black);
+  font-size: clamp(3.25rem, 9.4vw, 8rem);
+}
+
+.from-police .closing h2 span + span {
+  color: var(--red);
+}
+
+.from-police .link-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.5rem;
+  margin: 0 0 1.1rem;
+}
+
+/* The address written out, for anyone who wants to copy it by hand. */
+.from-police .link-address {
+  font-family: var(--font-code);
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.from-police .link-small {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+/* The skyline is one wide picture. "object-fit: cover" lets it fill the
+   strip at any window width by cutting off its two ends, never squashing it. */
+.from-police .skyline {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: clamp(8rem, 18vw, 14.5rem);
+  margin-top: var(--band-space);
+  object-fit: cover;
+  object-position: center bottom;
+}
+
+
+
+
+
+
+
+
+
+/* ---------- 8. Small screens, and reduced motion ---------- */
+
+/* Narrower than a laptop: the menu may need two lines, which is too tall to
+   keep at the top of the window. The cards go two to a row, and position A
+   has no room for three columns, so its words go under its title. */
+@media (max-width: 68rem) {
+  
+
+  
+
+  .from-police .skills {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .from-police .show-a {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.5fr);
+    grid-template-areas:
+      "title film"
+      "words film";
+    grid-template-rows: auto 1fr;
+    align-items: start;
+  }
+
+  .from-police .show-a .show-title {
+    grid-area: title;
+  }
+
+  .from-police .show-a .show-words {
+    grid-area: words;
+  }
+
+  .from-police .show-a .film {
+    grid-area: film;
+  }
+
+  .from-police .route li {
+    grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  }
+
+  .from-police .route-words {
+    grid-column: 2 / -1;
+  }
+}
+
+/* Tablets and phones: everything that sat side by side is stacked. */
+@media (max-width: 56rem) {
+  .from-police .hero,
+.from-police .gap-inner,
+.from-police .chapter-head-art,
+.from-police .show-a,
+.from-police .show-c,
+.from-police .show-d {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: none;
+    grid-template-rows: none;
+  }
+
+  .from-police .show .show-title,
+.from-police .show .show-words,
+.from-police .show .film {
+    grid-area: auto;
+  }
+
+  /* The picture of the opening goes under the words, with the black line
+     between them across the page. */
+  .from-police .hero-panel {
+    min-height: 0;
+    padding-inline: var(--gutter);
+  }
+
+  .from-police .hero-picture {
+    min-height: 0;
+    height: clamp(16rem, 72vw, 36rem);
+  }
+
+  .from-police .hero-picture img {
+    object-position: 50% 70%;
+  }
+
+  .from-police .logo img {
+    height: 5.25rem;
+    margin-left: -1.2rem;
+  }
+
+  .from-police .unit {
+    padding-left: 0.8rem;
+    font-size: 1.15rem;
+  }
+
+  
+
+  
+
+  
+
+  .from-police .square-art,
+.from-police .arch-scene {
+    justify-self: start;
+  }
+
+  .from-police .questions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Phones. */
+@media (max-width: 40rem) {
+  .from-police .skills {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .from-police .logo img {
+    margin-left: -1rem;
+  }
+
+  .from-police .route li {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+
+  .from-police .route .pill,
+.from-police .route-words {
+    grid-column: 2;
+  }
+
+  .from-police .show-d .film video {
+    box-shadow: 0.6rem 0.6rem 0 var(--navy);
+  }
+
+  .from-police .show-d .film {
+    padding: 0 0.6rem 0.6rem 0;
+  }
+
+  .from-police .chapter-dark .film video {
+    box-shadow: 0.6rem 0.6rem 0 var(--navy);
+  }
+
+  .from-police .chapter-dark .film {
+    padding: 0 0.6rem 0.6rem 0;
+  }
+
+  .from-police .square-art {
+    width: min(15rem, 70vw);
+  }
+
+  .from-police .arch-scene {
+    width: min(12rem, 56vw);
+  }
+}
+
+/* For people who ask their device for less motion: no gliding to a part of
+   the page, and no transitions. (js/page.js also leaves the films still.) */
+@media (prefers-reduced-motion: reduce) {
+  
+
+  .from-police *,
+.from-police *::before,
+.from-police *::after {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}
+
+/* ======================================================================
+   From the page for colleagues about policing
+   ====================================================================== */
+/* ---------- 4. The opening, and the chequered band ---------- */
+
+/* Cover 9: a light grey band, the words on the left, and a film on the
+   right with two blocks of colour stepping out behind it. */
+.from-police2 .hero {
+  padding-block: clamp(2.25rem, 5vw, 4rem) clamp(2.75rem, 6vw, 4.5rem);
+  background: var(--paper);
+}
+
+.from-police2 .hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+.from-police2 .hero .eyebrow {
+  color: var(--red);
+}
+
+.from-police2 .hero h2 {
+  margin-bottom: 1.2rem;
+  color: var(--black);
+  font-size: clamp(3rem, 6.4vw, 5.6rem);
+}
+
+.from-police2 .hero h2 span + span {
+  color: var(--red);
+}
+
+.from-police2 .lede {
+  font-size: clamp(1.15rem, 1.6vw, 1.3rem);
+  line-height: 1.45;
+}
+
+/* The two blocks: dark green first, navy behind it. The padding leaves
+   room for them on the right and below. */
+.from-police2 .hero-film {
+  padding: 0 2.4rem 2.4rem 0;
+}
+
+.from-police2 .hero-film video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border: 3px solid var(--black);
+  background: var(--black);
+  box-shadow: 1.2rem 1.2rem 0 var(--green), 2.4rem 2.4rem 0 var(--navy);
+}
+
+.from-police2 .hero-film figcaption {
+  margin-top: 3.2rem;
+  font-size: 0.95rem;
+  color: var(--grey);
+}
+
+/* The chequered band from police cars and caps, in navy and white: a
+   pattern drawn with CSS, no picture. A conic gradient goes round a point
+   like the hand of a clock: navy for a quarter turn, white for the next,
+   and again. That makes a tiny chessboard, repeated every 1rem. */
+.from-police2 .checks {
+  height: 1rem;
+  background-image: repeating-conic-gradient(var(--navy) 0 25%, var(--white) 0 50%);
+  background-size: 1rem 1rem;
+}
+
+/* ---------- 5. The bands ---------- */
+
+.from-police2 .chapter {
+  position: relative;
+  padding-block: var(--band-space);
+}
+
+.from-police2 .chapter h2 {
+  margin-bottom: 1.1rem;
+  color: var(--black);
+  font-size: clamp(2.35rem, 6vw, 4.75rem);
+}
+
+/* The second line of each headline is red. */
+.from-police2 .chapter h2 span + span {
+  color: var(--red);
+}
+
+.from-police2 .chapter .eyebrow {
+  color: var(--red);
+}
+
+.from-police2 .chapter-lede {
+  max-width: 44rem;
+  margin: 0 0 1.5rem;
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.from-police2 .chapter-white {
+  background: var(--white);
+}
+
+.from-police2 .chapter-tint {
+  background: var(--paper);
+}
+
+.from-police2 .chapter-dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.from-police2 .chapter-dark h2,
+.from-police2 .chapter-dark .eyebrow {
+  color: var(--white);
+}
+
+/* ---------- 6. Inside the bands ---------- */
+
+/* Part 1: three figures in a row, each over a dark green bar. */
+.from-police2 .stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem clamp(1.5rem, 3vw, 2.5rem);
+  margin: 2rem 0 1.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.from-police2 .stat {
+  display: block;
+  padding-bottom: 0.5rem;
+  border-bottom: 0.55rem solid var(--green);
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  font-weight: 700;
+  line-height: 0.95;
+  white-space: nowrap;
+}
+
+.from-police2 .stat-words {
+  display: block;
+  margin: 0.7rem 0 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.from-police2 .stat-source {
+  display: block;
+  color: #C8C8C8;
+  font-size: 0.9rem;
+}
+
+.from-police2 .need-words {
+  max-width: 50rem;
+  margin: 0;
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+}
+
+/* Part 2: the map on the left, the day's five cases on the right. */
+.from-police2 .cases {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+/* The map stays in view while the cases scroll past it. */
+.from-police2 .map {
+  position: sticky;
+  top: 4.5rem;
+}
+
+.from-police2 .map img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* The timeline: a line down the left, a time stamp for each case. */
+.from-police2 .timeline {
+  margin: 0;
+  padding: 0 0 0 1.6rem;
+  list-style: none;
+  border-left: 0.3rem solid var(--black);
+}
+
+.from-police2 .timeline li {
+  position: relative;
+  margin-bottom: 1.5rem;
+  padding: 1.1rem 1.25rem 0.4rem;
+  background: var(--paper);
+}
+
+/* A small black square on the line, level with each case's time. */
+.from-police2 .timeline li::before {
+  content: "";
+  position: absolute;
+  top: 1.35rem;
+  left: -2.25rem;
+  width: 1rem;
+  height: 1rem;
+  background: var(--black);
+}
+
+.from-police2 .when {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.4rem;
+  font-family: var(--font-code);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* The case number: a red circle, as on the map. */
+.from-police2 .case-no {
+  display: inline-grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+
+.from-police2 .timeline h3 {
+  font-size: 1.3rem;
+}
+
+.from-police2 .cs {
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
+}
+
+.from-police2 .taught {
+  color: var(--green);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+/* Part 3: three steps in a row, joined by arrows. */
+.from-police2 .process {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem;
+  margin: 1.5rem 0 1.5rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.from-police2 .process li {
+  position: relative;
+  padding: 1.25rem 1.3rem 0.4rem;
+  background: var(--white);
+  border-top: 0.55rem solid var(--navy);
+  counter-increment: step;
+}
+
+.from-police2 .process li::before {
+  content: counter(step);
+  content: counter(step) / "";
+  display: block;
+  margin-bottom: 0.3rem;
+  color: var(--green);
+  font-family: var(--font-display);
+  font-size: 2.6rem;
+  line-height: 1;
+}
+
+/* The arrow between two steps: a triangle made of borders. */
+.from-police2 .process li + li::after {
+  content: "";
+  position: absolute;
+  top: 45%;
+  left: -1.85rem;
+  border-top: 0.8rem solid transparent;
+  border-bottom: 0.8rem solid transparent;
+  border-left: 1.1rem solid var(--black);
+}
+
+.from-police2 .process h3 {
+  font-size: 1.3rem;
+}
+
+.from-police2 .process-after {
+  max-width: 50rem;
+  margin: 0;
+  font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+  font-weight: 700;
+}
+
+/* Part 4: the three levels. Each is a grid of two columns, laid out
+   differently. */
+.from-police2 .level {
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.from-police2 .level-log {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+}
+
+.from-police2 .level-steps {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+}
+
+.from-police2 .level-code {
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.6fr);
+}
+
+.from-police2 .level-words h3 {
+  margin-bottom: 0.8rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.from-police2 .show-meta {
+  color: var(--grey);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.from-police2 .film video,
+.from-police2 .browser video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  border: 2px solid var(--black);
+  background: var(--black);
+}
+
+/* Level 1: a navy block behind the film. */
+.from-police2 .film-navy {
+  padding: 0 1.2rem 1.2rem 0;
+}
+
+.from-police2 .film-navy video {
+  box-shadow: 1.2rem 1.2rem 0 var(--navy);
+}
+
+/* The log: numbered lines in a typewriter face, like an incident log. */
+.from-police2 .log {
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: entry;
+  font-family: var(--font-code);
+  font-size: 0.95rem;
+}
+
+.from-police2 .log li {
+  display: grid;
+  grid-template-columns: 2.4rem minmax(0, 1fr);
+  padding: 0.45rem 0;
+  border-bottom: 1px dashed var(--line);
+  counter-increment: entry;
+}
+
+.from-police2 .log li::before {
+  content: counter(entry, decimal-leading-zero);
+  content: counter(entry, decimal-leading-zero) / "";
+  color: var(--green);
+  font-weight: 700;
+}
+
+/* Level 2: the film in a browser window, with an address bar. */
+.from-police2 .browser {
+  border: 3px solid var(--black);
+  background: var(--black);
+}
+
+.from-police2 .browser video {
+  border: 0;
+}
+
+.from-police2 .browser-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  background: #E9E9E9;
+}
+
+.from-police2 .dots {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.from-police2 .dots span {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: #9A9A9A;
+}
+
+.from-police2 .address {
+  flex: 1;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: var(--white);
+  font-family: var(--font-code);
+  font-size: 0.9rem;
+}
+
+/* The seven steps: two columns, each number in a dark green square. */
+.from-police2 .seven {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem 1rem;
+  margin: 0 0 1rem;
+  padding: 0;
+  list-style: none;
+  counter-reset: seven;
+}
+
+.from-police2 .seven li {
+  display: grid;
+  grid-template-columns: 1.8rem minmax(0, 1fr);
+  column-gap: 0.55rem;
+  align-items: start;
+  font-size: 0.98rem;
+  line-height: 1.3;
+  counter-increment: seven;
+}
+
+.from-police2 .seven li::before {
+  content: counter(seven);
+  content: counter(seven) / "";
+  display: grid;
+  place-items: center;
+  width: 1.8rem;
+  height: 1.8rem;
+  background: var(--green);
+  color: var(--white);
+  font-weight: 700;
+}
+
+/* Level 3: a wide film, with the code on a card over its bottom-left
+   corner, and a dark green block behind the card. */
+.from-police2 .code-film {
+  position: relative;
+  padding-bottom: 6rem;
+}
+
+.from-police2 .code-card {
+  position: absolute;
+  left: -1.5rem;
+  bottom: 0;
+  margin: 0;
+  padding: 0.9rem 1.1rem;
+  background: var(--white);
+  border: 2px solid var(--black);
+  box-shadow: 0.8rem 0.8rem 0 var(--green);
+  font-family: var(--font-code);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.from-police2 .code-card code {
+  white-space: pre;
+}
+
+/* Part 5: the rota as a table, and the reasons beside it. */
+.from-police2 .rota-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+  margin-top: 1rem;
+}
+
+.from-police2 .rota {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--coal);
+}
+
+.from-police2 .rota caption {
+  padding-bottom: 0.6rem;
+  color: #C8C8C8;
+  font-size: 0.95rem;
+  text-align: left;
+}
+
+.from-police2 .rota th,
+.from-police2 .rota td {
+  padding: 0.6rem 0.9rem;
+  border-bottom: 1px solid #333;
+  text-align: left;
+}
+
+.from-police2 .rota thead th {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* The ten minutes: a dark green slot, white words. */
+.from-police2 .slot {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  background: var(--green);
+  color: var(--white);
+  font-weight: 700;
+}
+
+.from-police2 .slot-off {
+  background: transparent;
+  border: 2px dashed #8A8A8A;
+  font-weight: 400;
+}
+
+.from-police2 .ticks {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.from-police2 .ticks li {
+  position: relative;
+  margin-bottom: 0.9rem;
+  padding-left: 2rem;
+}
+
+/* A tick drawn with two borders of a rotated box. */
+.from-police2 .ticks li::before {
+  content: "";
+  position: absolute;
+  top: 0.2rem;
+  left: 0.3rem;
+  width: 0.5rem;
+  height: 0.95rem;
+  border-right: 0.22rem solid var(--white);
+  border-bottom: 0.22rem solid var(--white);
+  transform: rotate(45deg);
+}
+
+.from-police2 .need-box {
+  margin: 0;
+  padding: 1rem 1.2rem;
+  border-left: 0.5rem solid var(--green);
+  background: var(--coal);
+}
+
+/* Part 6: computing down the road, with a strip of punched paper tape. */
+.from-police2 .bletchley {
+  position: relative;
+  max-width: 52rem;
+  margin-bottom: var(--band-space);
+  padding: 1.4rem 1.6rem 2.6rem;
+  background: var(--green);
+  color: var(--white);
+}
+
+.from-police2 .bletchley-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.from-police2 .bletchley p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Paper tape: a pale strip with rows of holes, drawn with a repeating
+   radial gradient (a circle, repeated). */
+.from-police2 .tape {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.4rem;
+  background-color: #EFE6D2;
+  background-image: radial-gradient(circle, var(--green) 0.18rem, transparent 0.2rem);
+  background-size: 0.9rem 0.7rem;
+}
+
+/* The road: four stops along a grey road with a dashed white line, each
+   stop a roundabout (a white circle with a thick ring). */
+.from-police2 .road {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.from-police2 .road::before {
+  content: "";
+  position: absolute;
+  top: 1.1rem;
+  left: 0;
+  right: 0;
+  height: 0.9rem;
+  background:
+    linear-gradient(90deg, var(--white) 0 50%, transparent 50%) 0 50% / 2rem 0.18rem repeat-x,
+    #44485C;
+}
+
+.from-police2 .road li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding-top: 3.6rem;
+}
+
+.from-police2 .road li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3.1rem;
+  height: 3.1rem;
+  border: 0.55rem solid var(--navy);
+  border-radius: 50%;
+  background: var(--white);
+}
+
+.from-police2 .road li:nth-child(2)::before {
+  border-color: var(--green);
+  border-style: dashed;
+}
+
+.from-police2 .road-name {
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.3;
+}
+
+.from-police2 .road-words {
+  line-height: 1.45;
+}
+
+.from-police2 .pill {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border: 2px solid var(--black);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.from-police2 .pill-open {
+  border-color: var(--red);
+  background: var(--red);
+  color: var(--white);
+}
+
+.from-police2 .pill-course {
+  background: var(--black);
+  color: var(--white);
+}
+
+.from-police2 .pill-idea {
+  border-style: dashed;
+}
+
+/* Part 7: questions that open and close. <details> does this by itself,
+   with no script. The + turns into a − when a question is open. */
+.from-police2 .faq {
+  max-width: 52rem;
+  border-top: 2px solid var(--black);
+}
+
+.from-police2 .faq details {
+  border-bottom: 2px solid var(--black);
+}
+
+.from-police2 .faq summary {
+  position: relative;
+  padding: 1rem 3rem 1rem 0;
+  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+  font-weight: 700;
+  list-style: none;
+  cursor: pointer;
+}
+
+.from-police2 .faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.from-police2 .faq summary::after {
+  content: "+";
+  content: "+" / "";
+  position: absolute;
+  top: 0.55rem;
+  right: 0.4rem;
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.from-police2 .faq details[open] summary::after {
+  content: "\2212";
+  content: "\2212" / "";
+}
+
+.from-police2 .faq details p {
+  margin: 0 0 1.1rem;
+  max-width: 46rem;
+}
+
+/* ---------- 7. The closing, the footer ---------- */
+
+.from-police2 .closing {
+  padding-top: var(--band-space);
+  background: var(--white);
+}
+
+.from-police2 .closing h2 {
+  margin-bottom: 1.75rem;
+  color: var(--black);
+  font-size: clamp(2.8rem, 9vw, 7.5rem);
+}
+
+.from-police2 .closing h2 span + span {
+  color: var(--red);
+}
+
+.from-police2 .link-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.9rem 1.5rem;
+  margin: 0 0 1.1rem;
+}
+
+/* The address written out, for anyone who wants to copy it by hand. */
+.from-police2 .link-address {
+  font-family: var(--font-code);
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* The roundabouts at night: one wide picture that fills the strip at any
+   window width by cutting off its two ends, never squashing it. */
+.from-police2 .skyline {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: clamp(8rem, 18vw, 14rem);
+  margin-top: var(--band-space);
+  object-fit: cover;
+  object-position: center;
+  background: #0C0F1E;
+}
+
+
+
+
+
+
+
+
+
+/* ---------- 8. Small screens, and reduced motion ---------- */
+
+/* Narrower than a laptop: the menu may need two lines, which is too tall to
+   keep at the top of the window. The road's stops go two to a row. */
+@media (max-width: 68rem) {
+  
+
+  
+
+  .from-police2 .road {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 2.5rem;
+  }
+
+  .from-police2 .road::before {
+    display: none;
+  }
+
+  .from-police2 .stats {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+/* Tablets and phones: everything that sat side by side is stacked. */
+@media (max-width: 56rem) {
+  .from-police2 .hero-inner,
+.from-police2 .cases,
+.from-police2 .level-log,
+.from-police2 .level-steps,
+.from-police2 .level-code,
+.from-police2 .rota-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .from-police2 .map {
+    position: static;
+    max-width: 30rem;
+  }
+
+  .from-police2 .process {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+
+  .from-police2 .process li + li::after {
+    display: none;
+  }
+
+  /* On a phone the code card sits under the film, not over its corner. */
+  .from-police2 .code-film {
+    padding-bottom: 0;
+  }
+
+  .from-police2 .code-card {
+    position: static;
+    margin-top: 1.2rem;
+    overflow-x: auto;
+  }
+}
+
+/* Phones: one figure, one stop to a row; thinner blocks behind the films. */
+@media (max-width: 40rem) {
+  .from-police2 .stats,
+.from-police2 .road,
+.from-police2 .seven {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .from-police2 .hero-film {
+    padding: 0 1.2rem 1.2rem 0;
+  }
+
+  .from-police2 .hero-film video {
+    box-shadow: 0.6rem 0.6rem 0 var(--green), 1.2rem 1.2rem 0 var(--navy);
+  }
+
+  .from-police2 .hero-film figcaption {
+    margin-top: 1.8rem;
+  }
+
+  .from-police2 .film-navy {
+    padding: 0 0.6rem 0.6rem 0;
+  }
+
+  .from-police2 .film-navy video {
+    box-shadow: 0.6rem 0.6rem 0 var(--navy);
+  }
+
+  .from-police2 .timeline {
+    padding-left: 1.1rem;
+  }
+
+  .from-police2 .timeline li::before {
+    left: -1.75rem;
+  }
+}
+
+/* People who ask their device for less motion: no smooth gliding to a part
+   of the page. The films stay still too (js/page.js). */
+
+
+/* ---------- 4. What this page adds ---------- */
+
+/* The menu has twelve tabs, so each tab gets a little less space around its
+   word, and the words are a touch smaller. They then fit on one line on a
+   laptop. The row still starts so the first word lines up with the logo. */
+.nav {
+  --tab-pad: clamp(0.85rem, 1.2vw, 1rem);
+}
+
+.nav .wrap {
+  padding-left: calc(var(--gutter) - var(--tab-pad));
+}
+
+.nav a {
+  padding-right: var(--tab-pad);
+  padding-left: var(--tab-pad);
+  font-size: 0.9rem;
+}
+
+/* The opening, as a landing page: one short line under the headline. */
+.from-repack .hero-short {
+  max-width: 32rem;
+  font-size: clamp(1.3rem, 2.2vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* On wide screens the short line and the buttons sit halfway up the arches,
+   not down at their feet. */
+@media (min-width: 56.0625rem) {
+  .from-repack .hero-words {
+    align-self: center;
+  }
+}
+
+/* Part 15: the headline on the left, the speech bubbles on the right. CEFL is
+   bigger than the rest of the headline, but only about twice as big. */
+.cefl-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1.5rem clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.cefl-head .chapter-lede {
+  margin-bottom: 0;
+}
+
+.from-repack .chapter h2.cefl-title span:first-child {
+  margin-bottom: 0.1rem;
+  font-size: clamp(3.4rem, 9vw, 7.25rem);
+  line-height: 0.85;
+}
+
+/* Part 15: the arch of the opening, and in it a globe and a speech bubble:
+   English as a foreign language, the C, E, F and L of CEFL. */
+.cefl-arch {
+  display: grid;
+  align-content: center;
+  width: clamp(9rem, 15vw, 12rem);
+  aspect-ratio: 5 / 6;
+  margin-right: 0.5rem;
+  padding: 2.6rem 1rem 1rem;
+  border-radius: 999px 999px 0 0;
+  background: var(--plum);
+  box-shadow: inset 0 0 0 0.55rem var(--plum), inset 0 0 0 0.7rem rgba(255, 255, 255, 0.35);
+}
+
+.cefl-globe {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cefl-globe-word {
+  color: var(--white);
+  fill: var(--white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Part 15: four white cards, each with a coloured line on top, and a small
+   picture in a circle of the same colour. */
+#strength .tile {
+  --card: var(--teal);
+  border-top-color: var(--card);
+  background: var(--white);
+  color: var(--ink);
+}
+
+#strength .card-plum {
+  --card: var(--plum);
+}
+
+#strength .card-navy {
+  --card: var(--navy);
+}
+
+#strength .card-red {
+  --card: var(--red);
+}
+
+#strength .tile-kicker {
+  color: var(--card);
+}
+
+.card-icon {
+  display: grid;
+  place-items: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  margin-bottom: 0.9rem;
+  border-radius: 50%;
+  background: var(--card, var(--teal));
+  color: var(--white);
+}
+
+/* Every line icon from the store at the top of the page. */
+.card-icon svg,
+.person-icon svg,
+.mock-icon svg {
+  display: block;
+  width: 58%;
+  height: 58%;
+}
+
+/* Part 15: who to talk to, after a line: three white cards like the four
+   above, each with its picture. */
+.contacts {
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 3px solid var(--plum);
+}
+
+/* The heading and the thanks on the left; on the right, a cup of coffee
+   and two speech bubbles: come and talk. */
+.contacts-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem 2rem;
+  align-items: end;
+  margin-bottom: 1.25rem;
+}
+
+.contacts-head .contacts-lede {
+  margin-bottom: 0;
+}
+
+.contacts-cafe {
+  display: block;
+  width: clamp(9rem, 16vw, 13rem);
+  height: auto;
+}
+
+.contacts-title {
+  margin-bottom: 0.4rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.6rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.contacts-lede {
+  max-width: 46rem;
+  margin: 0 0 1.25rem;
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-card {
+  --card: var(--teal);
+  padding: 1.2rem 1.25rem 1.3rem;
+  border-top: 0.5rem solid var(--card);
+  background: var(--white);
+}
+
+.contact-card p {
+  margin: 0 0 0.6rem;
+}
+
+.contact-card h4 {
+  margin: 0 0 0.45rem;
+  font-size: 1.25rem;
+}
+
+.contact-role {
+  color: var(--card);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.contact-line {
+  margin-bottom: 0 !important;
+  overflow-wrap: anywhere;
+  font-weight: 700;
+}
+
+/* Part 1: the words on the left; on the right, someone at a laptop with
+   the Hub moving on its screen, in front of a pale plum circle. */
+.people-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
+  gap: 1.5rem clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.people-head .chapter-lede {
+  margin-bottom: 0;
+}
+
+.watch {
+  margin: 0;
+}
+
+.watch-stage {
+  position: relative;
+  aspect-ratio: 5 / 4;
+}
+
+.watch-glow {
+  position: absolute;
+  top: 0;
+  left: 16%;
+  width: 72%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #EFE4EC;
+}
+
+.watch-laptop {
+  position: absolute;
+  right: 13%;
+  bottom: 5%;
+  width: 66%;
+}
+
+.watch-person {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 38%;
+  height: auto;
+}
+
+.watch-plant {
+  position: absolute;
+  right: 1%;
+  bottom: 5%;
+  width: 11%;
+  height: auto;
+}
+
+.watch-desk {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 5%;
+  background: var(--plum);
+}
+
+.watch figcaption {
+  margin-top: 0.8rem;
+  color: var(--grey);
+  font-size: 0.95rem;
+}
+
+/* The two groups, as two labels under the headline. */
+.group-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0 0 1.4rem;
+  padding: 0;
+  list-style: none;
+}
+
+.group-key li {
+  padding: 0.5rem 0.95rem 0.45rem;
+  color: var(--white);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.group-key .group-mature {
+  background: var(--plum);
+}
+
+.group-key .group-needs {
+  background: var(--teal);
+}
+
+.group-key .group-eal {
+  background: var(--green);
+}
+
+/* Each postcard has a line on top in its group's colour (both colours
+   for someone in both groups), and a picture of their work in a circle. */
+.from-community .postcard::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  left: -1px;
+  height: 0.45rem;
+  background: var(--plum);
+}
+
+.from-community .postcard-needs::before {
+  background: var(--teal);
+}
+
+.from-community .postcard-both::before {
+  background: linear-gradient(90deg, var(--plum) 50%, var(--teal) 50%);
+}
+
+.from-community .postcard {
+  padding-top: 1.6rem;
+}
+
+.person-icon {
+  position: absolute;
+  top: 1.3rem;
+  right: 1.2rem;
+  display: grid;
+  place-items: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  border-radius: 50%;
+  background: var(--icon);
+  color: var(--white);
+}
+
+.icon-navy {
+  --icon: var(--navy);
+}
+
+.icon-plum {
+  --icon: var(--plum);
+}
+
+.icon-green {
+  --icon: var(--green);
+}
+
+.icon-teal {
+  --icon: var(--teal);
+}
+
+.icon-red {
+  --icon: var(--red);
+}
+
+/* The sixth card says who is in each group, on navy. */
+.from-community .postcard-key {
+  border-color: var(--navy);
+  background: var(--navy);
+  box-shadow: none;
+  color: var(--white);
+}
+
+.from-community .postcard-key::before {
+  background: linear-gradient(90deg, var(--plum) 50%, var(--teal) 50%);
+}
+
+.from-community .postcard-key h3 {
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+
+.postcard-key p {
+  margin: 0 0 0.9rem;
+}
+
+.postcard-key .key-group {
+  margin-bottom: 0.4rem;
+}
+
+.postcard-key .tag {
+  box-shadow: 0 0 0 2px var(--white);
+}
+
+/* What can hold each group back, as a short list on the navy card. */
+.postcard-key .key-list {
+  margin: 0 0 1rem;
+  padding-left: 1.1rem;
+  font-size: 0.92rem;
+}
+
+.postcard-key .key-list li {
+  margin-bottom: 0.2rem;
+}
+
+/* The two groups as small coloured labels on the postcards. */
+.tag {
+  display: inline-block;
+  margin-right: 0.3rem;
+  padding: 0.18rem 0.5rem 0.12rem;
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  vertical-align: 0.1em;
+}
+
+.tag-mature {
+  background: var(--plum);
+}
+
+.tag-needs {
+  background: var(--teal);
+}
+
+.tag-eal {
+  background: var(--green);
+}
+
+.postcard-tags {
+  margin: 0 0 0.7rem;
+}
+
+/* What both groups need first: a black bar under the postcards. */
+.both-bar {
+  margin: 1.5rem 0 0;
+  padding: 1rem 1.25rem;
+  background: var(--black);
+  color: var(--white);
+  font-size: 1.05rem;
+}
+
+/* Part 2, the Hub: the words on the left, the Hub's own page on the right. */
+.hub-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 2rem clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.hub-facts {
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each fact starts with a small red square. */
+.hub-facts li {
+  position: relative;
+  margin-bottom: 0.55rem;
+  padding-left: 1.4rem;
+  font-weight: 700;
+}
+
+.hub-facts li::before {
+  content: "";
+  position: absolute;
+  top: 0.45em;
+  left: 0;
+  width: 0.65rem;
+  height: 0.65rem;
+  background: var(--red);
+}
+
+/* A laptop drawn with CSS, for the films in parts 1 and 2: a dark frame,
+   and a base with a notch. */
+.hub-still {
+  margin: 0;
+}
+
+.device-laptop-screen {
+  padding: clamp(0.5rem, 1.2vw, 0.85rem);
+  border-radius: 0.9rem 0.9rem 0 0;
+  background: #1A1A1A;
+}
+
+.device-laptop-screen video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--black);
+}
+
+.device-laptop-base {
+  position: relative;
+  height: clamp(0.8rem, 1.6vw, 1.15rem);
+  margin-inline: -4%;
+  border-radius: 0 0 1rem 1rem;
+  background: #2E2E2E;
+}
+
+.device-laptop-base::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 18%;
+  height: 40%;
+  border-radius: 0 0 0.5rem 0.5rem;
+  background: #1A1A1A;
+  transform: translateX(-50%);
+}
+
+.hub-still figcaption {
+  margin: 1.2rem 0 0;
+  color: var(--grey);
+  font-size: 0.95rem;
+}
+
+/* Part 3, the smart fridge: the drawing on the left, the words and the
+   code on the right, the other way round from the terminal above it. */
+.fridge-show {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 2rem clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+  margin-top: clamp(2.5rem, 5vw, 4rem);
+}
+
+.fridge-art {
+  margin: 0;
+}
+
+.fridge-art img {
+  display: block;
+  width: 100%;
+  max-width: 30rem;
+  height: auto;
+}
+
+/* The code, on black, with a teal line along its top. */
+.fridge-code,
+.guided-code {
+  margin: 1rem 0;
+  padding: 1rem 1.2rem;
+  overflow-x: auto;
+  border-top: 0.45rem solid var(--teal);
+  background: var(--coal);
+  color: var(--white);
+  font-family: var(--font-code);
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+/* Inside these two code blocks every line keeps its own line: the page's
+   rule for code keeps one line from breaking, and pre keeps the lines. */
+.fridge-code code,
+.guided-code code {
+  font-size: inherit;
+  white-space: pre;
+}
+
+/* The fridge's title, like the titles of the two films above it. */
+.from-community .fridge-words h3 {
+  margin-bottom: 0.8rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+/* Part 13: CEFL and the School of Computer Science and Technology, two cards
+   with arrows between. Each side's name is big, in its card's colour. */
+.swap-card .swap-name {
+  margin-bottom: 0.7rem;
+  color: var(--teal);
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.swap-cs .swap-name {
+  color: var(--navy);
+}
+
+.swap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 4.5rem minmax(0, 1fr);
+  align-items: center;
+  margin: 1.5rem 0 1.25rem;
+}
+
+.swap-card {
+  height: 100%;
+  padding: 1.4rem 1.5rem 1.6rem;
+  border-top: 0.55rem solid var(--teal);
+  background: var(--paper);
+}
+
+.swap-cs {
+  border-top-color: var(--navy);
+}
+
+#together .swap-card {
+  background: var(--white);
+}
+
+.swap-card p {
+  margin: 0;
+}
+
+.swap-card h3 {
+  margin-bottom: 0.6rem;
+}
+
+/* The label that marks the offer clearly. */
+.swap-tag {
+  display: inline-block;
+  margin-bottom: 0.9rem !important;
+  padding: 0.3rem 0.7rem 0.25rem;
+  background: var(--teal);
+  color: var(--white);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.swap-cs .swap-tag {
+  background: var(--navy);
+}
+
+/* Two arrows, one each way: a line and a point, drawn with borders. */
+.swap-arrows {
+  display: grid;
+  justify-items: center;
+  gap: 0.9rem;
+  margin: 0;
+}
+
+.swap-arrow {
+  position: relative;
+  display: block;
+  width: 2.6rem;
+  height: 0.28rem;
+  background: var(--black);
+}
+
+.swap-arrow::after {
+  content: "";
+  position: absolute;
+  top: calc(50% - 0.42rem);
+  right: 0;
+  width: 0.84rem;
+  height: 0.84rem;
+  border-top: 0.28rem solid var(--black);
+  border-right: 0.28rem solid var(--black);
+  transform: rotate(45deg);
+}
+
+.swap-arrow-back {
+  transform: rotate(180deg);
+}
+
+.swap-more {
+  max-width: 50rem;
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+/* Part 5: a prototype task on the right of each pair, built in HTML so its
+   words stay sharp at any size. Navy for policing, teal for local adults,
+   the Hub's own black and red for Computer Science. */
+.mock {
+  border: 3px solid var(--navy);
+  background: var(--white);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.mock-adult {
+  border-color: var(--teal);
+}
+
+.mock-access {
+  border-color: var(--black);
+}
+
+.mock-head {
+  padding: 0.75rem 1rem 0.7rem;
+  background: var(--navy);
+  color: var(--white);
+}
+
+.mock-adult .mock-head {
+  background: var(--teal);
+}
+
+.mock-access .mock-head {
+  border-bottom: 0.35rem solid var(--red);
+  background: var(--black);
+}
+
+.mock-eyebrow {
+  margin: 0 0 0.2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mock-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.mock-body {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.mock-text {
+  margin: 0 0 0.7rem;
+}
+
+.mock-log {
+  width: 100%;
+  margin: 0 0 0.7rem;
+  border-collapse: collapse;
+  font-family: var(--font-code);
+  font-size: 0.78rem;
+}
+
+.mock-log th {
+  padding: 0.25rem 0.5rem;
+  border-bottom: 2px solid var(--navy);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.mock-log td {
+  padding: 0.2rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+/* The two log-ins the loop should catch. */
+.mock-flag td {
+  background: #FDECEE;
+  color: #8A0A1F;
+  font-weight: 700;
+}
+
+.mock-code,
+.mock-terminal {
+  margin: 0 0 0.7rem;
+  padding: 0.7rem 0.85rem;
+  overflow-x: auto;
+  background: var(--coal);
+  color: var(--white);
+  font-family: var(--font-code);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.mock-code code,
+.mock-terminal code {
+  font-size: inherit;
+  white-space: pre;
+}
+
+.mock-terminal {
+  border-left: 0.3rem solid var(--teal);
+  background: var(--black);
+  color: #8FE0A6;
+}
+
+.mock-result {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0;
+}
+
+.mock-pill {
+  padding: 0.2rem 0.6rem;
+  background: var(--black);
+  color: var(--white);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.mock-ok {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.mock-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+  margin: 0;
+}
+
+.mock-words span {
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.mock-words .mock-words-name {
+  padding-left: 0;
+  border: 0;
+  color: var(--ink);
+}
+
+/* Part 5: each prototype task sits on a tablet drawn with CSS: a dark
+   frame with round corners and a small camera dot at the top. */
+.device-tablet {
+  padding: 0.5rem 0.5rem 0.65rem;
+  border-radius: 1.25rem;
+  background: #1A1A1A;
+  box-shadow: 0 0.7rem 1.5rem rgba(0, 0, 0, 0.16);
+}
+
+.device-tablet::before {
+  content: "";
+  display: block;
+  width: 0.38rem;
+  height: 0.38rem;
+  margin: 0 auto 0.42rem;
+  border-radius: 50%;
+  background: #4A4A4A;
+}
+
+.device-tablet .mock {
+  overflow: hidden;
+  border: 0;
+  border-radius: 0.55rem;
+}
+
+/* A small white picture at the right of a task's title bar. */
+.mock-head {
+  position: relative;
+}
+
+.mock-head:has(.mock-icon) {
+  padding-right: 3.6rem;
+}
+
+.mock-icon {
+  position: absolute;
+  top: 50%;
+  right: 0.85rem;
+  display: grid;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  color: var(--white);
+  transform: translateY(-50%);
+}
+
+/* The pay task: the five shifts as small cards, the one the payslip
+   missed in pink. */
+.mock-shifts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0 0 0.7rem;
+  padding: 0;
+  list-style: none;
+}
+
+.mock-shifts li {
+  min-width: 3.1rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--line);
+  border-top: 0.25rem solid var(--teal);
+  font-weight: 700;
+  text-align: center;
+}
+
+.mock-shifts span {
+  display: block;
+  color: var(--grey);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mock-shifts .mock-shift-flag {
+  border-top-color: #8A0A1F;
+  background: #FDECEE;
+  color: #8A0A1F;
+}
+
+/* Part 8: CEFL's part of the road, in a box with a teal line. */
+.first-steps {
+  max-width: 52rem;
+  margin: 2.5rem 0 0;
+  padding: 1.2rem 1.5rem 1.3rem;
+  border-left: 0.5rem solid var(--teal);
+  background: var(--white);
+}
+
+.first-steps p {
+  margin: 0;
+}
+
+.first-steps .first-steps-title {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Part 5: the next ones in two columns, local on the left, abroad and
+   online on the right. Each column is one list, so neither leaves gaps. */
+.next-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem 2.5rem;
+}
+
+.from-repack .next-ones .next-col ul {
+  grid-template-columns: minmax(0, 1fr);
+  margin-bottom: 0.8rem;
+}
+
+.next-col-title {
+  margin: 0 0 0.6rem;
+  color: var(--maroon);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.next-col .next-local {
+  margin: 0;
+}
+
+@media (max-width: 40rem) {
+  .next-cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Part 12: "Who offers what" is now the only box under the lines. It has
+   its own title line, then two cards side by side: CEFL in teal and the
+   School of Computer Science and Technology in navy, the same colours as
+   the two cards in part 13. On a phone the cards stack. */
+#paths .facts {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 52rem;
+}
+
+#paths .offers-title {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+#paths .offers-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+#paths .offer {
+  border-left: 0;
+  border-top: 0.45rem solid var(--teal);
+}
+
+#paths .offer-cs {
+  border-top-color: var(--navy);
+}
+
+@media (max-width: 40rem) {
+  #paths .offers-cols {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Part 6: five counts in a row on a laptop. */
+@media (min-width: 56.0625rem) {
+  #built .counts {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+/* The small business task: the AI's answer, as a pale teal speech line. */
+.mock-ai {
+  margin: 0 0 0.7rem;
+  padding: 0.5rem 0.7rem;
+  border-left: 0.3rem solid var(--teal);
+  background: #E3F0F0;
+  font-size: 0.82rem;
+}
+
+.mock-ai-name {
+  display: inline-block;
+  margin-right: 0.35rem;
+  padding: 0.05rem 0.4rem;
+  background: var(--teal);
+  color: var(--white);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* Part 10: what could come next, after the five cases. */
+.cases-next {
+  max-width: 52rem;
+  margin: 2rem 0 0;
+  padding: 1rem 1.25rem;
+  border-left: 0.5rem solid var(--teal);
+  background: var(--white);
+}
+
+/* The accessible task: two columns, with numbered red circles on five
+   features, and a numbered list under it that says what each one is. */
+.mock-two {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 1rem;
+}
+
+.mock-label {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mock-wordlist {
+  margin: 0 0 0.8rem;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+
+.mock-wordlist li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem 0;
+  border-bottom: 1px solid var(--line);
+  font-weight: 700;
+}
+
+.mock-wordlist li::after {
+  content: "+";
+  content: "+" / "";
+  color: var(--red);
+}
+
+.mock-button {
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  margin: 0;
+  padding: 0.3rem 0.6rem;
+  border: 2px solid var(--black);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+/* The robot's grid: a pale square with dots, and the rover as a red block. */
+.mock-grid {
+  position: relative;
+  height: 5.5rem;
+  margin-bottom: 0.6rem;
+  border: 2px solid var(--black);
+  background-color: #F7E9DF;
+  background-image: radial-gradient(circle, #9C8B7E 1.3px, transparent 1.7px);
+  background-size: 1.1rem 1.1rem;
+}
+
+.mock-rover {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  width: 1.1rem;
+  height: 0.85rem;
+  border-radius: 0.2rem;
+  background: var(--red);
+}
+
+.mock-small {
+  margin: 0 0 0.45rem;
+  font-size: 0.8rem;
+}
+
+.mock-slider {
+  display: inline-block;
+  width: 3.2rem;
+  height: 0.3rem;
+  border-radius: 0.2rem;
+  background: linear-gradient(90deg, var(--red) 0 40%, var(--line) 40%);
+  vertical-align: middle;
+}
+
+.callout,
+.mock-legend li::before {
+  display: inline-grid;
+  place-items: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.mock-legend {
+  counter-reset: legend;
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mock-legend li {
+  counter-increment: legend;
+  position: relative;
+  padding-left: 1.9rem;
+  font-size: 0.92rem;
+}
+
+.mock-legend li::before {
+  content: counter(legend);
+  content: counter(legend) / "";
+  position: absolute;
+  top: 0.05em;
+  left: 0;
+}
+
+/* Part 8: the three figures, smaller now, in a row of grey cards with a
+   green line on the left, then the road. */
+.gap-figures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem 1.25rem;
+  margin: 0.5rem 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.gap-figures li {
+  padding: 0.8rem 1rem 0.9rem;
+  border-left: 0.4rem solid var(--green);
+  background: var(--paper);
+}
+
+.gap-figure {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  line-height: 1;
+}
+
+.gap-words {
+  display: block;
+}
+
+.gap-source {
+  display: block;
+  margin-top: 0.4rem;
+  color: var(--grey);
+  font-size: 0.8rem;
+}
+
+.gap-lede {
+  max-width: 50rem;
+  margin: 0 0 2rem;
+  font-size: 1.1rem;
+}
+
+.gap-road-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3vw, 2.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+#need .bletchley {
+  margin: 2.5rem 0 0;
+}
+
+/* Part 8: who runs each stop of the road. */
+.from-police2 .road-who {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.from-police2 .road-cefl {
+  color: var(--teal);
+}
+
+.from-police2 .road-cs {
+  color: var(--navy);
+}
+
+/* Part 9, on black: four steps in a row, each a dark card with a red
+   number. The numbers come from a counter, as in the ask. */
+.guided {
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.guided-step {
+  counter-increment: step;
+  position: relative;
+  padding: 4.4rem 1.2rem 1.4rem;
+  border-top: 0.35rem solid var(--red);
+  background: var(--coal);
+}
+
+.guided-step::before {
+  content: counter(step);
+  content: counter(step) / "";
+  position: absolute;
+  top: 1.1rem;
+  left: 1.2rem;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding-top: 0.15rem;
+  border-radius: 50%;
+  background: var(--red);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.guided-step h3 {
+  margin-bottom: 0.5rem;
+  color: var(--white);
+}
+
+.guided-step p {
+  margin: 0 0 0.9rem;
+}
+
+.guided-link {
+  margin-top: 1rem !important;
+}
+
+.guided-code {
+  border-top-color: var(--red);
+  background: var(--black);
+  font-size: 0.9rem;
+}
+
+.guided-done {
+  display: inline-block;
+  padding: 0.3rem 0.7rem 0.25rem;
+  border: 2px solid #3DA35D;
+  color: #8FE0A6;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* An empty place for a video still to be filmed: a dark box with a play
+   triangle and the words "Video to add". */
+.video-slot {
+  display: grid;
+  place-items: center;
+  gap: 0.6rem;
+  aspect-ratio: 16 / 9;
+  margin-top: 1rem;
+  border: 2px dashed #6B6B6B;
+  color: #CFCFCF;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  align-content: center;
+}
+
+.video-play {
+  width: 0;
+  height: 0;
+  border-top: 0.8rem solid transparent;
+  border-bottom: 0.8rem solid transparent;
+  border-left: 1.3rem solid var(--white);
+}
+
+/* Part 15, at its end: the local skyline at dawn, across the whole window, above the
+   footer. */
+.end-skyline {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: var(--band-space);
+}
+
+/* The last part ends with the skyline, so it needs no space below it. */
+#strength {
+  padding-bottom: 0;
+}
+
+/* The footer, and the switch for the working notes. */
+.foot {
+  padding-block: 2rem 2.5rem;
+  background: var(--black);
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.foot p {
+  max-width: 56rem;
+  margin: 0 0 0.6rem;
+}
+
+/* The credits, apart from the sources, after a line. */
+.foot-credits {
+  margin-top: 2.25rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #555555;
+}
+
+/* ---------- 5. Small screens ---------- */
+
+/* Narrower than a laptop: the menu may need two lines, which is too tall to
+   keep at the top of the window. The four guided steps go two to a row. */
+@media (max-width: 68rem) {
+  .nav {
+    position: static;
+  }
+
+  html {
+    scroll-padding-top: 0.5rem;
+  }
+
+  .guided {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Tablets and phones: what sat side by side is stacked, and the two arrows
+   between CEFL and Computer Science point down and up. */
+@media (max-width: 56rem) {
+  .cefl-head,
+  .people-head,
+  .hub-head,
+  .fridge-show,
+  .swap,
+  .gap-figures {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .swap-arrows {
+    grid-auto-flow: column;
+    justify-content: center;
+    gap: 1.6rem;
+    padding: 1.4rem 0;
+  }
+
+  .swap-arrow {
+    transform: rotate(90deg);
+  }
+
+  .swap-arrow-back {
+    transform: rotate(-90deg);
+  }
+}
+
+/* Phones: one guided step to a row, and slightly smaller code, so that
+   each line of the fridge's program fits without scrolling. */
+@media (max-width: 40rem) {
+  .guided {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .fridge-code,
+  .guided-code {
+    font-size: 0.85rem;
+  }
+
+  .mock-two,
+  .contact-cards,
+  .contacts-head {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contacts-cafe {
+    grid-row: 1;
+    width: 8rem;
+  }
+
+  /* The longest line of code in the prototype tasks still fits a phone:
+     smaller code, and a thinner tablet frame with less space inside. */
+  .mock-code,
+  .mock-terminal {
+    padding-right: 0.7rem;
+    padding-left: 0.7rem;
+    font-size: 0.7rem;
+  }
+
+  .device-tablet {
+    padding: 0.3rem 0.3rem 0.45rem;
+    border-radius: 1rem;
+  }
+
+  .device-tablet::before {
+    margin-bottom: 0.3rem;
+  }
+
+  .mock-body {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+}
+
+/* The narrowest phones: the part headlines are a little smaller, so that
+   each half still fits on one line. */
+@media (max-width: 21rem) {
+  [class^="from-"] .chapter h2 {
+    font-size: 2.05rem;
+  }
+
+  /* The smallest phones: the code is a little smaller again, and the
+     prototype tasks have less space inside their edges. */
+  .fridge-code,
+  .guided-code {
+    font-size: 0.75rem;
+  }
+
+  .mock-body {
+    padding-right: 0.6rem;
+    padding-left: 0.6rem;
+  }
+
+  .mock-code,
+  .mock-terminal {
+    padding-right: 0.6rem;
+    padding-left: 0.6rem;
+    font-size: 0.64rem;
+  }
+}
+
+/* People who ask their device for less motion: no smooth gliding to a part
+   of the page. The films stay still too (js/page.js). */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
