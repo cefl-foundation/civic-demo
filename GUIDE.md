@@ -86,6 +86,7 @@ On the right of each pair in part 5 is a task that is not on the Hub yet. It is 
 ```
 
 - `mock-cyber` is navy, `mock-adult` is teal and `mock-access` is the Hub's own black and red.
+- The second task has no code. Its spreadsheet (`<div class="mock-sheet" aria-hidden="true">`) is a picture for sighted readers, and the hidden sentence under it (`<p class="visually-hidden">`) says the same for a screen reader. If you change a number in one, change it in the other. The three steps of the automation are a list, `<ol class="mock-flow">`, and the arrows between them come from the CSS.
 - Each task sits inside `<div class="device-tablet">`, which draws the dark tablet frame and its camera dot round it.
 - `role="group"` and `aria-label` tell a screen reader that the box is one thing, and what it is.
 - In the third task, the red numbers in circles are `<span class="callout" aria-hidden="true">1</span>`. They are pictures for sighted readers, so a screen reader skips them and reads the numbered list under the task instead (`<ol class="mock-legend">`). The browser numbers that list itself, so the numbers stay right if a line is added.
@@ -252,9 +253,24 @@ Replace `VIDEO-ID` with the video's own code from its address. Then delete the w
 
 **Where:** `index.html`. Search for `data-note`. There are eleven blocks, holding fourteen notes. They are hidden unless the address ends with `?notes`. Do what the note says, then delete the whole block, from `<div data-note>` to its `</div>`.
 
-### Change the Hub address
+### Add the Hub link in part 9
 
-**Where:** `index.html`, under `9. TRY IT` (the "Open the Hub" button) and `15. WHO WE ARE: CEFL, AND WHO TO TALK TO` (the link on Monika Pietruch's card). Search for `cefl-foundation.github.io/tech`.
+The "Open the Hub" button in part 9 is switched off for now, with "Link to be added" under it. It is the page's only link to the Hub.
+
+**Where:** `index.html`, under `9. TRY IT`. Search for `Link to be added`. Replace that whole line:
+
+```html
+<p class="guided-link"><span class="button button-off">Open the Hub</span><span class="link-later">Link to be added</span></p>
+```
+
+with this one, putting the Hub's address in place of `ADDRESS`, between the quotation marks:
+
+```html
+<p class="guided-link"><a class="button button-red" href="ADDRESS" target="_blank" rel="noopener">Open the Hub<span class="visually-hidden"> (opens in a new tab)</span></a></p>
+```
+
+- `<a … href="…">` makes it a link again, and `button-red` gives it back its red colour.
+- `target="_blank"` opens the Hub in a new tab, and the hidden words "(opens in a new tab)" tell a screen reader so.
 
 ### Change a colour
 

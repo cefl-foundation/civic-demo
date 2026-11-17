@@ -5060,6 +5060,27 @@ a[target="_blank"]::after {
   transform: translateY(-50%);
 }
 
+/* Part 9: the "Open the Hub" button is switched off until its link is
+   added. It is not a link any more, it has the dashed edge of the video
+   slots in the same part, and a label under it says why. */
+.button-off,
+.button-off:hover {
+  border: 2px dashed #6B6B6B;
+  background: transparent;
+  color: #CFCFCF;
+  cursor: default;
+}
+
+.link-later {
+  display: block;
+  margin-top: 0.55rem;
+  color: #CFCFCF;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 /* Part 10: what could come next, after the five cases. */
 .cases-next {
   max-width: 52rem;
