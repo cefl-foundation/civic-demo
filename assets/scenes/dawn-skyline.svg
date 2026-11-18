@@ -1,8 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 230" width="1280" height="230">
-  <!-- Dawn along the M1, from left to right: a tall slim tower like the one
-       in Northampton, the low offices, trees and roundabout of Milton Keynes,
-       a suspension bridge over a river like Bedford's, and houses near
-       Luton with a plane climbing away. -->
+  <!-- Dawn over Luton, from left to right: terraced houses, the Town Hall and its clock tower, St Mary's church with its chequered tower, more terraced houses, an old hat factory with its chimney and a works with a saw-tooth roof, Luton Airport Parkway station and the DART running up the hill to London Luton Airport (the terminal with its sign, the control tower and the tails of parked planes), and a plane climbing away. The Chiltern hills are behind the town. -->
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#1B1B3A"/>
@@ -10,71 +7,94 @@
       <stop offset="0.72" stop-color="#B3647E"/>
       <stop offset="1" stop-color="#F6A55E"/>
     </linearGradient>
-    <linearGradient id="river" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#C9708A"/>
-      <stop offset="1" stop-color="#51407A"/>
+    <linearGradient id="hills" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6E4A7A"/>
+      <stop offset="1" stop-color="#3A2D5C"/>
     </linearGradient>
+    <!-- the flint and stone chequer on St Mary's tower -->
+    <pattern id="chequer" width="6" height="6" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#14142B"/>
+      <rect width="3" height="3" fill="#25244A"/>
+      <rect x="3" y="3" width="3" height="3" fill="#25244A"/>
+    </pattern>
   </defs>
 
   <rect width="1280" height="230" fill="url(#sky)"/>
-  <circle cx="742" cy="232" r="64" fill="#FFD27D" opacity="0.85"/>
-  <g fill="#F4E6C1" opacity="0.8">
-    <circle cx="90" cy="30" r="1.4"/><circle cx="320" cy="22" r="1.2"/><circle cx="560" cy="40" r="1.4"/>
-    <circle cx="1010" cy="26" r="1.2"/><circle cx="1210" cy="44" r="1.4"/>
+  <circle cx="470" cy="198" r="56" fill="#FFD27D" opacity="0.85"/>
+  <g fill="#F4E6C1" opacity="0.8"><circle cx="940" cy="16" r="1.2"/><circle cx="1040" cy="30" r="1.4"/><circle cx="1160" cy="12" r="1.2"/><circle cx="1262" cy="32" r="1.4"/></g>
+
+  <!-- the Chiltern hills, behind the town -->
+  <path d="M0 178 C70 170 130 166 200 170 C270 174 320 182 380 180 C430 178 460 170 520 168 C590 166 640 176 700 180 C760 184 800 178 860 172 C930 165 1000 170 1070 174 C1140 178 1200 176 1280 172 V230 H0 Z" fill="url(#hills)"/>
+
+  <!-- the ground in the town, and the hill the airport stands on -->
+  <g fill="#14142B">
+    <rect x="0" y="222" width="900" height="8"/>
+    <path d="M800 230 C836 229 864 215 896 205 C918 199 944 196 980 196 H1280 V230 Z"/>
   </g>
 
-  <!-- the ground, either side of the river -->
-  <g fill="#14142B">
-    <rect x="0" y="222" width="664" height="8"/>
-    <rect x="986" y="222" width="294" height="8"/>
-  </g>
+  <!-- the town -->
+  <g fill="#14142B"><path d="M0 230 V188 H16 V179 H24 V188 H36 V179 H44 V230 Z"/><rect x="17" y="176" width="2" height="3"/><rect x="21" y="176" width="2" height="3"/><rect x="37" y="176" width="2" height="3"/><rect x="41" y="176" width="2" height="3"/></g><g fill="#FFD27D" opacity="0.75"><rect x="6" y="206" width="5" height="5"/><rect x="26" y="214" width="5" height="5"/></g><g transform="translate(42 230) scale(1.0) translate(0 -230)"><g fill="#14142B"><path d="M0 230 V184 L5 177 H185 L190 184 V230 Z"/><path d="M72 182 L95 171 L118 182 Z"/><rect x="80" y="164" width="30" height="14"/><rect x="84" y="156" width="22" height="8"/><rect x="86" y="130" width="18" height="26"/><rect x="84.5" y="127" width="21" height="3"/><rect x="88.5" y="116" width="13" height="11"/><rect x="87.5" y="114" width="15" height="2"/><rect x="90.5" y="107" width="9" height="7"/><path d="M89.5 107.5 Q95 100.5 100.5 107.5 Z"/><rect x="94.4" y="94" width="1.2" height="9"/><circle cx="95" cy="94" r="1.4"/></g><circle cx="95" cy="140" r="5.2" fill="#FFD27D"/><g stroke="#14142B" stroke-linecap="round"><path d="M95 140 V136" stroke-width="1"/><path d="M95 140 L97.6 141.4" stroke-width="1.3"/></g><g fill="#2A2950"><rect x="91.5" y="118.5" width="2" height="6"/><rect x="96.5" y="118.5" width="2" height="6"/></g><g fill="#FFD27D" opacity="0.75"><rect x="10" y="189" width="5" height="6"/><rect x="22" y="189" width="5" height="6"/><rect x="46" y="189" width="5" height="6"/><rect x="58" y="189" width="5" height="6"/><rect x="132" y="189" width="5" height="6"/><rect x="156" y="189" width="5" height="6"/><rect x="168" y="189" width="5" height="6"/><rect x="10" y="201" width="5" height="6"/><rect x="34" y="201" width="5" height="6"/><rect x="58" y="201" width="5" height="6"/><rect x="144" y="201" width="5" height="6"/><rect x="168" y="201" width="5" height="6"/><rect x="22" y="213" width="5" height="6"/><rect x="46" y="213" width="5" height="6"/><rect x="132" y="213" width="5" height="6"/><rect x="144" y="213" width="5" height="6"/><rect x="168" y="213" width="5" height="6"/><rect x="81" y="190" width="4" height="14"/><rect x="93" y="190" width="4" height="14"/><rect x="105" y="190" width="4" height="14"/></g></g><g fill="#14142B"><circle cx="240" cy="210" r="14"/><circle cx="262" cy="214" r="11"/></g><g transform="translate(276 230) scale(1.0) translate(-128 -230)"><g fill="#14142B"><path d="M128 230 V176 L132 170 V230 Z M168 230 V170 L172 176 V230 Z"/><rect x="132" y="106" width="7" height="16"/><rect x="161" y="106" width="7" height="16"/><path d="M131.5 106 L135.5 99 L139.5 106 Z M160.5 106 L164.5 99 L168.5 106 Z"/><rect x="142" y="114" width="5" height="8"/><rect x="153" y="114" width="5" height="8"/><path d="M168 230 V172 H172 V168 H178 V172 H184 V168 H190 V172 H196 V168 H202 V172 H208 V168 H214 V172 H222 V160 L236 150 L250 160 V172 H256 V168 H262 V172 H268 V168 H274 V176 L288 168 L302 176 V230 Z"/></g><rect x="132" y="120" width="36" height="110" fill="url(#chequer)"/><path d="M145 150 V140 Q150 132 155 140 V150 Z" fill="#14142B"/><g fill="#FFD27D" opacity="0.55"><path d="M186 210 V198 Q188.5 193 191 198 V210 Z M204 210 V198 Q206.5 193 209 198 V210 Z M261 210 V198 Q263.5 193 266 198 V210 Z M279 210 V200 Q281.5 195 284 200 V210 Z M231 206 V188 Q236 179 241 188 V206 Z"/></g></g><g fill="#14142B"><path d="M456 230 V192 H472 V183 H480 V192 H492 V183 H500 V196 H512 V187 H520 V196 H532 V187 H540 V200 H552 V191 H560 V230 Z"/><rect x="473" y="180" width="2" height="3"/><rect x="477" y="180" width="2" height="3"/><rect x="493" y="180" width="2" height="3"/><rect x="497" y="180" width="2" height="3"/><rect x="513" y="184" width="2" height="3"/><rect x="517" y="184" width="2" height="3"/><rect x="533" y="184" width="2" height="3"/><rect x="537" y="184" width="2" height="3"/><rect x="553" y="188" width="2" height="3"/><rect x="557" y="188" width="2" height="3"/></g><g fill="#FFD27D" opacity="0.75"><rect x="462" y="210" width="5" height="5"/><rect x="484" y="216" width="5" height="5"/><rect x="522" y="212" width="5" height="5"/><rect x="540" y="218" width="5" height="5"/></g><g transform="translate(560 230) scale(1.0) translate(-566 -230)"><g fill="#14142B"><path d="M566 230 V176 L597 160 L628 176 V230 Z"/></g><g fill="#FFD27D" opacity="0.75"><rect x="572" y="186" width="5" height="8"/><rect x="584" y="186" width="5" height="8"/><rect x="608" y="186" width="5" height="8"/><rect x="572" y="202" width="5" height="8"/><rect x="596" y="202" width="5" height="8"/><rect x="620" y="202" width="5" height="8"/><rect x="594" y="166" width="6" height="9"/></g></g><g fill="#14142B"><path d="M628 230 V116 H627 V112 H639 V116 H638 V230 Z"/></g><g fill="#14142B"><path d="M644 230 V184 L666 196 V184 L688 196 V184 L710 196 V230 Z"/></g><g fill="#FFD27D" opacity="0.75"><rect x="644.5" y="186" width="2" height="8"/><rect x="666.5" y="186" width="2" height="8"/><rect x="688.5" y="186" width="2" height="8"/></g><g fill="#14142B"><circle cx="714" cy="214" r="12"/><circle cx="734" cy="218" r="9"/></g>
 
+  <!-- Luton Airport Parkway station, and the DART on its viaduct, running
+       up the hill to the airport -->
   <g fill="#14142B">
-    <!-- the tall tower, with its band near the top -->
-    <path d="M118 230 L126 34 H142 L150 230 Z"/>
-    <rect x="122" y="22" width="24" height="16"/>
-    <rect x="128" y="10" width="12" height="12"/>
-    <!-- terraced roofs round it -->
-    <path d="M0 230 V196 L18 184 L36 196 H60 L78 184 L96 196 H112 V230 Z"/>
-    <path d="M156 230 V198 L172 186 L188 198 H206 L222 186 L238 198 H256 V230 Z"/>
-
-    <!-- low offices, trees and a grid road -->
-    <rect x="286" y="176" width="110" height="54"/>
-    <rect x="404" y="160" width="80" height="70"/>
-    <rect x="492" y="184" width="96" height="46"/>
-    <circle cx="276" cy="200" r="16"/><circle cx="300" cy="206" r="14"/>
-    <circle cx="600" cy="202" r="18"/><circle cx="628" cy="208" r="14"/>
-    <rect x="270" y="218" width="380" height="12"/>
+    <rect x="744" y="203" width="64" height="27"/>
+    <rect x="740" y="200" width="72" height="3"/>
+    <path d="M806 202 L918 197 V201 L806 206 Z"/>
+    <rect x="826" y="204" width="4" height="20"/><rect x="852" y="203" width="4" height="20"/><rect x="878" y="202" width="4" height="14"/>
+    <g transform="translate(866 199.3) rotate(-2.56)">
+      <rect x="-20" y="-10" width="40" height="10" rx="3.5"/>
+    </g>
   </g>
   <g fill="#FFD27D" opacity="0.75">
-    <rect x="298" y="188" width="10" height="6"/><rect x="318" y="188" width="10" height="6"/><rect x="358" y="200" width="10" height="6"/>
-    <rect x="416" y="174" width="10" height="6"/><rect x="436" y="188" width="10" height="6"/><rect x="456" y="174" width="10" height="6"/>
-    <rect x="506" y="196" width="10" height="6"/><rect x="546" y="196" width="10" height="6"/>
+    <rect x="750" y="208" width="52" height="6"/>
+    <g transform="translate(866 199.3) rotate(-2.56)">
+      <rect x="-16" y="-7.5" width="5" height="3.5"/><rect x="-9.5" y="-7.5" width="5" height="3.5"/><rect x="-3" y="-7.5" width="5" height="3.5"/>
+      <rect x="4.5" y="-7.5" width="5" height="3.5"/><rect x="11" y="-7.5" width="5" height="3.5"/>
+    </g>
+  </g>
+  <g fill="#14142B">
+    <rect x="762" y="208" width="2" height="6"/><rect x="776" y="208" width="2" height="6"/><rect x="790" y="208" width="2" height="6"/>
   </g>
 
-  <!-- the river and its suspension bridge -->
-  <rect x="660" y="214" width="330" height="16" fill="url(#river)"/>
+  <!-- London Luton Airport: the tails of parked planes behind the terminal,
+       the terminal with its sign and lit glass front, the control tower -->
   <g fill="#14142B">
-    <path d="M660 230 V206 H676 L688 214 H660 Z"/>
-    <path d="M990 230 V206 H974 L962 214 H990 Z"/>
-    <circle cx="664" cy="196" r="14"/><circle cx="990" cy="194" r="16"/>
-    <rect x="700" y="150" width="8" height="64"/>
-    <rect x="942" y="150" width="8" height="64"/>
-    <rect x="676" y="200" width="298" height="5"/>
+    <path d="M1003 166 L1018 141 H1025 L1027 166 Z"/>
+    <path d="M1110 166 L1126 137 H1133 L1135 166 Z"/>
+    <path d="M1151 166 L1164 146 H1170 L1172 166 Z"/>
+    <rect x="984" y="163" width="202" height="4"/>
+    <rect x="990" y="167" width="190" height="29"/>
+    <path d="M1218 196 V132 H1228 V196 Z"/>
+    <path d="M1208 132 L1205 118 H1241 L1238 132 Z"/>
+    <rect x="1204" y="114" width="38" height="4"/>
+    <rect x="1222.3" y="96" width="1.4" height="18"/>
   </g>
-  <g fill="none" stroke="#14142B" stroke-width="3">
-    <path d="M704 152 Q825 222 946 152"/>
-    <path d="M704 152 Q690 180 676 200 M946 152 Q960 180 974 200"/>
+  <g fill="#FFD27D" opacity="0.75">
+    <rect x="996" y="182" width="178" height="10"/>
+    <path d="M1211 129 L1209 120 H1237 L1235 129 Z"/>
   </g>
-  <g stroke="#14142B" stroke-width="1.6">
-    <path d="M740 172 V200 M776 186 V200 M812 194 V200 M838 194 V200 M874 186 V200 M910 172 V200"/>
+  <g fill="#14142B">
+    <rect x="1010" y="182" width="1.5" height="10"/><rect x="1026" y="182" width="1.5" height="10"/><rect x="1042" y="182" width="1.5" height="10"/>
+    <rect x="1058" y="182" width="1.5" height="10"/><rect x="1074" y="182" width="1.5" height="10"/><rect x="1090" y="182" width="1.5" height="10"/>
+    <rect x="1106" y="182" width="1.5" height="10"/><rect x="1122" y="182" width="1.5" height="10"/><rect x="1138" y="182" width="1.5" height="10"/>
+    <rect x="1154" y="182" width="1.5" height="10"/>
+    <rect x="1217" y="120" width="1.4" height="9"/><rect x="1228" y="120" width="1.4" height="9"/>
+  </g>
+  <!-- The sign on the terminal. To show LLA instead, cut display="none"
+       from the line with id="sign-lla" and paste it into the line with
+       id="sign-full". -->
+  <g fill="#FFD27D">
+    <path id="sign-full" d="M1030 168.8H1031.4V176.2H1033.6V177.5H1030ZM1035.3 175.4V170.8Q1035.3 169.8 1035.8 169.2Q1036.4 168.6 1037.4 168.6Q1038.4 168.6 1038.9 169.2Q1039.5 169.8 1039.5 170.8V175.4Q1039.5 176.5 1038.9 177.1Q1038.4 177.6 1037.4 177.6Q1036.4 177.6 1035.8 177.1Q1035.3 176.5 1035.3 175.4ZM1038.1 175.5V170.7Q1038.1 169.9 1037.4 169.9Q1036.7 169.9 1036.7 170.7V175.5Q1036.7 176.4 1037.4 176.4Q1038.1 176.4 1038.1 175.5ZM1041.5 168.8H1043.2L1044.6 174H1044.6V168.8H1045.8V177.5H1044.4L1042.8 171.1H1042.7V177.5H1041.5ZM1047.9 168.8H1050Q1051.1 168.8 1051.6 169.3Q1052.1 169.8 1052.1 170.9V175.3Q1052.1 176.4 1051.6 176.9Q1051.1 177.5 1050 177.5H1047.9ZM1050 176.2Q1050.3 176.2 1050.5 176.1Q1050.7 175.8 1050.7 175.4V170.8Q1050.7 170.4 1050.5 170.2Q1050.3 170 1050 170H1049.3V176.2ZM1054 175.4V170.8Q1054 169.8 1054.5 169.2Q1055.1 168.6 1056.1 168.6Q1057.1 168.6 1057.7 169.2Q1058.2 169.8 1058.2 170.8V175.4Q1058.2 176.5 1057.7 177.1Q1057.1 177.6 1056.1 177.6Q1055.1 177.6 1054.5 177.1Q1054 176.5 1054 175.4ZM1056.8 175.5V170.7Q1056.8 169.9 1056.1 169.9Q1055.4 169.9 1055.4 170.7V175.5Q1055.4 176.4 1056.1 176.4Q1056.8 176.4 1056.8 175.5ZM1060.2 168.8H1061.9L1063.3 174H1063.3V168.8H1064.5V177.5H1063.1L1061.5 171.1H1061.4V177.5H1060.2ZM1069.7 168.8H1071.1V176.2H1073.4V177.5H1069.7ZM1075.1 175.4V168.8H1076.5V175.5Q1076.5 176 1076.7 176.2Q1076.8 176.4 1077.2 176.4Q1077.5 176.4 1077.7 176.2Q1077.9 176 1077.9 175.5V168.8H1079.2V175.4Q1079.2 176.5 1078.7 177.1Q1078.1 177.6 1077.1 177.6Q1076.1 177.6 1075.6 177.1Q1075.1 176.5 1075.1 175.4ZM1082.3 170H1080.9V168.8H1085.2V170H1083.7V177.5H1082.3ZM1086.8 175.4V170.8Q1086.8 169.8 1087.4 169.2Q1087.9 168.6 1088.9 168.6Q1089.9 168.6 1090.5 169.2Q1091 169.8 1091 170.8V175.4Q1091 176.5 1090.5 177.1Q1089.9 177.6 1088.9 177.6Q1087.9 177.6 1087.4 177.1Q1086.8 176.5 1086.8 175.4ZM1089.6 175.5V170.7Q1089.6 169.9 1088.9 169.9Q1088.2 169.9 1088.2 170.7V175.5Q1088.2 176.4 1088.9 176.4Q1089.6 176.4 1089.6 175.5ZM1093 168.8H1094.7L1096.1 174H1096.1V168.8H1097.3V177.5H1095.9L1094.3 171.1H1094.2V177.5H1093ZM1103.6 168.8H1105.5L1106.9 177.5H1105.5L1105.3 175.8V175.8H1103.7L1103.5 177.5H1102.2ZM1105.1 174.6 1104.5 170.3H1104.5L1103.9 174.6ZM1108.7 168.8H1110V177.5H1108.7ZM1112.2 168.8H1114.2Q1115.3 168.8 1115.8 169.2Q1116.2 169.7 1116.2 170.8V171.3Q1116.2 172.7 1115.3 173V173.1Q1115.8 173.2 1116.1 173.7Q1116.3 174.1 1116.3 174.9V176.4Q1116.3 176.8 1116.3 177Q1116.3 177.3 1116.4 177.5H1115Q1114.9 177.3 1114.9 177.1Q1114.9 176.9 1114.9 176.4V174.8Q1114.9 174.2 1114.7 174Q1114.5 173.8 1114 173.8H1113.5V177.5H1112.2ZM1114 172.5Q1114.5 172.5 1114.7 172.3Q1114.9 172.1 1114.9 171.6V170.9Q1114.9 170.4 1114.7 170.2Q1114.5 170 1114.2 170H1113.5V172.5ZM1118.3 168.8H1120.3Q1121.4 168.8 1121.9 169.3Q1122.4 169.8 1122.4 170.9V171.8Q1122.4 172.8 1121.9 173.4Q1121.4 173.9 1120.3 173.9H1119.7V177.5H1118.3ZM1120.3 172.7Q1120.7 172.7 1120.8 172.5Q1121 172.3 1121 171.9V170.8Q1121 170.4 1120.8 170.2Q1120.7 170 1120.3 170H1119.7V172.7ZM1124.1 175.4V170.8Q1124.1 169.8 1124.7 169.2Q1125.2 168.6 1126.2 168.6Q1127.2 168.6 1127.8 169.2Q1128.3 169.8 1128.3 170.8V175.4Q1128.3 176.5 1127.8 177.1Q1127.2 177.6 1126.2 177.6Q1125.2 177.6 1124.7 177.1Q1124.1 176.5 1124.1 175.4ZM1126.9 175.5V170.7Q1126.9 169.9 1126.2 169.9Q1125.5 169.9 1125.5 170.7V175.5Q1125.5 176.4 1126.2 176.4Q1126.9 176.4 1126.9 175.5ZM1130.3 168.8H1132.4Q1133.4 168.8 1133.9 169.2Q1134.4 169.7 1134.4 170.8V171.3Q1134.4 172.7 1133.5 173V173.1Q1134 173.2 1134.2 173.7Q1134.4 174.1 1134.4 174.9V176.4Q1134.4 176.8 1134.4 177Q1134.5 177.3 1134.6 177.5H1133.2Q1133.1 177.3 1133.1 177.1Q1133 176.9 1133 176.4V174.8Q1133 174.2 1132.9 174Q1132.7 173.8 1132.2 173.8H1131.7V177.5H1130.3ZM1132.2 172.5Q1132.6 172.5 1132.8 172.3Q1133 172.1 1133 171.6V170.9Q1133 170.4 1132.9 170.2Q1132.7 170 1132.3 170H1131.7V172.5ZM1137.5 170H1136.1V168.8H1140.4V170H1138.9V177.5H1137.5Z"/>
+    <path id="sign-lla" display="none" d="M1074.7 168.7H1076.4V177.9H1079.2V179.5H1074.7ZM1082.5 168.7H1084.2V177.9H1087V179.5H1082.5ZM1091.7 168.7H1094L1095.8 179.5H1094L1093.7 177.3V177.4H1091.8L1091.5 179.5H1089.9ZM1093.5 175.9 1092.8 170.5H1092.7L1092 175.9Z"/>
+  </g>
+  <circle cx="1223" cy="96" r="2" fill="#C8102E"/>
+  <!-- lights along the airfield -->
+  <g fill="#F4E6C1" opacity="0.7">
+    <circle cx="1192" cy="201" r="1"/><circle cx="1206" cy="201" r="1"/><circle cx="1248" cy="201" r="1"/><circle cx="1262" cy="201" r="1"/><circle cx="1276" cy="201" r="1"/>
   </g>
 
-  <!-- houses near the airport, and a plane climbing away -->
-  <g fill="#14142B">
-    <path d="M1010 230 V198 L1028 184 L1046 198 H1066 L1084 184 L1102 198 H1124 V188 H1150 V198 L1168 184 L1186 198 H1208 L1226 184 L1244 198 H1280 V230 Z"/>
-    <rect x="1132" y="164" width="10" height="24"/>
-  </g>
+  <!-- a plane climbing away -->
   <path d="M900 120 C980 104 1040 84 1102 62" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.35" stroke-linecap="round"/>
   <g transform="translate(1110 58) rotate(-18)" fill="#14142B">
     <path d="M-14 0 H22 C27 0 29 2 29 4 C29 6 27 7 22 7 H-14 Z"/>

@@ -5655,13 +5655,43 @@ a[target="_blank"]::after {
   color: var(--red);
 }
 
-/* Part 15, at its end: the local skyline at dawn, across the whole window, above the
-   footer. */
+/* Part 16, at its end: the local skyline at dawn, across the whole window,
+   above the footer, with a line of words in its sky.
+   .end-scene holds the picture and the words. The words lie over the top of
+   the picture, lined up with the page's column (class "wrap"). Their size is
+   a share of the window's width, like the picture's height, so they always
+   stay in the sky above the buildings. */
+.end-scene {
+  position: relative;
+  margin-top: var(--band-space);
+}
+
 .end-skyline {
   display: block;
   width: 100%;
   height: auto;
-  margin-top: var(--band-space);
+}
+
+.end-words {
+  position: absolute;
+  inset: 0 0 auto;
+  padding-top: 1.5vw;
+}
+
+.end-words p {
+  margin: 0;
+  color: var(--white);
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 3.6vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* The second half is the warm yellow of the lit windows in the picture. */
+.end-words span + span {
+  color: #FFD27D;
 }
 
 /* The last part ends with the skyline, so it needs no space below it. */

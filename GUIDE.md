@@ -323,6 +323,20 @@ A new picture must have the same size and name, or the arch crops it. If you cha
 - The picture: `assets/scenes/smart-fridge.svg`, a drawing written in SVG. Open it in a text editor: the words on the fridge's screen and the phone are the `<text>` lines.
 - The words and the code: `index.html`, under `3. HOW WE TEACH: WORDS FIRST, AND THE SMART FRIDGE`, inside `<div class="fridge-show">`.
 
+### Change the skyline at the end
+
+**Where:** `index.html`, inside `<div class="end-scene">`, just above `THE FOOTER`. The look is in section 4 of `css/site.css`, in the rules that start `.end-scene`, `.end-skyline` and `.end-words`.
+
+- **The picture:** `assets/scenes/dawn-skyline.svg`, Luton at dawn, a drawing written in SVG. From left to right: terraced houses, the Town Hall and its clock tower, St Mary's church, more terraced houses, an old hat factory with its chimney, the DART running up the hill, and London Luton Airport, with a plane climbing away.
+- **The airport sign** says LONDON LUTON AIRPORT. To make it say LLA, open the SVG in a text editor, cut `display="none"` from the line with `id="sign-lla"` and paste it into the line with `id="sign-full"`.
+- **Its description:** the `alt="…"` of `<img class="end-skyline">`.
+- **The words in the sky:** the line `<p><span>Rooted locally.</span> <span>Connected globally.</span></p>`, under the picture. To change them, change the words between `<span>` and `</span>`. The first half is white and the second half is the yellow of the lit windows. Keep the whole line to about 35 letters and spaces, so it still fits in the sky on a phone.
+- **How the words sit on the picture:**
+  - `.end-scene` has `position: relative`. This makes it the frame that the words are placed in.
+  - `.end-words` has `position: absolute` and `inset: 0 0 auto`. This lays the words over the top of the picture, instead of under it.
+  - `<div class="end-words wrap">` also has the class `wrap`, so the words start at the same left edge as the rest of the page.
+  - The size, `clamp(1rem, 3.6vw, 3.25rem)`, is 3.6% of the window's width, but never smaller than `1rem` or bigger than `3.25rem`. The picture's height is a share of the window's width too, so the words grow and shrink with it and stay in the sky above the buildings.
+
 ### The Watch and Goodbye steps in part 10
 
 **Where:** `index.html`, under `10. TRY IT: A GUIDED FIRST TASK`.
