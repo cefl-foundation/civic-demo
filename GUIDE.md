@@ -54,7 +54,7 @@ The page starts with two parts that share one look, from the `from-repack` box: 
   <p class="reach-small"> ... the small grey line ... </p>
 </div>
 <div class="reach">
-  <figure class="arch-box"> ... "CEFL’s coding hub" and the arch ... </figure>
+  <figure class="arch-box"> ... "Our coding hub" and the arch ... </figure>
   <span class="arch-arrow" aria-hidden="true"></span>
   <div class="reach-list">
     <p class="arch-label" id="reach-title">Who it could reach</p>
@@ -71,9 +71,9 @@ The page starts with two parts that share one look, from the `from-repack` box: 
 - `aria-labelledby="reach-title"` tells a screen reader that the list is called "Who it could reach": the words with `id="reach-title"` just above it.
 - The arrow is only a picture, so `aria-hidden="true"` hides it from screen readers.
 - In the small line, `<span>no sign-up</span>` keeps those words together, so the line never breaks at the hyphen.
-- In the arch's label, `coding&nbsp;hub` keeps those two words together: `&nbsp;` is a space that never breaks. On a small phone the label may not be wider than the arch, so it breaks after "CEFL’s" instead of running into the arrow.
+- The arch's label, "Our coding hub", sits level with "Who it could reach" on wide screens (85rem, about 1360px, and wider). The rule `.from-repack .reach .arch-box`, in section 4 of `css/site.css`, stretches the arch's box to the height of the list beside it, so the label goes to the top and the arch stays on the black line. On smaller screens the list is much taller than the arch, so the label sits just above the arch instead. Keep the label short, about 15 letters: it stays on one line, and on a small phone a longer one would run into the arrow.
 
-**The band after the opening, "Start as you are. Finish career-ready."** Search for `WHAT WE COULD STAND FOR` to find it. It is a dark navy band that says what the University could stand for: a bold line, a light grey line, five coloured cards, a band with a teal edge for people already in work, and a last line that says whose idea this is. It is new, so it is not in a box named after an earlier page: its rules start with `.stand`, in section 4 of `css/site.css`. To change it, see "Change the “Start as you are” band" in section 5 of this guide.
+**The band after the opening, "Start as you are. Finish career-ready."** Search for `WHAT WE COULD STAND FOR` to find it. It is a dark navy band that says what the University could stand for: a bold line, five coloured cards, a band with a teal edge for people already in work, and a last line that says whose idea this is. It is new, so it is not in a box named after an earlier page: its rules start with `.stand`, in section 4 of `css/site.css`. To change it, see "Change the “Start as you are” band" in section 5 of this guide.
 
 **Two parts down, "Why build it twice? Repackage it."** Search for `AFTER THE OPENING` to find it. Until 17 November it was the page's opening. Its headline is now an `<h2>`, because the page's `<h1>` belongs to the opening. In `css/site.css`, the rules that size the opening's headline cover both (`.from-repack .hero h1, .from-repack .hero h2`), so it looks the same as before.
 
@@ -175,7 +175,7 @@ The other parts work exactly as on the earlier pages: headlines in two halves (`
 | 1. Colours and fonts | Every colour of every earlier page, in one `:root`, and the headline font |
 | 2. Basics | The black strip, the red menu, buttons, headlines, notes: shared by all parts |
 | 3. The parts, page by page | Four blocks, one per earlier page |
-| 4. What this page adds | The short opening line, the opening's bold line and its list of who it could reach, the “What we could stand for” band after the opening, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the arch picture, cards and contacts in part 16, the skyline, the footer |
+| 4. What this page adds | The short opening line, the opening's bold line and its list of who it could reach, its arch's label lined up with that list, the “What we could stand for” band after the opening, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the arch picture, cards and contacts in part 16, the skyline, the footer |
 | 5. Small screens | For the parts this page adds, and the menu on one sliding row on phones |
 
 In section 3 every rule starts with its page's box name:
@@ -322,7 +322,7 @@ The box has `id="contacts"`: the link "our contact details" in part 15, under "W
 **The look:** `css/site.css`, section 4, the rules that start with `.stand`. The four colours used only in this band are at the top of `.stand { … }`:
 
 - `--stand-pink` (`#FF5A6E`): the small line above the headline and the headline's second half. The page's red is too dark to read on navy at small sizes; this lighter red passes WCAG AA there.
-- `--stand-grey` (`#C9C9D6`): the light grey line and the last line.
+- `--stand-grey` (`#C9C9D6`): the last line.
 - `--stand-teal` and `--stand-teal-light`: the band's edge and its first words.
 
 The band's navy is `--night`, the same as part 5. The card colours are the page's own (`--plum`, `--navy`, `--green`, `--red`, `--maroon`), from section 1.
