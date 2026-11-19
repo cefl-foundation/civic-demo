@@ -20,8 +20,8 @@ From that first step, each person could move on: to a short course, a foundation
 2. **What already works.** How the CEFL Tech Practice Hub teaches: very easy tasks first, the words before the code, and access built in for the learner who finds it hardest.
 3. **How it can be repackaged.** The same kind of task for three new audiences: people in policing(example), local small businesses, and Computer Science students who need an accessible start (we are already working on that with the Home Foundation team in the School of Computing, Engineering and Creative Industries).
 4. **One example in depth.** A path customised for local policing, towards cyber security: the gap between a first step and a degree, a guided trial, five local cases, and why ten minutes fits any rota.
-5. **Where it leads.** Many starting points into one network of courses, and who offers what: the first step from CEFL, the degrees and master's courses from the School of Computer Science and Technology.
-6. **Already working together.** What CEFL and the School of Computer Science and Technology already share.
+5. **Where it leads.** Many starting points into one network of courses, and who offers what: the first step from CEFL, the degrees and master's courses from the School of Computing, Engineering and Creative Industries.
+6. **Already working together.** What CEFL and the School of Computing, Engineering and Creative Industries already share.
 7. **Questions and contacts.** Short answers to the questions colleagues ask first, and who to talk to.
 
 ## Why it is worth a conversation

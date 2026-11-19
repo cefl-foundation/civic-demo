@@ -4576,7 +4576,7 @@ a[target="_blank"]::after {
   text-transform: uppercase;
 }
 
-/* Part 13: CEFL and the School of Computer Science and Technology, two cards
+/* Part 13: CEFL and the School of Computing, Engineering and Creative Industries, two cards
    with arrows between. Each side's name is big, in its card's colour. */
 .swap-card .swap-name {
   margin-bottom: 0.7rem;
@@ -4969,7 +4969,7 @@ a[target="_blank"]::after {
 
 /* Part 12: "Who offers what" is now the only box under the lines. It has
    its own title line, then two cards side by side: CEFL in teal and the
-   School of Computer Science and Technology in navy, the same colours as
+   School of Computing, Engineering and Creative Industries in navy, the same colours as
    the two cards in part 13. On a phone the cards stack. */
 #paths .facts {
   grid-template-columns: minmax(0, 1fr);
