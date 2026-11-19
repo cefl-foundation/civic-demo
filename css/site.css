@@ -5735,12 +5735,13 @@ a[target="_blank"]::after {
 
 /* What we could stand for: the band straight after the opening, on dark
    navy (--night) like part 5. Its eyebrow and the second half of its
-   headline are a lighter red, --stand-pink: the page's red is too dark to
-   read on navy at small sizes, and this one passes WCAG AA there. Under the
+   headline are a brighter version of the page's red, --stand-pink: the
+   page's own red is too dark to read on navy at small sizes, and this one
+   passes WCAG AA there (4.8:1). Under the
    headline: a bold line, five coloured cards, one band with a teal edge,
    and a last line in light grey. */
 .stand {
-  --stand-pink: #FF5A6E;
+  --stand-pink: #F43A52;
   --stand-grey: #C9C9D6;
   --stand-teal: #2BB3B9;
   --stand-teal-light: #7FD6DA;

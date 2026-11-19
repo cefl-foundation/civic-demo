@@ -315,14 +315,14 @@ The box has `id="contacts"`: the link "our contact details" in part 15, under "W
 **Where:** `index.html`, under `WHAT WE COULD STAND FOR`, between the opening and "Why build it twice?".
 
 - **The words.** Edit them as you would any sentence. Type them in normal capitals: the stylesheet turns the small line above the headline, the headline, the card titles and the first words of the teal band into capitals.
-- **The headline.** Each half is one `<span>`. The second half is in the lighter red.
+- **The headline.** Each half is one `<span>`. The second half is in a brighter version of the page's red.
 - **A card.** Each card is one `<li>`, with its title in `<h3>` and its words in `<p>`. Its class gives its colour: `stand-plum`, `stand-navy`, `stand-green`, `stand-red` or `stand-maroon`. On a wide screen the five cards fill one row; on tablets they sit three to a row, and on phones one. To add a sixth card, copy a whole `<li> … </li>`, paste it after the last one, and change its words and class. It will start a second row; to keep one row, change `repeat(5, minmax(0, 1fr))` to `repeat(6, minmax(0, 1fr))` in `.stand-cards`, in section 4 of `css/site.css`, and check that the longest title still fits.
 - **The teal band.** It is `<p class="stand-band">`. The words inside `<strong>` are the light teal capitals at its start.
 - **The last line.** It is `<p class="stand-credit">`.
 
 **The look:** `css/site.css`, section 4, the rules that start with `.stand`. The four colours used only in this band are at the top of `.stand { … }`:
 
-- `--stand-pink` (`#FF5A6E`): the small line above the headline and the headline's second half. The page's red is too dark to read on navy at small sizes; this lighter red passes WCAG AA there.
+- `--stand-pink` (`#F43A52`): the small line above the headline and the headline's second half. It is a brighter version of the page's red: the page's own red is too dark to read on navy at small sizes, and this one passes WCAG AA there (4.8:1).
 - `--stand-grey` (`#C9C9D6`): the last line.
 - `--stand-teal` and `--stand-teal-light`: the band's edge and its first words.
 
