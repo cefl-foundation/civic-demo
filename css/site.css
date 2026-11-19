@@ -5689,6 +5689,117 @@ a[target="_blank"]::after {
   border-top: 1px solid #555555;
 }
 
+/* What we could stand for: the band straight after the opening, on dark
+   navy (--night) like part 5. Its eyebrow and the second half of its
+   headline are a lighter red, --stand-pink: the page's red is too dark to
+   read on navy at small sizes, and this one passes WCAG AA there. Under the
+   headline: a bold line, a light grey line, five coloured cards, one band
+   with a teal edge, and a last line in light grey. */
+.stand {
+  --stand-pink: #FF5A6E;
+  --stand-grey: #C9C9D6;
+  --stand-teal: #2BB3B9;
+  --stand-teal-light: #7FD6DA;
+  padding-block: var(--band-space);
+  background: var(--night);
+  color: var(--white);
+}
+
+.stand .eyebrow {
+  color: var(--stand-pink);
+}
+
+.stand h2 {
+  margin-bottom: 1.4rem;
+  color: var(--white);
+  font-size: clamp(2.6rem, 7.5vw, 5.75rem);
+}
+
+.stand h2 span + span {
+  color: var(--stand-pink);
+}
+
+.stand-sub {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.stand-line {
+  max-width: 48rem;
+  margin: 0;
+  color: var(--stand-grey);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.45;
+}
+
+/* The five cards. On a wide screen they sit in one row of five; on
+   tablets three to a row, and on phones one (section 5). Each card's colour
+   comes from its class: stand-plum, stand-navy, stand-green, stand-red or
+   stand-maroon. */
+.stand-cards {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+  margin: clamp(1.75rem, 3.5vw, 2.5rem) 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.stand-cards li {
+  padding: 1.1rem 1.1rem 1.3rem;
+  background: var(--stand-card);
+}
+
+/* The titles grow with the window (2.3vw), but never past 1.75rem, so the
+   longest, "Career-powered", stays on one line in a card of the row. */
+.stand-cards h3 {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.3vw, 1.75rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.stand-cards p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.stand-plum { --stand-card: var(--plum); }
+.stand-navy { --stand-card: var(--navy); }
+.stand-green { --stand-card: var(--green); }
+.stand-red { --stand-card: var(--red); }
+.stand-maroon { --stand-card: var(--maroon); }
+
+/* The band for people already in work: a teal edge, and its first words in
+   light teal capitals. */
+.stand-band {
+  margin: clamp(1.5rem, 3vw, 2rem) 0 0;
+  padding: 1.1rem clamp(1rem, 2vw, 1.5rem);
+  border-left: 0.5rem solid var(--stand-teal);
+  background: rgba(255, 255, 255, 0.07);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.45;
+}
+
+.stand-band strong {
+  color: var(--stand-teal-light);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* The last line: whose idea this is. */
+.stand-credit {
+  margin: clamp(1.5rem, 3vw, 2.25rem) 0 0;
+  color: var(--stand-grey);
+  font-size: 0.95rem;
+}
+
 /* ---------- 5. Small screens ---------- */
 
 /* The opening's arch, arrow and list. On tablets and phones the rules for
@@ -5717,6 +5828,16 @@ a[target="_blank"]::after {
   .from-repack .reach-tags li {
     padding: 0.35rem 0.55rem 0.3rem;
     font-size: 0.85rem;
+  }
+
+  /* The arch's label, "CEFL’s coding hub", can be wider than the arch on a
+     small phone, and would then run into the arrow. Here it may not be
+     wider than the arch, so it breaks after "CEFL’s": the space in
+     "coding hub" is a no-break space (&nbsp;) in index.html. */
+  .from-repack .reach .arch-box .arch-label {
+    max-width: var(--arch-w);
+    white-space: normal;
+    text-align: center;
   }
 }
 
@@ -5891,6 +6012,24 @@ a[target="_blank"]::after {
 
   .topbar-note {
     font-size: 0.8rem;
+  }
+}
+
+/* The "Start as you are" band: three cards to a row on tablets, and one
+   to a row on phones, where the card titles can be bigger again. */
+@media (max-width: 62rem) {
+  .stand-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 40rem) {
+  .stand-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .stand-cards h3 {
+    font-size: 1.9rem;
   }
 }
 

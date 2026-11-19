@@ -6,8 +6,8 @@ This page is built like the earlier prototype pages: plain HTML, CSS and JavaScr
 
 | File | Job | Lines |
 | --- | --- | --- |
-| `index.html` | The words and their order | about 1,240 |
-| `css/site.css` | The look | about 5,900 |
+| `index.html` | The words and their order | about 1,250 |
+| `css/site.css` | The look | about 6,000 |
 | `js/page.js` | The notes switch, starting the films, marking the current tab | about 190 |
 
 ## 2. `index.html`: one page made of parts
@@ -42,9 +42,9 @@ The new parts (5, 10 and 14, and the smart fridge in 3) sit in `from-community` 
 
 Each part has an `id`, such as `id="stories"`, and a tab jumps to it with `href="#stories"`. The same `id` must not appear twice on a page. Two earlier pages both had a part with `id="questions"`; on this page only part 15 has it.
 
-### The opening, and the part under it
+### The opening, the band after it, and "Why build it twice?"
 
-The page starts with two parts that share one look, from the `from-repack` box: a big headline in two halves, and arches standing on a thick black line.
+The page starts with two parts that share one look, from the `from-repack` box: a big headline in two halves, and arches standing on a thick black line. Since 19 November a dark band, "Start as you are. Finish career-ready.", sits between them.
 
 **The opening, "Same teaching. New audiences."** Search for `THE OPENING` to find it. It says who CEFL is, what we built and who it could reach:
 
@@ -54,7 +54,7 @@ The page starts with two parts that share one look, from the `from-repack` box: 
   <p class="reach-small"> ... the small grey line ... </p>
 </div>
 <div class="reach">
-  <figure class="arch-box"> ... "What CEFL built" and the arch ... </figure>
+  <figure class="arch-box"> ... "CEFL’s coding hub" and the arch ... </figure>
   <span class="arch-arrow" aria-hidden="true"></span>
   <div class="reach-list">
     <p class="arch-label" id="reach-title">Who it could reach</p>
@@ -71,8 +71,11 @@ The page starts with two parts that share one look, from the `from-repack` box: 
 - `aria-labelledby="reach-title"` tells a screen reader that the list is called "Who it could reach": the words with `id="reach-title"` just above it.
 - The arrow is only a picture, so `aria-hidden="true"` hides it from screen readers.
 - In the small line, `<span>no sign-up</span>` keeps those words together, so the line never breaks at the hyphen.
+- In the arch's label, `coding&nbsp;hub` keeps those two words together: `&nbsp;` is a space that never breaks. On a small phone the label may not be wider than the arch, so it breaks after "CEFL’s" instead of running into the arrow.
 
-**The part under it, "Why build it twice? Repackage it."** Search for `AFTER THE OPENING` to find it. Until 17 November it was the page's opening. Its headline is now an `<h2>`, because the page's `<h1>` belongs to the opening. In `css/site.css`, the rules that size the opening's headline cover both (`.from-repack .hero h1, .from-repack .hero h2`), so it looks the same as before.
+**The band after the opening, "Start as you are. Finish career-ready."** Search for `WHAT WE COULD STAND FOR` to find it. It is a dark navy band that says what the University could stand for: a bold line, a light grey line, five coloured cards, a band with a teal edge for people already in work, and a last line that says whose idea this is. It is new, so it is not in a box named after an earlier page: its rules start with `.stand`, in section 4 of `css/site.css`. To change it, see "Change the “Start as you are” band" in section 5 of this guide.
+
+**Two parts down, "Why build it twice? Repackage it."** Search for `AFTER THE OPENING` to find it. Until 17 November it was the page's opening. Its headline is now an `<h2>`, because the page's `<h1>` belongs to the opening. In `css/site.css`, the rules that size the opening's headline cover both (`.from-repack .hero h1, .from-repack .hero h2`), so it looks the same as before.
 
 ### The two groups and the pictures in part 1
 
@@ -172,7 +175,7 @@ The other parts work exactly as on the earlier pages: headlines in two halves (`
 | 1. Colours and fonts | Every colour of every earlier page, in one `:root`, and the headline font |
 | 2. Basics | The black strip, the red menu, buttons, headlines, notes: shared by all parts |
 | 3. The parts, page by page | Four blocks, one per earlier page |
-| 4. What this page adds | The short opening line, the opening's bold line and its list of who it could reach, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the arch picture, cards and contacts in part 16, the skyline, the footer |
+| 4. What this page adds | The short opening line, the opening's bold line and its list of who it could reach, the “What we could stand for” band after the opening, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the arch picture, cards and contacts in part 16, the skyline, the footer |
 | 5. Small screens | For the parts this page adds, and the menu on one sliding row on phones |
 
 In section 3 every rule starts with its page's box name:
@@ -305,6 +308,26 @@ The box has `id="contacts"`: the link "our contact details" in part 15, under "W
 ### Change who the opening could reach
 
 **Where:** `index.html`, under `THE OPENING`, inside `<ul class="reach-tags">`. Change the words of a label, or copy a whole `<li class="reach-…">…</li>` line and paste it under another to add one. Give it a colour by its class: `reach-navy`, `reach-plum`, `reach-teal`, `reach-green`, `reach-red` or `reach-maroon`. A long label simply wraps onto two lines.
+
+### Change the “Start as you are” band
+
+**Where:** `index.html`, under `WHAT WE COULD STAND FOR`, between the opening and "Why build it twice?".
+
+- **The words.** Edit them as you would any sentence. Type them in normal capitals: the stylesheet turns the small line above the headline, the headline, the card titles and the first words of the teal band into capitals.
+- **The headline.** Each half is one `<span>`. The second half is in the lighter red.
+- **A card.** Each card is one `<li>`, with its title in `<h3>` and its words in `<p>`. Its class gives its colour: `stand-plum`, `stand-navy`, `stand-green`, `stand-red` or `stand-maroon`. On a wide screen the five cards fill one row; on tablets they sit three to a row, and on phones one. To add a sixth card, copy a whole `<li> … </li>`, paste it after the last one, and change its words and class. It will start a second row; to keep one row, change `repeat(5, minmax(0, 1fr))` to `repeat(6, minmax(0, 1fr))` in `.stand-cards`, in section 4 of `css/site.css`, and check that the longest title still fits.
+- **The teal band.** It is `<p class="stand-band">`. The words inside `<strong>` are the light teal capitals at its start.
+- **The last line.** It is `<p class="stand-credit">`.
+
+**The look:** `css/site.css`, section 4, the rules that start with `.stand`. The four colours used only in this band are at the top of `.stand { … }`:
+
+- `--stand-pink` (`#FF5A6E`): the small line above the headline and the headline's second half. The page's red is too dark to read on navy at small sizes; this lighter red passes WCAG AA there.
+- `--stand-grey` (`#C9C9D6`): the light grey line and the last line.
+- `--stand-teal` and `--stand-teal-light`: the band's edge and its first words.
+
+The band's navy is `--night`, the same as part 5. The card colours are the page's own (`--plum`, `--navy`, `--green`, `--red`, `--maroon`), from section 1.
+
+**To remove the band:** delete from its comment down to its closing `</section>`, just before the `AFTER THE OPENING` comment. It has no box (`<div>`) round it and no tab, so there is nothing else to delete.
 
 ### Change the tab icon
 
