@@ -163,7 +163,7 @@ The columns come from these rules in section 4 of `css/site.css`:
 
 Part 6’s `.next-cols` works the same way, with its own rules just above.
 
-The other parts work exactly as on the earlier pages: headlines in two halves (`<span>…</span> <span>…</span>`), films with `controls muted loop playsinline preload="none"`, working notes in `<div data-note>`, and links that open in a new tab with `target="_blank" rel="noopener"`. The GUIDE.md of any earlier page explains them line by line.
+The other parts work exactly as on the earlier pages: headlines in two halves (`<span>…</span> <span>…</span>`), films with `controls muted loop playsinline preload="none"`, and links that open in a new tab with `target="_blank" rel="noopener"`. The GUIDE.md of any earlier page explains them line by line.
 
 ## 3. `css/site.css`: one stylesheet in five sections
 
@@ -266,7 +266,7 @@ On a phone the twelve tabs would fill four rows above the opening. The last bloc
 
 ## 4. `js/page.js`
 
-The same file as on the earlier pages, with a new title in its first comment. It needs no changes when parts are added or removed: it finds every film and every tab on the page by itself. This page has no notes button in its footer, and the script simply skips that job: add `?notes` to the address to see the notes.
+The same file as on the earlier pages, with a new title in its first comment. It needs no changes when parts are added or removed: it finds every film and every tab on the page by itself. This page has no notes button in its footer and no working notes, so the script simply skips that job.
 
 ## 5. How to change things
 
@@ -346,9 +346,9 @@ When a guided video is on YouTube, you can replace the whole `<video class="guid
 
 Replace `VIDEO-ID` with the video's own code from its address.
 
-### Fill in a working note
+### Working notes
 
-**Where:** `index.html`. Search for `data-note`. There are ten blocks, holding twelve notes. They are hidden unless the address ends with `?notes`. Do what the note says, then delete the whole block, from `<div data-note>` to its `</div>`.
+Working notes are not kept on this page. Anything in this repository is public, even when it is hidden on screen, so notes about what to check or add live in a private file instead.
 
 ### Add the Hub link in part 10
 
@@ -368,7 +368,7 @@ with this one, putting the Hub's address in place of `ADDRESS`, between the quot
 
 - `<a … href="…">` makes it a link again, and `button-red` gives it back its red colour.
 - `target="_blank"` opens the Hub in a new tab, and the hidden words "(opens in a new tab)" tell a screen reader so.
-- Then, in part 9, change the first stop's label from `In class now` back to `Open now`: search for `pill-open`. Also delete the working note under the four steps in part 10.
+- Then, in part 9, change the first stop's label from `In class now` back to `Open now`: search for `pill-open`.
 
 ### Change a colour
 
