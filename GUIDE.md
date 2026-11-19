@@ -296,6 +296,8 @@ The band's dark navy comes from `--night` in section 1 of `css/site.css`, and it
 
 **Where:** `index.html`, under `16. WHO WE ARE: CEFL, AND WHO TO TALK TO`, inside `<div class="contacts">`. Each person is one `<li class="contact-card …">`. Change the words, then the address in both places on its line: after `mailto:` and between the tags.
 
+The box has `id="contacts"`: the link "our contact details" in part 15, under "Why computer science?", jumps to it with `href="#contacts"`. If you change the id, change the link too.
+
 ### Change who offers what in part 13
 
 **Where:** `index.html`, under `13. CUSTOMISED PATHS: LOCAL ADULTS`, inside `<div class="offers">`. Change the words inside each `<p class="offer …">`. To add a third card, copy one whole `<p class="offer …">…</p>` line, paste it under the second one, and then, in `css/site.css`, in the rule `#paths .offers-cols`, change `repeat(2,` to `repeat(3,`.
