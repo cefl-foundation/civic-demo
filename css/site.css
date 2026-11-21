@@ -5858,7 +5858,24 @@ a[target="_blank"]::after {
    look (class stand), just before part 16. At the top, two columns: the
    story on the left, and the drawing of keyboard keys on the right, lined
    up on their middles. Under a thin line, two more columns. On tablets and
-   phones everything is one column (section 5). */
+   phones everything is one column (section 5). The words are a little
+   smaller than in "Start as you are", and only the labels, the last line
+   of the story and "Talk to us" are bold, so the band reads as a short,
+   quiet summary. */
+.maybe {
+  /* On a Mac, white words on a dark background look bolder than they are.
+     These two lines draw them a little thinner there. */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Where the browser can, it avoids leaving one word alone on the last
+     line of a paragraph. */
+  text-wrap: pretty;
+}
+
+.stand.maybe h2 {
+  font-size: clamp(2.4rem, 6vw, 4.75rem);
+}
+
 .maybe-top {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
@@ -5870,7 +5887,7 @@ a[target="_blank"]::after {
 .maybe-lede {
   max-width: 34rem;
   margin: 0;
-  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+  font-size: clamp(1.1rem, 1.45vw, 1.25rem);
   line-height: 1.5;
 }
 
@@ -5881,7 +5898,7 @@ a[target="_blank"]::after {
    those colours (7.1:1 and 11:1). */
 .maybe-thoughts {
   display: grid;
-  margin: 1.75rem 0 0;
+  margin: 1.4rem 0 0;
 }
 
 .maybe-label {
@@ -5905,14 +5922,14 @@ a[target="_blank"]::after {
 
 .maybe-bubble {
   position: relative;
-  margin: 0 0 1.6rem;
-  padding: 0.8rem 1.2rem 0.9rem;
-  border-radius: 1.4rem;
+  margin: 0 0 1.4rem;
+  padding: 0.75rem 1.15rem 0.85rem;
+  border-radius: 1.3rem;
   color: var(--night);
-  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
   font-style: italic;
-  font-weight: 700;
-  line-height: 1.32;
+  font-weight: 500; /* medium where the typeface has it, otherwise regular */
+  line-height: 1.38;
 }
 
 /* The tail: a small triangle under each bubble, in the bubble's colour
@@ -5951,7 +5968,7 @@ a[target="_blank"]::after {
 .maybe-wins {
   margin: 0.4rem 0 0;
   color: var(--stand-grey);
-  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+  font-size: clamp(1.1rem, 1.45vw, 1.25rem);
   font-weight: 700;
 }
 
@@ -5977,16 +5994,17 @@ a[target="_blank"]::after {
 .maybe-more {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(1.25rem, 4vw, 4rem);
-  margin-top: clamp(2.25rem, 4.5vw, 3.5rem);
-  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  gap: clamp(1.25rem, 3.5vw, 3rem);
+  margin-top: clamp(1.75rem, 3vw, 2.5rem);
+  padding-top: clamp(1.25rem, 2.2vw, 1.75rem);
   border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 
+/* The same size as the words on the rest of the page. */
 .maybe-more p {
-  margin: 0 0 1rem;
-  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
-  line-height: 1.55;
+  margin: 0 0 0.8rem;
+  font-size: 1.0625rem;
+  line-height: 1.5;
 }
 
 .maybe-more > p {
@@ -6001,12 +6019,12 @@ a[target="_blank"]::after {
 
 /* "Talk to us": a link to the contacts in part 16, in the band's red. */
 .maybe-more .maybe-cta {
-  margin: 1.5rem 0 0;
+  margin: 1.1rem 0 0;
 }
 
 .maybe-cta a {
   color: var(--stand-pink);
-  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-size: clamp(1.15rem, 1.6vw, 1.3rem);
   font-weight: 700;
   text-decoration: underline;
   text-decoration-thickness: 2px;
