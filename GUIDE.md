@@ -53,6 +53,7 @@ The page starts with two parts that share one look, from the `from-repack` box: 
   <p class="reach-lede"> ... the bold line ... </p>
   <p class="reach-small"> ... the small grey line ... </p>
   <ul class="reach-facts"> ... three tags: Free, Any browser, No sign-up ... </ul>
+  <p class="reach-short"> ... "Short on time?" and a link to the two-minute version ... </p>
 </div>
 <div class="reach">
   <figure class="arch-box"> ... "Our coding hub", curved over the arch, and the arch ... </figure>
@@ -72,6 +73,7 @@ The page starts with two parts that share one look, from the `from-repack` box: 
 - `aria-labelledby="reach-title"` tells a screen reader that the list is called "Who it could reach": the words with `id="reach-title"` just above it.
 - The arrow is only a picture, so `aria-hidden="true"` hides it from screen readers.
 - Under the small line, the three facts are a list of tags, `<ul class="reach-facts">`, with one `<li>` for each. Each tag stays on one line, so "No sign-up" never breaks at its hyphen. To change a fact, edit its `<li>`; to add one, copy a whole `<li> … </li>`. Their rules start with `.from-repack .reach-facts`, in section 4 of `css/site.css`.
+- Under the tags, `<p class="reach-short">` says "Short on time?" and links to the "Not me. Maybe me." band before part 16 (`href="#maybe-me"`). The link stays on one line (`white-space: nowrap`), so on a phone the whole link moves under "Short on time?" instead of breaking in the middle. Its rules start with `.from-repack .reach-short`, in section 4 of `css/site.css`.
 - The arch's label, "Our coding hub", curves over the arch like a sign over a doorway. It is a small SVG drawing: the words follow a curve (`<textPath>`). Screen readers skip the drawing (`aria-hidden="true"`) and read the hidden words in `<span class="visually-hidden">` instead. To change the label, change it in both places: in capitals inside `<textPath>`, and in normal letters in the hidden span. Keep it short, about 15 letters, or the words run down the sides of the arch. Its rules are `.arch-label-curved` and `.arch-curve` in section 4 of `css/site.css`, and the words are a little bigger on phones (section 5).
 
 **The band after the opening, "Start as you are. Finish career-ready."** Search for `WHAT WE COULD STAND FOR` to find it. It is a dark navy band that says what the University could stand for: a bold line, five coloured cards, a band with a teal edge for people already in work, and a last line that says whose idea this is. It is new, so it is not in a box named after an earlier page: its rules start with `.stand`, in section 4 of `css/site.css`. To change it, see "Change the “Start as you are” band" in section 5 of this guide.
@@ -99,6 +101,10 @@ Each picture is a line icon, drawn once near the top of the page and used by its
 - `#l-bus` is the name of the drawing. The others are `l-calendar`, `l-boxes`, `l-code` and `l-care` for the five people, `l-award`, `l-research`, `l-columns` and `l-laptop` for the cards in part 16, and `l-shield` and `l-receipt` for the tasks in part 6. `l-flag`, `l-people` and `l-laptop` are on the contact cards in part 16. Each one is a `<symbol id="l-…">` in the `<svg class="icon-store">` near the top of `index.html`.
 - `icon-navy` is the colour of the circle. The others are `icon-plum`, `icon-green`, `icon-teal` and `icon-red`.
 - `aria-hidden="true"` hides the picture from screen readers: the words on the card already say who the person is.
+
+### The band before part 16: "Not me. Maybe me."
+
+Search for `NOT ME. MAYBE ME.` to find it. Since 21 November it sits between part 15 and part 16, so it leads into "Who we are" and the contacts. It is the idea in two minutes: a police officer's two thoughts about a career in cyber security, shown as speech bubbles, a drawing of keyboard keys that spell MAYBE ME. while the N, O and T keys fall off, what we would do, and a link, "Talk to us", that jumps to the contacts (`href="#contacts"`). The "Short on time?" link in the opening jumps to it (`href="#maybe-me"`). It uses the dark navy look of "Start as you are" (`class="stand maybe"`), with no number, no tab and no box round it. Its own rules start with `.maybe`, in section 4 of `css/site.css`. To change it, see "Change the “Not me. Maybe me.” band" in section 5 of this guide.
 
 ### The arch and the contacts in part 16
 
@@ -176,7 +182,7 @@ The other parts work exactly as on the earlier pages: headlines in two halves (`
 | 1. Colours and fonts | Every colour of every earlier page, in one `:root`, and the headline font |
 | 2. Basics | The black strip, the red menu, buttons, headlines, notes: shared by all parts |
 | 3. The parts, page by page | Four blocks, one per earlier page |
-| 4. What this page adds | The short opening line, the opening's bold line, its three fact tags and its list of who it could reach, the curved label over its arch, the “What we could stand for” band after the opening, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the arch picture, cards and contacts in part 16, the skyline, the footer |
+| 4. What this page adds | The short opening line, the opening's bold line, its three fact tags, the “Short on time?” link under them and its list of who it could reach, the curved label over its arch, the “What we could stand for” band after the opening, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the “Not me. Maybe me.” band before part 16, the arch picture, cards and contacts in part 16, the skyline, the footer |
 | 5. Small screens | For the parts this page adds, and the menu on one sliding row on phones |
 
 In section 3 every rule starts with its page's box name:
@@ -294,6 +300,8 @@ The same file as on the earlier pages, with a new title in its first comment. It
 
 **Where:** `index.html`, under `5. WHY POLICING: TWO NUMBERS, ONE GAP`, inside `<ul class="why-figs">`. Each number is one `<li>`: the big number is in `<span class="why-fig">`, and the words under it in `<span class="why-fig-words">`. If you change a number, change its source too: in the line `<p class="why-src">` just under the numbers, and in the footer's list of sources.
 
+Keep the space between the two `<span>`s (`</span> <span class="why-fig-words">`). On screen it makes no difference, because the big number sits on its own line. Without it, though, a screen reader or copied text can run the words together ("More than halfof").
+
 The band's dark navy comes from `--night` in section 1 of `css/site.css`, and its rules start with `.why-` in section 4. The red highlight on "It should take ten minutes." is `.why-rule span + span`: the second `<span>` of that line.
 
 ### Change the contacts in part 16
@@ -329,6 +337,45 @@ The box has `id="contacts"`: the link "our contact details" in part 15, under "W
 The band's navy is `--night`, the same as part 5. The card colours are the page's own (`--plum`, `--navy`, `--green`, `--red`, `--maroon`), from section 1.
 
 **To remove the band:** delete from its comment down to its closing `</section>`, just before the `AFTER THE OPENING` comment. It has no box (`<div>`) round it and no tab, so there is nothing else to delete.
+
+### Change the “Not me. Maybe me.” band
+
+**Where:** `index.html`, under `BEFORE 16: NOT ME. MAYBE ME.`, between part 15 and part 16. Its parts, from top to bottom:
+
+```html
+<div class="maybe-top">
+  <div class="maybe-story">
+    <p class="eyebrow"> ... the small line: The idea in two minutes ... </p>
+    <h2 id="maybe-title"><span>Not me.</span> <span>Maybe me.</span></h2>
+    <p class="maybe-lede"> ... the person to picture ... </p>
+    <div class="maybe-thoughts">
+      <p class="maybe-label maybe-label-first"> ... The first thought ... </p>
+      <p class="maybe-bubble maybe-first"> ... the teal bubble ... </p>
+      <p class="maybe-label maybe-label-second"> ... A moment later, a second voice ... </p>
+      <p class="maybe-bubble maybe-second"> ... the light grey bubble ... </p>
+    </div>
+    <p class="maybe-wins">The second thought usually wins.</p>
+  </div>
+  <svg class="maybe-keys" ...> ... the keyboard keys ... </svg>
+</div>
+<div class="maybe-more">
+  <p> ... the left column ... </p>
+  <div> ... the right column, ending with "Talk to us" ... </div>
+</div>
+```
+
+- **The words.** Edit them as you would any sentence. Type the small line above the headline, the headline and the two labels in normal capitals: the stylesheet turns them into capitals.
+- **The headline.** Each half is one `<span>`. The second half is in the band's brighter red.
+- **The two thoughts.** Each label is a `<p class="maybe-label …">` and each bubble a `<p class="maybe-bubble …">`. `maybe-first` is the teal bubble on the left, and `maybe-second` the light grey one on the right. The little tail under each bubble comes from the stylesheet (`.maybe-bubble::after`), so there is nothing to add for it in the HTML. The colon hidden in each label (`<span class="visually-hidden">:</span>`) is only for screen readers, so they read "The first thought: Perhaps that could be me."
+- **Words that must not break at a hyphen.** "self-checkout" and "ten-minute" are inside `<span class="maybe-nobreak">`, so each stays on one line. Do the same for any new hyphenated word that breaks badly.
+- **The drawing.** `<svg class="maybe-keys">` is a picture of keyboard keys, drawn in code. Screen readers skip it (`aria-hidden="true"`), because the headline already says "Maybe me." Each key is one line: a dark rectangle for its edge, a lighter one on top of it for its face, and a `<text>` for its letter. To change a letter, change it between `<text …>` and `</text>`. The red keys spell MAYBE ME.; the three dark squares with a small cross are the empty sockets; the last three lines are the N, O and T keys falling off, each turned by `rotate(…)`. The key colours are in `<defs>` at the top of the drawing (`maybe-red`, `maybe-dark` and `maybe-light`), and `maybe-drop` is the shadow under the falling keys.
+- **"Talk to us".** It is `<p class="maybe-cta">`. Its link jumps to the contacts in part 16 (`href="#contacts"`). The arrow is hidden from screen readers (`aria-hidden="true"`).
+
+**The look:** `css/site.css`, section 4, the rules that start with `.maybe`, just after the `.stand` rules. On a laptop the story and the drawing sit side by side (`.maybe-top`), and so do the two columns under the thin line (`.maybe-more`). On tablets and phones (section 5) everything is one column, and the drawing comes after the story. The colours are the band's own: `--stand-teal` and `--stand-grey` for the labels and bubbles, with `--night` words in the bubbles (WCAG AAA: 7.1:1 and 11:1), and `--stand-pink` for "Talk to us". To make "Talk to us" teal instead, change `color: var(--stand-pink);` to `color: var(--stand-teal);` in `.maybe-cta a`.
+
+**The link to it from the opening:** "Short on time? Read the two-minute version" is `<p class="reach-short">`, under the three fact tags in the opening. Its link is `href="#maybe-me"`, the band's id. If you change the id, change the link too.
+
+**To remove the band:** delete from its comment down to its closing `</section>`, just before the `16. WHO WE ARE` comment. Then delete the `<p class="reach-short">` line in the opening, or its link will go nowhere. The band has no box (`<div>`) round it and no tab, so there is nothing else to delete.
 
 ### Change the tab icon
 

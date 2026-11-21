@@ -123,6 +123,7 @@
               <li>Any browser</li>
               <li>No sign-up</li>
             </ul>
+            <p class="reach-short">Short on time? <a href="#maybe-me">Read the two-minute version <span aria-hidden="true">↓</span></a></p>
           </div>
 
           <div class="reach">
@@ -586,8 +587,8 @@ else:
         <p class="chapter-lede">At the Accelerating AI conference in Milton Keynes, a police officer told us about a gap. Two numbers show it.</p>
 
         <ul class="why-figs">
-          <li><span class="why-fig">More than half</span><span class="why-fig-words">of the crime people in England and Wales experience is now fraud or computer misuse.</span></li>
-          <li><span class="why-fig">2%</span><span class="why-fig-words">of police funding goes on tackling fraud.</span></li>
+          <li><span class="why-fig">More than half</span> <span class="why-fig-words">of the crime people in England and Wales experience is now fraud or computer misuse.</span></li>
+          <li><span class="why-fig">2%</span> <span class="why-fig-words">of police funding goes on tackling fraud.</span></li>
         </ul>
         <p class="why-src">Sources: Crime Survey for England and Wales, year ending June 2026 (fraud and computer misuse: 5.3 million of 9.7 million incidents); House of Commons Justice Committee, Fraud and the Justice System (2022).</p>
 
@@ -1145,6 +1146,81 @@ else:
       </div>
     </section>
     </div>
+
+    <!-- ============================== BEFORE 16: NOT ME. MAYBE ME. ============================== -->
+    <!-- The idea in two minutes, just before part 16 and the contacts. The
+         "Short on time?" link in the opening jumps here (href="#maybe-me").
+         It uses the dark navy look of "Start as you are" (class stand), with
+         no number and no tab. At the top, two columns: on the left the
+         story, with the two thoughts as speech bubbles (the first in teal,
+         the second in light grey); on the right a drawing of keyboard keys
+         that spell MAYBE ME. in red, while the N, O and T keys fall off.
+         Under a thin line, two columns: what we would do, and "Talk to us",
+         which jumps to the contacts. Its own rules start with .maybe, in
+         section 4 of css/site.css, after the .stand rules. -->
+    <section class="stand maybe" id="maybe-me" aria-labelledby="maybe-title" tabindex="-1">
+      <div class="wrap">
+        <div class="maybe-top">
+          <div class="maybe-story">
+            <p class="eyebrow">The idea in two minutes</p>
+            <h2 id="maybe-title"><span>Not me.</span> <span>Maybe me.</span></h2>
+
+            <p class="maybe-lede">Picture someone in their late twenties or early thirties, already a police officer, hearing about careers in cyber security.</p>
+
+            <div class="maybe-thoughts">
+              <p class="maybe-label maybe-label-first">The first thought<span class="visually-hidden">:</span></p>
+              <p class="maybe-bubble maybe-first">Perhaps that could be me.</p>
+              <p class="maybe-label maybe-label-second">A moment later, a second voice<span class="visually-hidden">:</span></p>
+              <p class="maybe-bubble maybe-second">What do you mean? You? School said you weren’t the academic type. Look at your tech skills. Seriously, you still can’t use the <span class="maybe-nobreak">self-checkout</span> properly. And you can barely remember your times tables.</p>
+            </div>
+
+            <p class="maybe-wins">The second thought usually wins.</p>
+          </div>
+
+            <svg class="maybe-keys" viewBox="0 0 680 560" aria-hidden="true" focusable="false">
+              <defs>
+                <linearGradient id="maybe-red" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F24A5C"/><stop offset="1" stop-color="#C81F35"/></linearGradient>
+                <linearGradient id="maybe-dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3C3E60"/><stop offset="1" stop-color="#313351"/></linearGradient>
+                <linearGradient id="maybe-light" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F4F4F8"/><stop offset="1" stop-color="#D2D3DF"/></linearGradient>
+                <filter id="maybe-drop" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#05050F" flood-opacity="0.6"/></filter>
+              </defs>
+              <!-- The board -->
+              <rect x="8" y="20" width="604" height="376" rx="38" fill="#08081A" opacity="0.6"/>
+              <rect x="8" y="8" width="604" height="376" rx="38" fill="#25273F" stroke="#36385A" stroke-width="2"/>
+              <!-- Row 1: M A Y B E, in red -->
+              <rect x="32" y="32" width="100" height="100" rx="16" fill="#8C1124"/><rect x="32" y="32" width="100" height="90" rx="16" fill="url(#maybe-red)"/><text x="82" y="99" fill="#FFFFFF">M</text>
+              <rect x="146" y="32" width="100" height="100" rx="16" fill="#8C1124"/><rect x="146" y="32" width="100" height="90" rx="16" fill="url(#maybe-red)"/><text x="196" y="99" fill="#FFFFFF">A</text>
+              <rect x="260" y="32" width="100" height="100" rx="16" fill="#8C1124"/><rect x="260" y="32" width="100" height="90" rx="16" fill="url(#maybe-red)"/><text x="310" y="99" fill="#FFFFFF">Y</text>
+              <rect x="374" y="32" width="100" height="100" rx="16" fill="#8C1124"/><rect x="374" y="32" width="100" height="90" rx="16" fill="url(#maybe-red)"/><text x="424" y="99" fill="#FFFFFF">B</text>
+              <rect x="488" y="32" width="100" height="100" rx="16" fill="#8C1124"/><rect x="488" y="32" width="100" height="90" rx="16" fill="url(#maybe-red)"/><text x="538" y="99" fill="#FFFFFF">E</text>
+              <!-- Row 2: M E . in red, then two empty sockets -->
+              <rect x="32" y="146" width="100" height="100" rx="16" fill="#8C1124"/><rect x="32" y="146" width="100" height="90" rx="16" fill="url(#maybe-red)"/><text x="82" y="213" fill="#FFFFFF">M</text>
+              <rect x="146" y="146" width="100" height="100" rx="16" fill="#8C1124"/><rect x="146" y="146" width="100" height="90" rx="16" fill="url(#maybe-red)"/><text x="196" y="213" fill="#FFFFFF">E</text>
+              <rect x="260" y="146" width="100" height="100" rx="16" fill="#8C1124"/><rect x="260" y="146" width="100" height="90" rx="16" fill="url(#maybe-red)"/><text x="310" y="213" fill="#FFFFFF">.</text>
+              <rect x="374" y="146" width="100" height="100" rx="16" fill="#111225"/><rect x="376" y="148" width="96" height="96" rx="14" fill="none" stroke="#06060F" stroke-opacity="0.6" stroke-width="4"/><rect x="414" y="193" width="20" height="6" rx="2" fill="#4A4C70"/><rect x="421" y="186" width="6" height="20" rx="2" fill="#4A4C70"/>
+              <rect x="488" y="146" width="100" height="100" rx="16" fill="#111225"/><rect x="490" y="148" width="96" height="96" rx="14" fill="none" stroke="#06060F" stroke-opacity="0.6" stroke-width="4"/><rect x="528" y="193" width="20" height="6" rx="2" fill="#4A4C70"/><rect x="535" y="186" width="6" height="20" rx="2" fill="#4A4C70"/>
+              <!-- Row 3: blank keys, a long one, and the third empty socket -->
+              <rect x="32" y="260" width="100" height="100" rx="16" fill="#1B1C30"/><rect x="32" y="260" width="100" height="90" rx="16" fill="url(#maybe-dark)"/>
+              <rect x="146" y="260" width="214" height="100" rx="16" fill="#1B1C30"/><rect x="146" y="260" width="214" height="90" rx="16" fill="url(#maybe-dark)"/>
+              <rect x="374" y="260" width="100" height="100" rx="16" fill="#1B1C30"/><rect x="374" y="260" width="100" height="90" rx="16" fill="url(#maybe-dark)"/>
+              <rect x="488" y="260" width="100" height="100" rx="16" fill="#111225"/><rect x="490" y="262" width="96" height="96" rx="14" fill="none" stroke="#06060F" stroke-opacity="0.6" stroke-width="4"/><rect x="528" y="307" width="20" height="6" rx="2" fill="#4A4C70"/><rect x="535" y="300" width="6" height="20" rx="2" fill="#4A4C70"/>
+              <!-- The N, O and T keys, falling off the corner -->
+              <g transform="translate(392 452) rotate(-18)" filter="url(#maybe-drop)"><rect x="-50" y="-50" width="100" height="100" rx="16" fill="#9C9DB2"/><rect x="-50" y="-50" width="100" height="90" rx="16" fill="url(#maybe-light)"/><text x="0" y="17" fill="#14142B">N</text></g>
+              <g transform="translate(510 476) rotate(8)" filter="url(#maybe-drop)"><rect x="-50" y="-50" width="100" height="100" rx="16" fill="#9C9DB2"/><rect x="-50" y="-50" width="100" height="90" rx="16" fill="url(#maybe-light)"/><text x="0" y="17" fill="#14142B">O</text></g>
+              <g transform="translate(612 420) rotate(26)" filter="url(#maybe-drop)"><rect x="-50" y="-50" width="100" height="100" rx="16" fill="#9C9DB2"/><rect x="-50" y="-50" width="100" height="90" rx="16" fill="url(#maybe-light)"/><text x="0" y="17" fill="#14142B">T</text></g>
+            </svg>
+        </div>
+
+        <div class="maybe-more">
+          <p>We can’t stop that second thought. But we can help change it from “not me” to “maybe me” for adults who think it’s too late to change career or start a degree, and people who learn differently, including people with additional needs.</p>
+          <div>
+            <p>We start with the basics and the words for them, then lots of guided practice in small steps.</p>
+            <p>A pilot could begin with one group, one local partner and a <span class="maybe-nobreak">ten-minute</span> first step.</p>
+            <p class="maybe-cta"><a href="#contacts">Talk to us <span aria-hidden="true">↓</span></a></p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ============================== 16. WHO WE ARE: CEFL, AND WHO TO TALK TO ============================== -->
     <div class="from-repack">

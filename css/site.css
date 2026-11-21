@@ -3991,6 +3991,23 @@ a[target="_blank"]::after {
   white-space: nowrap;
 }
 
+/* Under the tags, a short way in for busy readers: "Short on time? Read
+   the two-minute version", a link in the page's red that jumps to the
+   "Not me. Maybe me." band before part 16. */
+.from-repack .reach-short {
+  max-width: 32rem;
+  margin: 1.1rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.from-repack .reach-short a {
+  color: var(--red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.2em;
+  white-space: nowrap; /* on a phone the whole link moves to the next line */
+}
+
 /* The arch, the arrow and the list, side by side in three columns. This
    arch is a little narrower than the two in the part under it. Lining
    everything up at the end (the bottom) stands the arch on the thick
@@ -5837,6 +5854,165 @@ a[target="_blank"]::after {
   font-size: 0.95rem;
 }
 
+/* Not me. Maybe me.: the idea in two minutes, a second band in the same
+   look (class stand), just before part 16. At the top, two columns: the
+   story on the left, and the drawing of keyboard keys on the right, lined
+   up on their middles. Under a thin line, two more columns. On tablets and
+   phones everything is one column (section 5). */
+.maybe-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+
+/* The line under the headline: the person to picture. */
+.maybe-lede {
+  max-width: 34rem;
+  margin: 0;
+  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+  line-height: 1.5;
+}
+
+/* The two thoughts. Each has a small label above it, and its words in a
+   speech bubble with a tail: the first thought in teal on the left, the
+   second voice in light grey on the right, like a conversation in one
+   person's head. Both bubbles have dark navy words, which pass WCAG AAA on
+   those colours (7.1:1 and 11:1). */
+.maybe-thoughts {
+  display: grid;
+  margin: 1.75rem 0 0;
+}
+
+.maybe-label {
+  margin: 0 0 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.maybe-label-first {
+  color: var(--stand-teal);
+}
+
+.maybe-label-second {
+  justify-self: end;
+  color: var(--stand-grey);
+  text-align: right;
+}
+
+.maybe-bubble {
+  position: relative;
+  margin: 0 0 1.6rem;
+  padding: 0.8rem 1.2rem 0.9rem;
+  border-radius: 1.4rem;
+  color: var(--night);
+  font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.32;
+}
+
+/* The tail: a small triangle under each bubble, in the bubble's colour
+   ("inherit" takes the colour from the bubble). */
+.maybe-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -0.8rem;
+  width: 1.4rem;
+  height: 0.85rem;
+  background: inherit;
+}
+
+.maybe-first {
+  justify-self: start;
+  background: var(--stand-teal);
+}
+
+.maybe-first::after {
+  left: 1.6rem;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.maybe-second {
+  justify-self: end;
+  max-width: 94%;
+  background: var(--stand-grey);
+}
+
+.maybe-second::after {
+  right: 1.6rem;
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+
+/* "The second thought usually wins.": bold, in light grey. */
+.maybe-wins {
+  margin: 0.4rem 0 0;
+  color: var(--stand-grey);
+  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+  font-weight: 700;
+}
+
+/* The drawing: keyboard keys that spell MAYBE ME. in red, while the N, O
+   and T keys fall off. It is an SVG, so it stays sharp at any size; the
+   letters on the keys are in the headline typeface. */
+.maybe-keys {
+  display: block;
+  width: 100%;
+  max-width: 34rem;
+  height: auto;
+  margin-inline: auto;
+}
+
+.maybe-keys text {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+/* Under a thin line, two columns: who we would help, and how. */
+.maybe-more {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 4vw, 4rem);
+  margin-top: clamp(2.25rem, 4.5vw, 3.5rem);
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.maybe-more p {
+  margin: 0 0 1rem;
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  line-height: 1.55;
+}
+
+.maybe-more > p {
+  margin: 0;
+}
+
+/* "self-checkout" and "ten-minute" stay on one line, so they never break
+   at their hyphens. */
+.maybe-nobreak {
+  white-space: nowrap;
+}
+
+/* "Talk to us": a link to the contacts in part 16, in the band's red. */
+.maybe-more .maybe-cta {
+  margin: 1.5rem 0 0;
+}
+
+.maybe-cta a {
+  color: var(--stand-pink);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+}
+
 /* ---------- 5. Small screens ---------- */
 
 /* The opening's arch, arrow and list. On tablets and phones the rules for
@@ -6062,6 +6238,25 @@ a[target="_blank"]::after {
 
   .stand-cards h3 {
     font-size: 1.9rem;
+  }
+}
+
+/* The "Not me. Maybe me." band on tablets and phones: one column. The
+   drawing comes after the story, a little smaller, and the two columns
+   under the thin line sit one above the other. */
+@media (max-width: 56rem) {
+  .maybe-top,
+  .maybe-more {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .maybe-more {
+    gap: 1rem;
+  }
+
+  .maybe-keys {
+    max-width: 26rem;
+    margin-inline: 0;
   }
 }
 
