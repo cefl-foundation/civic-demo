@@ -84,20 +84,22 @@
 
   
   <!-- ============================== THE RED MENU ============================== -->
+  <!-- Eight tabs, one for each chapter of the page, in page order. Each tab
+       jumps to the part in its href. data-also names other parts the tab
+       stands for, so js/page.js marks the tab while they are read too:
+       "Local people" for the paths for local adults (part 13), "Policing"
+       for "Two numbers. One gap." (part 5), and "Who we are" for the
+       "Not me. Maybe me." band. -->
   <nav class="nav" aria-label="Parts of this page">
     <div class="wrap">
       <a href="#top">Overview</a>
-      <a href="#stories">People</a>
-      <a href="#hub">Hub</a>
-      <a href="#teach">Teaching</a>
-      <a href="#why-policing">Why policing</a>
-      <a href="#repackage">Repackaged</a>
-      <a href="#policing">Policing</a>
-      <a href="#try">Try it</a>
-      <a href="#cases">Cases</a>
-      <a href="#paths">Paths</a>
+      <a href="#stories" data-also="paths">Local people</a>
+      <a href="#hub">The Hub</a>
+      <a href="#repackage">Before and after</a>
+      <a href="#policing" data-also="why-policing">Policing</a>
+      <a href="#together">Working together</a>
       <a href="#questions">Questions</a>
-      <a href="#strength">Who we are</a>
+      <a href="#strength" data-also="maybe-me">Who we are</a>
     </div>
   </nav>
 
@@ -1309,7 +1311,7 @@ else:
               <span class="card-icon" aria-hidden="true"><svg focusable="false"><use href="#l-laptop"/></svg></span>
               <p class="contact-role">The technical side</p>
               <h4>Monika Pietruch</h4>
-              <p>Academic skills tutor and unit coordinator for the EU and IFY Foundation Tech Pathways. Built the Tech Practice Hub and other tools for our students. Happy to talk through how they work, and the code.</p>
+              <p>ELT tutor and academic skills unit coordinator for the EU/IFY Foundation Tech path. Built the Tech Practice Hub and other tools for our students. Happy to talk through how they work, and the code.</p>
               <p class="contact-line"><a href="mailto:monika.pietruch@beds.ac.uk">monika.pietruch@beds.ac.uk</a></p>
             </li>
           </ul>

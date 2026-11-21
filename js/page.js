@@ -125,9 +125,27 @@
     }
     // Each tab is a link such as <a href="#strength">. Its part of the page
     // is the element with that id: here, the one with id="strength".
+    // A tab can stand for more parts, named in data-also, such as
+    // <a href="#policing" data-also="why-policing">. "places" lists every
+    // part with the number of its tab.
     const tabs = Array.from(menu.querySelectorAll('a[href^="#"]'));
-    const parts = tabs.map(function (tab) {
-      return document.getElementById(tab.getAttribute("href").slice(1));
+    const places = [];
+    tabs.forEach(function (tab, number) {
+      const ids = [tab.getAttribute("href").slice(1)];
+      const also = tab.getAttribute("data-also");
+      if (also) {
+        also.split(" ").forEach(function (id) {
+          if (id) {
+            ids.push(id);
+          }
+        });
+      }
+      ids.forEach(function (id) {
+        const part = document.getElementById(id);
+        if (part) {
+          places.push({ part: part, tab: number });
+        }
+      });
     });
 
     // Find the part being read, and mark its tab. css/site.css gives a tab
@@ -136,11 +154,16 @@
       // The reading line: a third of the way down the window.
       const line = window.innerHeight / 3;
       let current = 0;
-      parts.forEach(function (part, number) {
+      let nearest = -Infinity;
+      places.forEach(function (place) {
         // getBoundingClientRect().top is how far the top of the part is
         // from the top of the window. Below zero means it has scrolled past.
-        if (part && part.getBoundingClientRect().top <= line) {
-          current = number; // the last part whose top is above the line wins
+        const top = place.part.getBoundingClientRect().top;
+        // Of the parts whose top is above the line, the one nearest to the
+        // line is the part being read.
+        if (top <= line && top > nearest) {
+          nearest = top;
+          current = place.tab;
         }
       });
       // At the very end of the page the last part may be too short to reach

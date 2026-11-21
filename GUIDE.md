@@ -8,7 +8,7 @@ This page is built like the earlier prototype pages: plain HTML, CSS and JavaScr
 | --- | --- | --- |
 | `index.html` | The words and their order | about 1,250 |
 | `css/site.css` | The look | about 6,000 |
-| `js/page.js` | The notes switch, starting the films, marking the current tab | about 190 |
+| `js/page.js` | The notes switch, starting the films, marking the current tab | about 210 |
 
 ## 2. `index.html`: one page made of parts
 
@@ -199,11 +199,11 @@ The space between `.from-community` and `.chapter` means "a `.chapter h2` inside
 
 ```css
 .nav {
-  --tab-pad: clamp(0.85rem, 1.2vw, 1rem);
+  --tab-pad: clamp(0.85rem, 1.5vw, 1.35rem);
 }
 ```
 
-The menu has twelve tabs. `--tab-pad` is the space on each side of a tab's word: at least `0.85rem`, at most `1rem`, and in between it grows with the window (`1.2vw` is 1.2% of the window's width). The two rules under it use the same value, so the twelve tabs fit on one line on a laptop and the first word still lines up with the logo.
+The menu has eight tabs. `--tab-pad` is the space on each side of a tab's word: at least `0.85rem`, at most `1.35rem`, and in between it grows with the window (`1.5vw` is 1.5% of the window's width). The two rules under it use the same value, so the eight tabs spread across one line on a laptop and the first word still lines up with the logo.
 
 ```css
 .from-repack .chapter h2.cefl-title span:first-child {
@@ -253,7 +253,7 @@ On tablets and phones (section 5 of `css/site.css`, the two `@media` blocks that
 
 ### The menu on a phone
 
-On a phone the twelve tabs would fill four rows above the opening. The last block in section 5 keeps them on one row that slides sideways:
+On a phone the eight tabs would fill three rows above the opening. The last block in section 5 keeps them on one row that slides sideways:
 
 ```css
 @media (max-width: 40rem) {
@@ -276,7 +276,9 @@ On a phone the twelve tabs would fill four rows above the opening. The last bloc
 
 ## 4. `js/page.js`
 
-The same file as on the earlier pages, with a new title in its first comment. It needs no changes when parts are added or removed: it finds every film and every tab on the page by itself. This page has no notes button in its footer and no working notes, so the script simply skips that job.
+The same file as on the earlier pages, with a new title in its first comment. It finds every film and every tab on the page by itself, so it needs no changes when parts are added or removed. This page has no notes button in its footer and no working notes, so the script simply skips that job.
+
+Since 21 November the menu part (section 3 of the file, `startMenu`) can mark one tab for more than one part of the page. A tab's own part is the one in its `href`; any others are named in `data-also`, with spaces between them. The script makes a list, `places`, of every part with the number of its tab. As you scroll, `mark()` looks for the parts whose top has passed the reading line, a third of the way down the window, and takes the one nearest to that line: that is the part being read, so its tab is marked. Before, the script simply took the last tab in the menu whose part had passed the line, which only works when every part has its own tab, in page order.
 
 ## 5. How to change things
 
@@ -286,11 +288,32 @@ The same file as on the earlier pages, with a new title in its first comment. It
 
 ### Remove a part
 
-**Where:** `index.html`. Delete from the part's comment (for example `<!-- ===… 11. FITS A ROTA ===… -->`) down to the closing `</div>` of its box, just before the next comment. If the part had a tab, delete its `<a href="#…">` line under `THE RED MENU` too. The numbers of the parts after it stay as they are until you change their eyebrows (the small red line above each headline).
+**Where:** `index.html`. Delete from the part's comment (for example `<!-- ===… 11. FITS A ROTA ===… -->`) down to the closing `</div>` of its box, just before the next comment. If the part had a tab, delete its `<a href="#…">` line under `THE RED MENU` too; if a tab names it in `data-also`, take its id out of that list. The numbers of the parts after it stay as they are until you change their eyebrows (the small red line above each headline).
 
 ### Move a part
 
 **Where:** `index.html`. Cut a whole part, from its comment to the closing `</div>` of its box, and paste it between two other parts. Change the numbers in the eyebrows and comments so they run in order.
+
+### Change the menu
+
+**Where:** `index.html`, under `THE RED MENU`. There are eight tabs, one for each chapter of the page:
+
+```html
+<a href="#top">Overview</a>
+<a href="#stories" data-also="paths">Local people</a>
+<a href="#hub">The Hub</a>
+<a href="#repackage">Before and after</a>
+<a href="#policing" data-also="why-policing">Policing</a>
+<a href="#together">Working together</a>
+<a href="#questions">Questions</a>
+<a href="#strength" data-also="maybe-me">Who we are</a>
+```
+
+- **The words** between `>` and `<` are what the tab says. Keep them short and different from each other.
+- **`href`** is where the tab jumps: `#` and the `id` of a part.
+- **`data-also`** names other parts the tab stands for, so it is marked while you read them too: "Local people" for the paths for local adults (part 13), "Policing" for "Two numbers. One gap." (part 5), and "Who we are" for the "Not me. Maybe me." band. Several ids go in one `data-also`, with spaces between them.
+- **Keep the tabs in page order**, so the menu reads in the same order as the page.
+- **To add a tab,** copy a whole `<a …>…</a>` line, paste it in its place in the order, and change its words and `href`. Then check that the tabs still fit on one line on a laptop: if not, make `--tab-pad` smaller (section 3 of this guide).
 
 ### Change a prototype task in part 6
 

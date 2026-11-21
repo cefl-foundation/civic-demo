@@ -3914,11 +3914,12 @@ a[target="_blank"]::after {
 
 /* ---------- 4. What this page adds ---------- */
 
-/* The menu has twelve tabs, so each tab gets a little less space around its
-   word, and the words are a touch smaller. They then fit on one line on a
-   laptop. The row still starts so the first word lines up with the logo. */
+/* The menu has eight tabs. --tab-pad is the space on each side of a tab's
+   word: it grows with the window up to 1.35rem, so on a laptop the tabs
+   spread across the row with room to breathe, and the words are a touch
+   smaller. The row still starts so the first word lines up with the logo. */
 .nav {
-  --tab-pad: clamp(0.85rem, 1.2vw, 1rem);
+  --tab-pad: clamp(0.85rem, 1.5vw, 1.35rem);
 }
 
 .nav .wrap {
