@@ -98,7 +98,7 @@ Each picture is a line icon, drawn once near the top of the page and used by its
 <span class="person-icon icon-navy" aria-hidden="true"><svg focusable="false"><use href="#l-bus"/></svg></span>
 ```
 
-- `#l-bus` is the name of the drawing. The others are `l-calendar`, `l-boxes`, `l-code` and `l-care` for the five people, `l-award`, `l-research`, `l-columns` and `l-laptop` for the cards in part 16, and `l-shield` and `l-receipt` for the tasks in part 6. `l-flag`, `l-people` and `l-laptop` are on the contact cards in part 16. Each one is a `<symbol id="l-…">` in the `<svg class="icon-store">` near the top of `index.html`.
+- `#l-bus` is the name of the drawing. The others are `l-calendar`, `l-boxes`, `l-code` and `l-care` for the five people, `l-award`, `l-research`, `l-columns` and `l-laptop` for the cards in part 16, and `l-shield` and `l-receipt` for the tasks in part 5. `l-flag`, `l-people` and `l-laptop` are on the contact cards in part 16. Each one is a `<symbol id="l-…">` in the `<svg class="icon-store">` near the top of `index.html`.
 - `icon-navy` is the colour of the circle. The others are `icon-plum`, `icon-green`, `icon-teal` and `icon-red`.
 - `aria-hidden="true"` hides the picture from screen readers: the words on the card already say who the person is.
 
@@ -116,9 +116,9 @@ The contacts are three cards in `<ul class="contact-cards">`, in this order: Kat
 
 The picture is a stage (`<div class="watch-stage">`) with five layers placed on it with `position: absolute`: a pale plum circle, a laptop drawn with CSS with the Hub's film on its screen, the person seen from behind (an SVG), a plant (an SVG), and the desk. The person comes after the laptop in the HTML, so the browser draws it in front.
 
-### The three prototype tasks in part 6
+### The three prototype tasks in part 5
 
-On the right of each pair in part 6 is a task that is not on the Hub yet. It is built in HTML, not a picture, so its words stay sharp at any size and can be edited:
+On the right of each pair in part 5 is a task that is not on the Hub yet. It is built in HTML, not a picture, so its words stay sharp at any size and can be edited:
 
 ```html
 <div class="mock mock-cyber" role="group" aria-label="A prototype task for people in policing: Spot the strange log-in">
@@ -133,9 +133,9 @@ On the right of each pair in part 6 is a task that is not on the Hub yet. It is 
 - `role="group"` and `aria-label` tell a screen reader that the box is one thing, and what it is.
 - In the third task, the red numbers in circles are `<span class="callout" aria-hidden="true">1</span>`. They are pictures for sighted readers, so a screen reader skips them and reads the numbered list under the task instead (`<ol class="mock-legend">`). The browser numbers that list itself, so the numbers stay right if a line is added.
 
-### Two columns that stack on a phone: parts 6 and 13
+### Two columns that stack on a phone: parts 5 and 13
 
-Two boxes on this page are two columns side by side on a laptop and one column on a phone: the next ones in part 6 (`<div class="next-cols">`, local on the left, abroad and online on the right) and “Who offers what” in part 13. Part 13’s box looks like this:
+Two boxes on this page are two columns side by side on a laptop and one column on a phone: the next ones in part 5 (`<div class="next-cols">`, local on the left, abroad and online on the right) and “Who offers what” in part 13. Part 13’s box looks like this:
 
 ```html
 <div class="offers">
@@ -171,7 +171,7 @@ The columns come from these rules in section 4 of `css/site.css`:
 - `gap` is the space between the cards.
 - `@media (max-width: 40rem)` uses the rule inside it only when the window is 40rem (640 pixels) wide or less. There the box has one column, so the cards stack.
 
-Part 6’s `.next-cols` works the same way, with its own rules just above.
+Part 5’s `.next-cols` works the same way, with its own rules just above.
 
 The other parts work exactly as on the earlier pages: headlines in two halves (`<span>…</span> <span>…</span>`), films with `controls muted loop playsinline preload="none"`, and links that open in a new tab with `target="_blank" rel="noopener"`. The GUIDE.md of any earlier page explains them line by line.
 
@@ -182,7 +182,7 @@ The other parts work exactly as on the earlier pages: headlines in two halves (`
 | 1. Colours and fonts | Every colour of every earlier page, in one `:root`, and the headline font |
 | 2. Basics | The black strip, the red menu, buttons, headlines, notes: shared by all parts |
 | 3. The parts, page by page | Four blocks, one per earlier page |
-| 4. What this page adds | The short opening line, the opening's bold line, its three fact tags, the “Short on time?” link under them and its list of who it could reach, the curved label over its arch, the “What we could stand for” band after the opening, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 6, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the “Not me. Maybe me.” band before part 16, the arch picture, cards and contacts in part 16, the skyline, the footer |
+| 4. What this page adds | The short opening line, the opening's bold line, its three fact tags, the “Short on time?” link under them and its list of who it could reach, the curved label over its arch, the “What we could stand for” band after the opening, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 5, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the “Not me. Maybe me.” band before part 16, the arch picture, cards and contacts in part 16, the skyline, the footer |
 | 5. Small screens | For the parts this page adds, and the menu on one sliding row on phones |
 
 In section 3 every rule starts with its page's box name:
@@ -251,6 +251,10 @@ The films in parts 1 and 2 play on laptops drawn with CSS. The film fills the sc
 
 On tablets and phones (section 5 of `css/site.css`, the two `@media` blocks that start with `.from-repack .reach`), the box moves under the words and gets smaller. On a phone the list's column is `minmax(0, 1fr)`: whatever room is left beside the arch, so a long label wraps onto two lines instead of pushing out of the page.
 
+### The menu on a tablet
+
+The menu sticks to the top of the window on laptops and on tablets held sideways. Below 62rem (992 pixels) the eight tabs may need two lines, which is too tall to keep at the top, so there the menu scrolls away with the page (`@media (max-width: 62rem)` in section 5: `position: static`, and a smaller `scroll-padding-top`, because there is no menu to hide under). Until 21 November this happened below 68rem, when the menu had twelve tabs. If you add tabs, check that they still fit on one line at 992 pixels; if they don't, change `62rem` to a larger width.
+
 ### The menu on a phone
 
 On a phone the eight tabs would fill three rows above the opening. The last block in section 5 keeps them on one row that slides sideways:
@@ -303,7 +307,7 @@ Since 21 November the menu part (section 3 of the file, `startMenu`) can mark on
 <a href="#stories" data-also="paths">Local people</a>
 <a href="#hub">The Hub</a>
 <a href="#repackage">Before and after</a>
-<a href="#policing" data-also="why-policing">Policing</a>
+<a href="#why-policing">Policing</a>
 <a href="#together">Working together</a>
 <a href="#questions">Questions</a>
 <a href="#strength" data-also="maybe-me">Who we are</a>
@@ -311,17 +315,17 @@ Since 21 November the menu part (section 3 of the file, `startMenu`) can mark on
 
 - **The words** between `>` and `<` are what the tab says. Keep them short and different from each other.
 - **`href`** is where the tab jumps: `#` and the `id` of a part.
-- **`data-also`** names other parts the tab stands for, so it is marked while you read them too: "Local people" for the paths for local adults (part 13), "Policing" for "Two numbers. One gap." (part 5), and "Who we are" for the "Not me. Maybe me." band. Several ids go in one `data-also`, with spaces between them.
+- **`data-also`** names other parts the tab stands for, so it is marked while you read them too: "Local people" for the paths for local adults (part 13), and "Who we are" for the "Not me. Maybe me." band. Several ids go in one `data-also`, with spaces between them.
 - **Keep the tabs in page order**, so the menu reads in the same order as the page.
 - **To add a tab,** copy a whole `<a …>…</a>` line, paste it in its place in the order, and change its words and `href`. Then check that the tabs still fit on one line on a laptop: if not, make `--tab-pad` smaller (section 3 of this guide).
 
-### Change a prototype task in part 6
+### Change a prototype task in part 5
 
-**Where:** `index.html`, under `6. FROM THIS TO THIS`, inside the `<div class="mock …">` of that task. Edit the words, the table or the code as you would any sentence. In code, `&lt;` stands for the `<` sign and `&gt;` for the `>` sign, which HTML would otherwise read as part of a tag.
+**Where:** `index.html`, under `5. FROM THIS TO THIS`, inside the `<div class="mock …">` of that task. Edit the words, the table or the code as you would any sentence. In code, `&lt;` stands for the `<` sign and `&gt;` for the `>` sign, which HTML would otherwise read as part of a tag.
 
-### Change the two numbers in part 5
+### Change the two numbers in part 7
 
-**Where:** `index.html`, under `5. WHY POLICING: TWO NUMBERS, ONE GAP`, inside `<ul class="why-figs">`. Each number is one `<li>`: the big number is in `<span class="why-fig">`, and the words under it in `<span class="why-fig-words">`. If you change a number, change its source too: in the line `<p class="why-src">` just under the numbers, and in the footer's list of sources.
+**Where:** `index.html`, under `7. WHY POLICING: TWO NUMBERS, ONE GAP`, inside `<ul class="why-figs">`. Each number is one `<li>`: the big number is in `<span class="why-fig">`, and the words under it in `<span class="why-fig-words">`. If you change a number, change its source too: in the line `<p class="why-src">` just under the numbers, and in the footer's list of sources.
 
 Keep the space between the two `<span>`s (`</span> <span class="why-fig-words">`). On screen it makes no difference, because the big number sits on its own line. Without it, though, a screen reader or copied text can run the words together ("More than halfof").
 
@@ -357,7 +361,7 @@ The box has `id="contacts"`: the link "our contact details" in part 15, under "W
 - `--stand-grey` (`#C9C9D6`): the last line.
 - `--stand-teal` and `--stand-teal-light`: the band's edge and its first words.
 
-The band's navy is `--night`, the same as part 5. The card colours are the page's own (`--plum`, `--navy`, `--green`, `--red`, `--maroon`), from section 1.
+The band's navy is `--night`, the same as part 7. The card colours are the page's own (`--plum`, `--navy`, `--green`, `--red`, `--maroon`), from section 1.
 
 **To remove the band:** delete from its comment down to its closing `</section>`, just before the `AFTER THE OPENING` comment. It has no box (`<div>`) round it and no tab, so there is nothing else to delete.
 
@@ -410,7 +414,7 @@ The band's navy is `--night`, the same as part 5. The card colours are the page'
 
 - `what-cefl-built.jpg`, in the opening, shows the Hub's home page ("Code it.").
 - `what-we-built.jpg`, in the part under it, shows a task on the Hub.
-- `what-it-could-be.jpg`, next to it, shows the cyber security task from part 6.
+- `what-it-could-be.jpg`, next to it, shows the cyber security task from part 5.
 
 A new picture must have the same size and name, or the arch crops it. If you change a picture, change its description too: in `index.html`, the `alt="…"` of its `<img>`, under `THE OPENING` or `AFTER THE OPENING`.
 

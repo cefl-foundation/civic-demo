@@ -5236,7 +5236,7 @@ a[target="_blank"]::after {
   text-transform: uppercase;
 }
 
-/* Part 5: why policing. A dark navy band (--night), the two numbers over
+/* Part 7: why policing. A dark navy band (--night), the two numbers over
    red bars, three cards (the gap, who, how), and the rule, its second line
    in a red highlight. The headline is all white here, with a short red bar
    under it. */
@@ -5513,7 +5513,7 @@ a[target="_blank"]::after {
 }
 
 /* Part 9: three figures in a row of grey cards with a green line on the
-   left. Since 17 November the page does not use them (part 5 has the
+   left. Since 17 November the page does not use them (part 7 has the
    numbers), but the rules stay here in case the figures come back. */
 .gap-figures {
   display: grid;
@@ -5752,7 +5752,7 @@ a[target="_blank"]::after {
 }
 
 /* What we could stand for: the band straight after the opening, on dark
-   navy (--night) like part 5. Its eyebrow and the second half of its
+   navy (--night) like part 7. Its eyebrow and the second half of its
    headline are a brighter version of the page's red, --stand-pink: the
    page's own red is too dark to read on navy at small sizes, and this one
    passes WCAG AA there (4.8:1). Under the
@@ -6068,19 +6068,24 @@ a[target="_blank"]::after {
   }
 }
 
-/* Narrower than a laptop: the menu may need two lines, which is too tall to
-   keep at the top of the window. The four guided steps go two to a row. */
+/* Narrower than a laptop: the four guided steps go two to a row. */
 @media (max-width: 68rem) {
+  .guided {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Narrower than about 990 pixels the eight tabs may need two lines, which is
+   too tall to keep at the top of the window, so there the menu scrolls away
+   with the page. Down to this width they fit on one line, so on small
+   laptops and tablets held sideways the menu still sticks to the top. */
+@media (max-width: 62rem) {
   .nav {
     position: static;
   }
 
   html {
     scroll-padding-top: 0.5rem;
-  }
-
-  .guided {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
