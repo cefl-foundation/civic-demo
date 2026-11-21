@@ -40,7 +40,7 @@ This is a demo for colleagues, not an official University page. The people and c
 
 - **Katy Robertson-Hohmann**, Director of Studies, CEFL: leadership and decisions
 - **John Lapwood**, Senior Lecturer in English Language and Course Leader for the EU and international foundation courses: collaboration on courses
-- **Monika Pietruch**, Academic skills tutor and unit coordinator for the EU and IFY Foundation Tech Pathways: the Hub and the technical side
+- **Monika Pietruch**, ELT tutor and academic skills unit coordinator for the EU and IFY Foundation Tech path: the Hub and the technical side
 
 Contact details are at the end of the page.
 **See the page:** https://cefl-foundation.github.io/civic-demo/
