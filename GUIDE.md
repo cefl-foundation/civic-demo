@@ -145,6 +145,8 @@ Part 6 (“Built for our students. Ready for yours.”) has five counts, each on
 5. a line about it, `<p class="built-what">`;
 6. its path, `<p class="built-path"><span>Path</span> …</p>`.
 
+In the open tile (05) the path is a link instead: `<span>Next step</span> <a href="#contacts">Talk to us: CEFL team</a>`. It jumps to the contacts in part 16.
+
 - The tiles share these six rows (`grid-template-rows: subgrid` in the CSS), so the tags, titles, lines and paths start at the same height in every tile, however long the words above them.
 - The pictures in tiles 1 to 3 are prototype pages, in `assets/shots/`: `tile-cyber-control-room.jpg`, `tile-business-daily-job.jpg` and `tile-international-hello.jpg`, each 1040 by 650 pixels. Tile 4 uses the Hub's home page, `assets/films/hub-top-to-bottom.jpg`. A new picture must be 16 by 10, or the tile crops it. If you change a picture, change its `alt="…"` too.
 - The small red words on black (the Open tag and the Path labels) use the brighter red of the “What we could stand for” band, `#F43A52`. The page's own red is too dark for small text on black, so it is kept for the big numbers.
