@@ -5069,10 +5069,186 @@ a[target="_blank"]::after {
   }
 }
 
-/* Part 6: five counts in a row on a laptop. */
-@media (min-width: 56.0625rem) {
+/* Part 6: five counts, then five tiles, one for each audience. The counts
+   are five to a row on a laptop, three on a tablet and two on a phone.
+   The gap under them is short, so the counts read with the tiles. */
+#built .counts {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.75rem 1.6rem;
+  margin-bottom: 1.25rem;
+}
+
+#built .counts li {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+/* The five tiles. Each tile is one column of six rows: its number, its
+   picture, its tag, its title, a line about it and its path. The tiles
+   share those rows (subgrid), so the tags, titles, lines and paths start
+   at the same height in every tile, however long the words above them. */
+#built .built-tiles {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  column-gap: 1.25rem;
+  margin: 0 0 0.65rem;
+  padding: 0;
+  list-style: none;
+}
+
+#built .built-tiles > li {
+  display: grid;
+  grid-row: span 6;
+  grid-template-rows: subgrid;
+  align-content: start;
+  margin-bottom: 1.75rem;
+}
+
+/* Each part keeps its own width (the tag stays as wide as its words),
+   except the picture, the title, the line and the path, which fill the
+   tile. */
+#built .built-tiles > li > * {
+  align-self: start;
+  justify-self: start;
+}
+
+#built .built-tiles > li > img,
+#built .built-tiles > li > .built-slot,
+#built .built-tiles > li > h3,
+#built .built-tiles > li > .built-what,
+#built .built-tiles > li > .built-path {
+  justify-self: stretch;
+}
+
+/* A hyphenated word that should not break at its hyphen. */
+#built .built-keep {
+  white-space: nowrap;
+}
+
+#built .built-num {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  line-height: 1;
+}
+
+#built .built-tiles img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 2px solid var(--white);
+}
+
+/* The open tile: a dashed red frame where the picture would be. */
+#built .built-slot {
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  aspect-ratio: 16 / 10;
+  border: 3px dashed var(--red);
+  color: var(--red);
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.4rem);
+  line-height: 0.95;
+  text-align: center;
+}
+
+#built .built-slot-plus {
+  font-size: 1.4em;
+  line-height: 0.8;
+}
+
+#built .built-tag {
+  display: inline-block;
+  margin-top: 0.8rem;
+  padding: 0.14rem 0.45rem 0.08rem;
+  border: 1.5px solid currentColor;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  line-height: 1.3;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* The Hub is real, not a prototype: its tag is filled in, and it may
+   take two lines in a narrow tile. */
+#built .built-tag-wip {
+  border-color: var(--white);
+  background: var(--white);
+  color: var(--black);
+  letter-spacing: 0.05em;
+  white-space: normal;
+}
+
+/* Small red words on black use the brighter red of the "What we could
+   stand for" band: #F43A52 is 5.6:1 on black, enough for small text. The
+   page's own red is 3.6:1, so it is kept for the big numbers only. */
+#built .built-tag-open {
+  border-style: dashed;
+  color: #F43A52;
+}
+
+#built .built-tiles h3 {
+  margin: 0.5rem 0 0;
+  font-size: 0.98rem;
+  line-height: 1.3;
+  text-wrap: pretty;
+}
+
+#built .built-what {
+  margin: 0.3rem 0 0;
+  color: #B8B8B8;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+#built .built-path {
+  margin: 0.6rem 0 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid #3A3A3A;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+#built .built-path span {
+  display: block;
+  margin-bottom: 0.15rem;
+  color: #F43A52;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 68rem) {
+  #built .counts,
+  #built .built-tiles {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #built .built-slot {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 40rem) {
   #built .counts {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #built .built-tiles {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  #built .built-tiles > li {
+    display: block;
+    grid-row: auto;
   }
 }
 
@@ -5213,6 +5389,154 @@ a[target="_blank"]::after {
   right: -1.2rem;
   color: var(--teal);
   transform: translateY(-50%);
+}
+
+/* The cyber task's map: the phone's evening, drawn in navy, with the two
+   places that aren't home in red. The line under it gives the times in
+   words, so they stay readable on a phone. */
+.mock-map {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 0.4rem;
+  border: 1px solid #CFCFD8;
+}
+
+.mock-map .map-town {
+  fill: var(--navy);
+  font-family: var(--font-display);
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.mock-map .map-time {
+  fill: #8A0A1F;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.mock-map-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 1.1rem;
+  margin: 0 0 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.map-key-home {
+  color: var(--navy);
+}
+
+.map-key-away {
+  color: #8A0A1F;
+}
+
+.map-key-home::before,
+.map-key-away::before {
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-right: 0.35rem;
+  background: var(--navy);
+  vertical-align: -0.05rem;
+}
+
+.map-key-away::before {
+  border-radius: 50%;
+  background: var(--red);
+}
+
+/* The statement the loop checks, on a pale navy line. Its small grey
+   label, and the one over the owner's three words in the small business
+   task, sit on a line of their own. */
+.mock-statement {
+  margin: 0 0 0.75rem;
+  padding: 0.45rem 0.7rem;
+  border-left: 0.3rem solid var(--navy);
+  background: #EEF0F6;
+  font-size: 0.84rem;
+}
+
+.mock-statement span,
+.mock-three span {
+  display: block;
+  margin-bottom: 0.1rem;
+  color: var(--grey);
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* The word bank under a result line, and in navy in the cyber task. */
+.mock-result + .mock-words {
+  margin-top: 0.75rem;
+}
+
+.mock-cyber .mock-words span {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.mock-cyber .mock-words .mock-words-name {
+  color: var(--ink);
+}
+
+/* The small business task: the photo on the left; the owner's three
+   words, the AI's draft and the alt text on the right. Where the tablet
+   is narrow, the photo goes above them. */
+.mock-post {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: 0.8rem;
+  align-items: start;
+  margin: 0 0 0.75rem;
+}
+
+.mock-photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #D6D6D6;
+}
+
+.mock-photo .photo-price {
+  fill: var(--teal);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.mock-three {
+  margin: 0 0 0.55rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px dashed var(--teal);
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+
+.mock-alt {
+  margin: 0;
+  color: #333333;
+  font-size: 0.8rem;
+}
+
+.mock-alt b {
+  margin-right: 0.35rem;
+  color: var(--teal);
+}
+
+@media (max-width: 68rem) {
+  .mock-post {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mock-photo {
+    max-width: 15rem;
+  }
 }
 
 /* Part 9: the "Open the Hub" button is switched off until its link is

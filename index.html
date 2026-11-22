@@ -601,34 +601,40 @@ else:
           <figure class="pair-to pair-task">
             <p class="pair-tag">What it could be</p>
             <div class="device-tablet">
-            <div class="mock mock-cyber" role="group" aria-label="A prototype task for people in policing: Spot the strange log-in">
+            <div class="mock mock-cyber" role="group" aria-label="A prototype task for people in policing: Where was the phone?">
               <div class="mock-head">
                 <p class="mock-eyebrow">Cyber first steps · Task 1</p>
-                <p class="mock-title">Spot the strange log-in</p>
+                <p class="mock-title">Where was the phone?</p>
                 <span class="mock-icon" aria-hidden="true"><svg focusable="false"><use href="#l-shield"/></svg></span>
               </div>
               <div class="mock-body">
-                <p class="mock-text">Six log-ins to one email account overnight. Write a loop that raises an alert for any log-in from a place the account has never used.</p>
-                <table class="mock-log">
-                  <caption class="visually-hidden">The six log-ins</caption>
-                  <thead><tr><th scope="col">Time</th><th scope="col">Place</th><th scope="col">Device</th></tr></thead>
-                  <tbody>
-                    <tr><td>22:41</td><td>Luton</td><td>Laptop</td></tr>
-                    <tr><td>23:05</td><td>Luton</td><td>Phone</td></tr>
-                    <tr><td>01:12</td><td>Dunstable</td><td>Phone</td></tr>
-                    <tr class="mock-flag"><td>03:12</td><td>Unknown place</td><td>New device</td></tr>
-                    <tr class="mock-flag"><td>03:14</td><td>Unknown place</td><td>New device</td></tr>
-                    <tr><td>06:30</td><td>Luton</td><td>Laptop</td></tr>
-                  </tbody>
-                </table>
-                <pre class="mock-code"><code>for login in logins:
-    if login.place not in usual_places:
-        raise_alert(login)</code></pre>
-                <p class="mock-result"><span class="mock-pill">Run and check</span> <span class="mock-ok">2 alerts: 03:12 and 03:14</span></p>
+                <p class="mock-text">Someone says he was at home in Dunstable all evening. His phone’s location history says something else. Write a loop that prints every place that isn’t home.</p>
+                <svg class="mock-map" viewBox="0 0 640 156" role="img" aria-label="A map of Dunstable and Luton, with the phone’s route from home to Luton and back.">
+                  <rect width="640" height="156" fill="#F4F5F9"/>
+                  <g stroke="#E1E3EC" stroke-width="2" fill="none"><path d="M0 36 H640"/><path d="M0 128 H640"/><path d="M90 0 V156"/><path d="M560 0 V156"/></g>
+                  <ellipse cx="158" cy="88" rx="118" ry="58" fill="#E3E6F0"/>
+                  <ellipse cx="478" cy="82" rx="132" ry="62" fill="#E3E6F0"/>
+                  <path d="M262 90 C 320 86, 330 82, 360 84" stroke="#B9BDCC" stroke-width="7" fill="none" stroke-linecap="round"/>
+                  <text class="map-town" x="158" y="48" text-anchor="middle">DUNSTABLE</text>
+                  <text class="map-town" x="478" y="38" text-anchor="middle">LUTON</text>
+                  <path d="M150 94 C 260 30, 380 30, 438 66 C 470 86, 500 102, 520 108 C 430 126, 260 122, 164 102" stroke="#1E2761" stroke-width="2" stroke-dasharray="6 6" fill="none"/>
+                  <g transform="translate(136 82)"><path d="M14 0 L28 12 V30 H0 V12 Z" fill="#1E2761"/><rect x="10" y="18" width="8" height="12" fill="#FFFFFF"/></g>
+                  <circle cx="440" cy="66" r="9" fill="#C8102E"/><circle cx="440" cy="66" r="3.5" fill="#FFFFFF"/>
+                  <text class="map-time" x="440" y="53" text-anchor="middle">21:58</text>
+                  <circle cx="522" cy="108" r="9" fill="#C8102E"/><circle cx="522" cy="108" r="3.5" fill="#FFFFFF"/>
+                  <text class="map-time" x="522" y="138" text-anchor="middle">22:41</text>
+                </svg>
+                <p class="mock-map-key"><span class="map-key-home">At home in Dunstable: 19:02, 20:40, 23:30</span> <span class="map-key-away">In Luton: 21:58, 22:41</span></p>
+                <p class="mock-statement"><span>Statement</span> “I was at home in Dunstable all evening.”</p>
+                <pre class="mock-code"><code>for point in history:
+    if point.town != "Dunstable":
+        print(point.time, point.town)</code></pre>
+                <p class="mock-result"><span class="mock-pill">Run and check</span> <span class="mock-ok">2 places that aren’t home: Luton at 21:58 and 22:41</span></p>
+                <p class="mock-words"><span class="mock-words-name">Word bank</span> <span>location data</span> <span>loop</span> <span>if</span></p>
               </div>
             </div>
             </div>
-            <figcaption>For cyber security: a loop that checks every log-in, and raises an alert for the ones that do not fit. A prototype task, not on the Hub yet.</figcaption>
+            <figcaption>For cyber security: a loop that checks a phone’s location history against a statement, the way digital evidence is tested. A prototype task, not on the Hub yet.</figcaption>
           </figure>
         </article>
 
@@ -646,37 +652,43 @@ else:
           <figure class="pair-to pair-task">
             <p class="pair-tag">What it could be</p>
             <div class="device-tablet">
-            <div class="mock mock-adult" role="group" aria-label="A prototype task for small businesses, with no code: Making Tax Digital in a spreadsheet, and a reminder drafted by AI">
+            <div class="mock mock-adult" role="group" aria-label="A prototype task for small businesses, with no code: one photo and three words become a post">
               <div class="mock-head">
                 <p class="mock-eyebrow">Digital business · Task 1</p>
-                <p class="mock-title">Making Tax Digital, and AI</p>
-                <span class="mock-icon" aria-hidden="true"><svg focusable="false"><use href="#l-receipt"/></svg></span>
+                <p class="mock-title">Your photo, ready to post</p>
+                <span class="mock-icon" aria-hidden="true"><svg focusable="false"><use href="#l-laptop"/></svg></span>
               </div>
               <div class="mock-body">
-                <p class="mock-text">No code needed. One formula adds up the quarter for Making Tax Digital, and an automation asks an AI assistant to draft a polite reminder for a late invoice.</p>
-                <div class="mock-sheet" aria-hidden="true">
-                  <p class="mock-formula"><span class="mock-cell">B5</span><span class="mock-fx">fx</span><code>=SUM(B2:B4)</code></p>
-                  <table>
-                    <tr><th></th><th>A</th><th>B</th></tr>
-                    <tr class="mock-sheet-head"><th>1</th><td>Month</td><td>Income</td></tr>
-                    <tr><th>2</th><td>July</td><td>£4,850</td></tr>
-                    <tr><th>3</th><td>August</td><td>£5,120</td></tr>
-                    <tr><th>4</th><td>September</td><td>£4,630</td></tr>
-                    <tr class="mock-total"><th>5</th><td>Quarter</td><td>£14,600</td></tr>
-                  </table>
+                <p class="mock-text">No code needed. Take one photo of a new product and add three words. An AI assistant drafts the post and the alt text in your shop’s voice; you check it, then post.</p>
+                <div class="mock-post">
+                  <svg class="mock-photo" viewBox="0 0 208 156" role="img" aria-label="A photo of a round sourdough loaf on a wooden board, with a £4.20 price tag.">
+                    <rect width="208" height="156" fill="#F6EFE6"/>
+                    <rect y="118" width="208" height="38" fill="#E9DCCB"/>
+                    <rect x="22" y="96" width="164" height="34" rx="8" fill="#C99A62"/>
+                    <rect x="22" y="96" width="164" height="7" rx="3" fill="#D9AE78"/>
+                    <ellipse cx="104" cy="88" rx="66" ry="36" fill="#9C5F27"/>
+                    <ellipse cx="104" cy="82" rx="62" ry="31" fill="#B5793A"/>
+                    <g fill="none" stroke="#E7C38F" stroke-width="4" stroke-linecap="round"><path d="M66 74 C 84 64, 96 64, 112 70"/><path d="M80 90 C 100 80, 116 80, 134 86"/><path d="M98 104 C 112 98, 126 98, 140 101"/></g>
+                    <g fill="#FFFFFF" opacity=".75"><circle cx="78" cy="66" r="1.6"/><circle cx="120" cy="62" r="1.4"/><circle cx="140" cy="78" r="1.6"/><circle cx="92" cy="96" r="1.3"/><circle cx="58" cy="86" r="1.4"/></g>
+                    <rect x="150" y="22" width="42" height="22" rx="3" fill="#FFFFFF" stroke="#0E6F73" stroke-width="1.5"/>
+                    <text class="photo-price" x="171" y="37.5" text-anchor="middle">£4.20</text>
+                  </svg>
+                  <div>
+                    <p class="mock-three"><span>Your three words</span> sourdough · baked today · £4.20</p>
+                    <p class="mock-ai"><span class="mock-ai-name">AI</span> Fresh out of the oven: our sourdough, baked this morning. £4.20 while it lasts!</p>
+                    <p class="mock-alt"><b>Alt text</b> A round sourdough loaf on a wooden board.</p>
+                  </div>
                 </div>
-                <p class="visually-hidden">A spreadsheet with the income for July, August and September: £4,850, £5,120 and £4,630. In cell B5, the formula =SUM(B2:B4) adds them up: £14,600 for the quarter.</p>
-                <ol class="mock-flow" aria-label="The automation, in three steps">
-                  <li>Invoice 7 days late</li>
-                  <li>AI drafts a reminder</li>
-                  <li>You check and send</li>
+                <ol class="mock-flow" aria-label="The task, in three steps">
+                  <li>Photo and three words</li>
+                  <li>AI drafts the post</li>
+                  <li>You check and post</li>
                 </ol>
-                <p class="mock-ai"><span class="mock-ai-name">AI</span> Hello, a friendly reminder that invoice 14 is now a week overdue. Many thanks!</p>
-                <p class="mock-words"><span class="mock-words-name">Word bank</span> <span>formula</span> <span>quarter</span> <span>automation</span> <span>prompt</span></p>
+                <p class="mock-words"><span class="mock-words-name">Word bank</span> <span>prompt</span> <span>caption</span> <span>alt text</span> <span>brand voice</span></p>
               </div>
             </div>
             </div>
-            <figcaption>Not every path needs code. For small businesses, a spreadsheet formula adds up the quarter for Making Tax Digital, which since April 2026 asks sole traders over £50,000 for quarterly updates, and an AI assistant drafts a reminder that the owner checks before sending. The same approach could support business and digital business programmes. A prototype task, not on the Hub yet.</figcaption>
+            <figcaption>Not every path needs code. For small businesses, one photo and three words become a post with alt text, drafted by an AI assistant and checked by the owner before it goes out. A prototype task, not on the Hub yet.</figcaption>
           </figure>
         </article>
 
@@ -760,22 +772,60 @@ else:
     <section class="chapter chapter-dark" id="built" aria-labelledby="built-title" tabindex="-1">
       <div class="wrap">
         <p class="eyebrow">6 · Already built</p>
-        <h2 id="built-title"><span>Built once.</span> <span>Repackaged five times.</span></h2>
+        <h2 id="built-title"><span>Built for our students.</span> <span>Ready for yours.</span></h2>
 
         <ul class="counts">
           <li><span class="count">1</span> CEFL Tech Practice Hub, used in class by our foundation tech students</li>
-          <li><span class="count">Any</span> computer science group at the University can use it: the tasks can be customised for different groups and different access needs</li>
+          <li><span class="count">Any</span> beginner in computer science could start here, for an extra-slow start or with accessibility needs: the tasks can be customised for each group</li>
           <li><span class="count">3–4</span> students per team, guided through a simple GitHub project board and one file they share and work on together</li>
-          <li><span class="count">11</span> short films of Hub tasks, already made: the ones on this page</li>
+          <li><span class="count">Day 1</span> feedback beginners can read: a Python interpreter built by us for our own teaching explains the next step, and Python’s own error messages come in gradually</li>
           <li><span class="count">£0</span> for hosting. No personal data is kept: progress stays in the visitor’s browser</li>
         </ul>
 
-        <ul class="gallery">
-          <li><img src="assets/shots/police-cyber-page.jpg" width="1600" height="1000" loading="lazy" alt="Prototype for people in policing: “The beat has moved online.”"><span>People in policing: an example group only</span></li>
-          <li><img src="assets/shots/police-colleagues-page.jpg" width="1600" height="1000" loading="lazy" alt="Prototype for colleagues: “Every case has a digital side.”"><span>For colleagues: contextualised in cyber security</span></li>
-          <li><img src="assets/shots/community-page.jpg" width="1600" height="1000" loading="lazy" alt="Prototype for colleagues: “The people who never apply.”"><span>For colleagues: local adults and SEN students</span></li>
-          <li><img src="assets/shots/computer-science-demo.jpg" width="1600" height="1000" loading="lazy" alt="Demo for Computer Science colleagues: “Learn it in class. Build it in the lab.”"><span>For Computer Science colleagues</span></li>
-        </ul>
+        <!-- Five tiles, one for each audience. The pictures in tiles 1 to 3
+             show prototype pages; tile 4 is the Hub's own home page. -->
+        <ol class="built-tiles">
+          <li>
+            <span class="built-num" aria-hidden="true">01</span>
+            <img src="assets/shots/tile-cyber-control-room.jpg" width="1040" height="650" loading="lazy" alt="Prototype page for people in policing: “Cyber security for people in policing.” A scam text on a phone, an incident log, and a short Python check: Likely scam. Forward it to 7726.">
+            <span class="built-tag">Prototype</span>
+            <h3>Cyber security: people in policing</h3>
+            <p class="built-what">Officers, PCSOs and police staff: a first step into cyber security, with cases from our own towns</p>
+            <p class="built-path"><span>Path</span> Hub → a short first-code course → Cybersecurity BSc</p>
+          </li>
+          <li>
+            <span class="built-num" aria-hidden="true">02</span>
+            <img src="assets/shots/tile-business-daily-job.jpg" width="1040" height="650" loading="lazy" alt="Prototype page for small businesses: “A low-code start.” A flow for a new order adds a row to the orders spreadsheet and emails the customer, with what you do and what you learn.">
+            <span class="built-tag">Prototype</span>
+            <h3>Small and <span class="built-keep">medium-sized</span> digital businesses</h3>
+            <p class="built-what">No code needed at first: a flow that files each new order and emails the customer a <span class="built-keep">thank-you</span></p>
+            <p class="built-path"><span>Path</span> First task → a short course, in the evening or online</p>
+          </li>
+          <li>
+            <span class="built-num" aria-hidden="true">03</span>
+            <img src="assets/shots/tile-international-hello.jpg" width="1040" height="650" loading="lazy" alt="Prototype page for international offer-holders: “Start before you arrive.” A plane flies from a globe to the University, and the terminal prints: Hello, University of Bedfordshire! I’m Linh. See you soon!">
+            <span class="built-tag">Prototype</span>
+            <h3>International offer-holders</h3>
+            <p class="built-what">A first task to try at home before they arrive; partner colleges abroad can use the same site</p>
+            <p class="built-path"><span>Path</span> First task at home → the foundation tech pathway → Year 1 of a computing BSc</p>
+          </li>
+          <li>
+            <span class="built-num" aria-hidden="true">04</span>
+            <img src="assets/films/hub-top-to-bottom.jpg" width="1600" height="1000" loading="lazy" alt="The Tech Practice Hub’s home page: “Code it.” The Tech Group’s home for practice: code, web, AI and more.">
+            <span class="built-tag built-tag-wip">Work already in progress</span>
+            <h3>Computer science students</h3>
+            <p class="built-what">An extra-slow start, for students with additional needs and local adults coming back to learning</p>
+            <p class="built-path"><span>Path</span> Hub → Foundation Year → a computing BSc</p>
+          </li>
+          <li>
+            <span class="built-num" aria-hidden="true">05</span>
+            <div class="built-slot" aria-hidden="true"><span class="built-slot-plus">+</span><span>Your group?</span></div>
+            <span class="built-tag built-tag-open">Open</span>
+            <h3>Another course or team</h3>
+            <p class="built-what">Tell us who to reach next, and the tasks can be customised for them.</p>
+            <p class="built-path"><span>Next step</span> <a href="#contacts">Talk to us: contacts in part 16</a></p>
+          </li>
+        </ol>
         <p class="built-words">For an external audience, there could always be room at the end of every page for one simple link: the University’s expression-of-interest form, so Marketing can follow up.</p>
       </div>
     </section>
@@ -1326,7 +1376,7 @@ else:
   <!-- ============================== THE FOOTER ============================== -->
   <footer class="foot">
     <div class="wrap">
-      <p><strong>A demo for discussion.</strong> Not an official University of Bedfordshire page, and not connected with or endorsed by any police force. The five people in part 1 and the cases in part 11 are made up. The tasks in part 5 and the pages in part 6 are prototypes too.</p>
+      <p><strong>A demo for discussion.</strong> Not an official University of Bedfordshire page, and not connected with or endorsed by any police force. The five people in part 1 and the cases in part 11 are made up. The tasks in part 5 and the pages in part 6, apart from the Hub itself, are prototypes too.</p>
       <p>Sources, checked in November 2026: <a href="https://britishcouncil.org/sites/default/files/university_of_bedfordshire_compliance_2023_published.pdf" target="_blank" rel="noopener">British Council, accreditation report for the University of Bedfordshire (2023)<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://www.beds.ac.uk/research/areas/english-language-and-communication2" target="_blank" rel="noopener">University of Bedfordshire, English Language and Communication research (CRELLA)<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://www.icaew.com/technical/tax/making-tax-digital/mtd-guidance/mtd-and-income-tax" target="_blank" rel="noopener">ICAEW, Making Tax Digital for Income Tax<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://www.npcc.police.uk/SysSiteAssets/media/downloads/publications/publications-log/2020/national-digital-forensic-science-strategy.pdf" target="_blank" rel="noopener">NPCC, Digital Forensic Science Strategy (2020)<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://www.ons.gov.uk/peoplepopulationandcommunity/crimeandjustice/bulletins/crimeinenglandandwales/yearendingjune2026" target="_blank" rel="noopener">ONS, Crime in England and Wales: year ending June 2026<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://committees.parliament.uk/publications/30328/documents/175363/default/" target="_blank" rel="noopener">House of Commons Justice Committee, Fraud and the Justice System (2022)<span class="visually-hidden"> (opens in a new tab)</span></a>; <a href="https://beds.ac.uk/courses/computer-science" target="_blank" rel="noopener">Computer Science BSc course page<span class="visually-hidden"> (opens in a new tab)</span></a>.</p>
       <div class="foot-credits">
         <p>Tech Practice Hub © Monika Pietruch, 2026. University of Bedfordshire, CEFL.</p>

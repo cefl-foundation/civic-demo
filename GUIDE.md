@@ -121,17 +121,36 @@ The picture is a stage (`<div class="watch-stage">`) with five layers placed on 
 On the right of each pair in part 5 is a task that is not on the Hub yet. It is built in HTML, not a picture, so its words stay sharp at any size and can be edited:
 
 ```html
-<div class="mock mock-cyber" role="group" aria-label="A prototype task for people in policing: Spot the strange log-in">
+<div class="mock mock-cyber" role="group" aria-label="A prototype task for people in policing: Where was the phone?">
   <div class="mock-head"> ... the small line and the title ... </div>
-  <div class="mock-body"> ... the brief, the table or the code ... </div>
+  <div class="mock-body"> ... the brief, a picture, the code ... </div>
 </div>
 ```
 
 - `mock-cyber` is navy, `mock-adult` is teal and `mock-access` is the Hub's own black and red.
-- The second task has no code. Its spreadsheet (`<div class="mock-sheet" aria-hidden="true">`) is a picture for sighted readers, and the hidden sentence under it (`<p class="visually-hidden">`) says the same for a screen reader. If you change a number in one, change it in the other. The three steps of the automation are a list, `<ol class="mock-flow">`, and the arrows between them come from the CSS.
+- The first task's map is a drawing (`<svg class="mock-map" role="img" aria-label="…">`). Its two red times, 21:58 and 22:41, are also in words in the line under it (`<p class="mock-map-key">`) and in the result line: if you change a time, change all three. The line under the map keeps the times readable on a phone, where the drawing is small.
+- The second task has no code. Its photo is a drawing too (`<svg class="mock-photo" role="img" aria-label="…">`), with its own description in `aria-label`, just as the task teaches shops to describe their photos with alt text. The three steps are a list, `<ol class="mock-flow">`, and the arrows between them come from the CSS.
 - Each task sits inside `<div class="device-tablet">`, which draws the dark tablet frame and its camera dot round it.
 - `role="group"` and `aria-label` tell a screen reader that the box is one thing, and what it is.
 - In the third task, the red numbers in circles are `<span class="callout" aria-hidden="true">1</span>`. They are pictures for sighted readers, so a screen reader skips them and reads the numbered list under the task instead (`<ol class="mock-legend">`). The browser numbers that list itself, so the numbers stay right if a line is added.
+
+### The five tiles in part 6
+
+Part 6 (“Built for our students. Ready for yours.”) has five counts, each on a red line, then five tiles in `<ol class="built-tiles">`, one for each audience. Each tile is one `<li>` with six parts, always in this order:
+
+1. its number, `<span class="built-num" aria-hidden="true">01</span>` (a screen reader skips it, because the list already counts the tiles);
+2. its picture: an `<img>` with its own `alt="…"`, or, in the open tile, the dashed frame `<div class="built-slot" aria-hidden="true">`;
+3. its tag: `built-tag` for Prototype, `built-tag built-tag-wip` for Work already in progress (filled in white, because the Hub is real) or `built-tag built-tag-open` for Open (dashed);
+4. its title, an `<h3>`;
+5. a line about it, `<p class="built-what">`;
+6. its path, `<p class="built-path"><span>Path</span> …</p>`.
+
+- The tiles share these six rows (`grid-template-rows: subgrid` in the CSS), so the tags, titles, lines and paths start at the same height in every tile, however long the words above them.
+- The pictures in tiles 1 to 3 are prototype pages, in `assets/shots/`: `tile-cyber-control-room.jpg`, `tile-business-daily-job.jpg` and `tile-international-hello.jpg`, each 1040 by 650 pixels. Tile 4 uses the Hub's home page, `assets/films/hub-top-to-bottom.jpg`. A new picture must be 16 by 10, or the tile crops it. If you change a picture, change its `alt="…"` too.
+- The small red words on black (the Open tag and the Path labels) use the brighter red of the “What we could stand for” band, `#F43A52`. The page's own red is too dark for small text on black, so it is kept for the big numbers.
+- The gap under the counts is short (`margin-bottom: 1.25rem`), so the counts read with the tiles.
+- On a laptop the counts and the tiles are five to a row; at 68rem or less, three to a row; on a phone (40rem or less), the counts are two to a row and the tiles one.
+- The CSS is in section 4, under the comment that starts `/* Part 6: five counts, then five tiles`.
 
 ### Two columns that stack on a phone: parts 5 and 13
 
@@ -182,7 +201,7 @@ The other parts work exactly as on the earlier pages: headlines in two halves (`
 | 1. Colours and fonts | Every colour of every earlier page, in one `:root`, and the headline font |
 | 2. Basics | The black strip, the red menu, buttons, headlines, notes: shared by all parts |
 | 3. The parts, page by page | Four blocks, one per earlier page |
-| 4. What this page adds | The short opening line, the opening's bold line, its three fact tags, the “Short on time?” link under them and its list of who it could reach, the curved label over its arch, the “What we could stand for” band after the opening, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 5, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the “Not me. Maybe me.” band before part 16, the arch picture, cards and contacts in part 16, the skyline, the footer |
+| 4. What this page adds | The short opening line, the opening's bold line, its three fact tags, the “Short on time?” link under them and its list of who it could reach, the curved label over its arch, the “What we could stand for” band after the opening, someone at a laptop and the films on laptops, the two groups and the pictures of the five people, the smart fridge, the three prototype tasks on tablets and the two columns of next ones in part 5, the five counts and five tiles in part 6, the road in part 9 (and the old number boxes, kept but not used), the film and the three ways on in part 10, the guided task, the “Who offers what” box in part 13, the two big names in part 14, the “Not me. Maybe me.” band before part 16, the arch picture, cards and contacts in part 16, the skyline, the footer |
 | 5. Small screens | For the parts this page adds, and the menu on one sliding row on phones |
 
 In section 3 every rule starts with its page's box name:
@@ -321,7 +340,7 @@ Since 21 November the menu part (section 3 of the file, `startMenu`) can mark on
 
 ### Change a prototype task in part 5
 
-**Where:** `index.html`, under `5. FROM THIS TO THIS`, inside the `<div class="mock …">` of that task. Edit the words, the table or the code as you would any sentence. In code, `&lt;` stands for the `<` sign and `&gt;` for the `>` sign, which HTML would otherwise read as part of a tag.
+**Where:** `index.html`, under `5. FROM THIS TO THIS`, inside the `<div class="mock …">` of that task. Edit the words or the code as you would any sentence. In code, `&lt;` stands for the `<` sign and `&gt;` for the `>` sign, which HTML would otherwise read as part of a tag.
 
 ### Change the two numbers in part 7
 
@@ -414,7 +433,7 @@ The band's navy is `--night`, the same as part 7. The card colours are the page'
 
 - `what-cefl-built.jpg`, in the opening, shows the Hub's home page ("Code it.").
 - `what-we-built.jpg`, in the part under it, shows a task on the Hub.
-- `what-it-could-be.jpg`, next to it, shows the cyber security task from part 5.
+- `what-it-could-be.jpg`, next to it, shows a cyber security task, “Spot the strange log-in”, which part 5 showed until 22 November 2026.
 
 A new picture must have the same size and name, or the arch crops it. If you change a picture, change its description too: in `index.html`, the `alt="…"` of its `<img>`, under `THE OPENING` or `AFTER THE OPENING`.
 
